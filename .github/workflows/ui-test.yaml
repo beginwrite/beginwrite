@@ -33,8 +33,8 @@ jobs:
       - name: ESlint Format Test
         run: pnpm run lint
 
-      - name: PLaywright Install
-        run: pnpm playwright install
+      - name: Playwright Install
+        run: npx playwright install
 
       - name: E2E Test
         run: pnpm run e2e

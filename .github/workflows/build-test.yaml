@@ -29,3 +29,6 @@ jobs:
 
       - name: Build dependencies
         run: pnpm run build
+
+      - name: ESlint Format Test
+        run: pnpm run lint

@@ -1,0 +1,42 @@
+# MEMO: pnpm のバージョンが悪さしてる影響で、CIで実行できないっぽいのでコメントアウト
+
+# name: ui-test
+
+# on:
+#   push:
+
+# jobs:
+#   ui-test:
+#     name: UI test
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout branch
+#         uses: actions/checkout@v3
+#         with:
+#           fetch-depth: 0
+
+#       - name: Setup pnpm
+#         uses: pnpm/action-setup@v2
+#         with:
+#           version: 7.28.0
+
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: '16.13.0'
+#           cache: 'pnpm'
+
+#       - name: Install dependencies
+#         run: pnpm install
+
+#       - name: Build dependencies
+#         run: pnpm run build
+
+#       - name: ESlint Format Test
+#         run: pnpm run lint
+
+#       - name: Playwright Install
+#         run: npx playwright install
+
+#       - name: E2E Test
+#         run: cd ./e2e && pnpm run e2e

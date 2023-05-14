@@ -13,6 +13,12 @@
         "dist/**"
       ]
     },
+    "start": {
+      "cache": false,
+      "dependsOn": [
+        "^start"
+      ]
+    },
     "start:dev": {
       "cache": false,
       "dependsOn": [

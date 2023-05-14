@@ -1,11 +1,11 @@
-name: build-test
+name: ui-test
 
 on:
   push:
 
 jobs:
-  build-test:
-    name: Build test
+  ui-test:
+    name: UI test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
@@ -29,3 +29,13 @@ jobs:
 
       - name: Build dependencies
         run: pnpm run build
+
+      - name: Start up Server
+        run: pnpm run start
+
+      - name: ESlint Format Test
+        run: pnpm run lint
+
+      - name: E2E Test
+        run: pnpm run test
+        working-directory: ./e2e

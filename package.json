@@ -1,8 +1,13 @@
 {
+  "private": true,
   "scripts": {
+    "clean": "turbo run clean",
+    "build": "turbo run build",
+    "start:dev": "turbo run start:dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@nestjs/cli": "^9.4.2"
+    "@nestjs/cli": "^9.4.2",
+    "turbo": "^1.9.4"
   }
 }

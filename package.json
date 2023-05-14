@@ -4,6 +4,7 @@
     "clean": "turbo run clean",
     "build": "turbo run build",
     "start:dev": "turbo run start:dev",
+    "lint": "turbo run lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {

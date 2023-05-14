@@ -118,12 +118,6 @@ importers:
       '@playwright/test': 1.33.0
       sass: 1.62.1
 
-  e2e:
-    specifiers:
-      '@playwright/test': ^1.33.0
-    devDependencies:
-      '@playwright/test': 1.33.0
-
 packages:
 
   /@alloc/quick-lru/5.2.0:

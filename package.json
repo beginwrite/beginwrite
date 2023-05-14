@@ -4,6 +4,7 @@
   "scripts": {
     "clean": "turbo run clean",
     "build": "turbo run build",
+    "start": "turbo run start",
     "start:dev": "turbo run start:dev",
     "lint": "turbo run lint"
   },

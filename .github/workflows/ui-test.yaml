@@ -38,4 +38,4 @@ jobs:
 
       - name: E2E Test
         run: pnpm run e2e
-        working-directory: ./apps/frontend
+        working-directory: ./e2e

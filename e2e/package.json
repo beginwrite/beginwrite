@@ -1,0 +1,13 @@
+{
+  "name": "e2e",
+  "private": true,
+  "scripts": {
+    "e2e": "pnpm playwright test"
+  },
+  "keywords": [],
+  "author": "nappa <masa.yanagawa721@gmail.com> (https://twitter.com/bebeji_nappa)",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.33.0"
+  }
+}

@@ -37,5 +37,4 @@ jobs:
         run: npx playwright install
 
       - name: E2E Test
-        run: pnpm run e2e
-        working-directory: ./e2e
+        run: cd ./e2e && pnpm run e2e

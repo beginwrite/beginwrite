@@ -18,7 +18,7 @@ export default function Home() {
 
   useEffect(() => {
     helloHandle();
-  }, [])
+  });
 
   return (
     <h1>{message} + Next.js!</h1>

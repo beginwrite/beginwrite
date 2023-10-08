@@ -1,26 +1,31 @@
 import { useState, useEffect, useCallback } from "react"
-import axios from 'axios';
-
+import { useQuery, gql } from '@apollo/client';
 type Data = {
   data: string
 }
 
+const getUsers = gql`
+  query users {
+    users {
+      id
+      name
+    }
+  }
+`;
+
 export default function Home() {
   const [message, setMessage] = useState("");
+  const { loading, error, data } = useQuery(getUsers);
 
-  const helloHandle = useCallback(async () => {
-    await axios.get('http://127.0.0.1:8000')
-      .then(({ data }: Data) => {
-        setMessage(data)
-      });
-  }, []);
-
-
-  useEffect(() => {
-    helloHandle();
-  });
+  if (error) return null;
 
   return (
-    <h1>{message} + Next.js!</h1>
+    <div>
+      <ul>
+        {data?.users.map((user: any) => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
+    </div>
   )
 }

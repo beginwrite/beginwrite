@@ -13,6 +13,10 @@ export interface User {
     name: string;
 }
 
+export interface IMutation {
+    createUser(name: string): User | Promise<User>;
+}
+
 export interface IQuery {
     users(): Nullable<User[]> | Promise<Nullable<User[]>>;
 }

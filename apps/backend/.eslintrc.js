@@ -17,7 +17,7 @@ module.exports = {
   },
   ignorePatterns: [
     '.eslintrc.js',
-    'src/graphql/graphql.ts', // MEMO: 自動出力系のファイルなので、対象外にする
+    './graphql.ts', // MEMO: 自動出力系のファイルなので、対象外にする
   ],
   rules: {
     '@typescript-eslint/interface-name-prefix': 'off',

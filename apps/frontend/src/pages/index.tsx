@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react"
+import { useState } from "react"
 import { useQuery, gql } from '@apollo/client';
 type Data = {
   data: string
@@ -13,9 +13,9 @@ const getUsers = gql`
   }
 `;
 
-export default function Home() {
+export default function Index() {
   const [message, setMessage] = useState("");
-  const { loading, error, data } = useQuery(getUsers);
+  const { error, data } = useQuery(getUsers);
 
   if (error) return null;
 

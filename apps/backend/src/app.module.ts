@@ -6,26 +6,24 @@ import { UsersModule } from './modules/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { DataSource } from 'typeorm';
-
-export const AppDataSource = new DataSource({
-  type: 'mysql',
-  host: 'localhost',
-  port: 3306,
-  username: 'root',
-  password: '',
-  database: 'beginwrite',
-  synchronize: false,
-  entities: [join(__dirname, './models/*.model{.ts,.js}')],
-});
+import * as fs from 'fs';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      envFilePath: ['.env'],
+    }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      typePaths: ['./**/*.graphql'],
-      definitions: {
-        path: join(process.cwd(), 'src/graphql/graphql.ts'),
-      },
+      typeDefs: [
+        fs
+          .readFileSync(
+            require.resolve(
+              '@beginwrite/app-graphql-codegen/dist/schema.graphql',
+            ),
+          )
+          .toString(),
+      ],
     }),
     TypeOrmModule.forRootAsync({
       imports: [
@@ -34,10 +32,18 @@ export const AppDataSource = new DataSource({
         }),
       ],
       inject: [ConfigService],
-      useFactory: () => AppDataSource.options,
-      dataSourceFactory: async () => {
-        await AppDataSource.initialize();
-        return AppDataSource;
+      useFactory: () => ({
+        type: 'mysql',
+        host: process.env.DB_HOST,
+        port: 3306,
+        username: process.env.DB_USERNAME,
+        password: process.env.DB_PASSWORD,
+        database: 'beginwrite',
+        synchronize: false,
+        entities: [join(__dirname, './models/*.model{.ts,.js}')],
+      }),
+      dataSourceFactory: async (options) => {
+        return await new DataSource(options).initialize();
       },
     }),
     UsersModule,

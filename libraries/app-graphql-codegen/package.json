@@ -1,0 +1,24 @@
+{
+  "name": "@beginwrite/app-graphql-codegen",
+  "main": "dist/cjs/index.js",
+  "files": [
+    "dist"
+  ],
+  "private": true,
+  "scripts": {
+    "build": "npm-run-all build:schema -p build:cjs",
+    "build:schema": "graphql-codegen --config codegen.ts",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "start:dev": "pnpm build"
+  },
+  "dependencies": {
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/client-preset": "^4.1.0",
+    "@graphql-codegen/fragment-matcher": "^5.0.0",
+    "@graphql-codegen/introspection": "^4.0.0",
+    "@graphql-codegen/typescript": "^4.0.1",
+    "@graphql-codegen/typescript-resolvers": "^4.0.1",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.2.2"
+  }
+}

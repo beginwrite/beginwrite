@@ -1,10 +1,10 @@
 import { useQuery, gql } from '@apollo/client';
-import type { IUser } from "@beginwrite/app-graphql-codegen";
+import type { IUser } from '@beginwrite/app-graphql-codegen';
 
 export type User = {
-  id: number
-  name: string
-}
+  id: number;
+  name: string;
+};
 
 const getUsers = gql`
   query users {
@@ -23,10 +23,8 @@ export default function Index() {
   return (
     <div>
       <ul>
-        {data?.users.map((user: IUser) => (
-          <li key={user.id}>{user.name}</li>
-        ))}
+        {data?.users.map((user: IUser) => <li key={user.id}>{user.name}</li>)}
       </ul>
     </div>
-  )
+  );
 }

@@ -11,9 +11,5 @@ export type ApolloProps = {
 };
 
 export default function Apollo({ children }: ApolloProps) {
-  return (
-    <ApolloProvider client={client}>
-      {children}
-    </ApolloProvider>
-  )
+  return <ApolloProvider client={client}>{children}</ApolloProvider>;
 }

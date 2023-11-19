@@ -16,6 +16,9 @@ const config: CodegenConfig = {
     },
     "./dist/schema.graphql": {
       plugins: ["schema-ast"],
+      config: {
+        includeDirectives: true,
+      },
     },
     "./dist/schema.json": {
       plugins: ["introspection"],
@@ -25,6 +28,7 @@ const config: CodegenConfig = {
     },
   },
   ignoreNoDocuments: true,
+  overwrite: true,
 };
 
 export default config;

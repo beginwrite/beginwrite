@@ -2,12 +2,14 @@
   "compilerOptions": {
     "rootDir": "./dist",
     "declaration": true,
+    "declarationMap": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "target": "esnext",
     "sourceMap": true,
+    "inlineSources": true,
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": false,
@@ -16,6 +18,5 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false
   },
-  "include": ["./dist/**/*.ts",],
-  "exclude": ["node_modules"]
+  "include": ["./dist/**/*.ts"],
 }

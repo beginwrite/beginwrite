@@ -11,7 +11,7 @@
     "format": "prettier --write ./src/**/*"
   },
   "dependencies": {
-    "@apollo/client": "^3.8.7",
+    "@apollo/client": "^3.8.8",
     "@apollo/server": "^4.9.5",
     "@as-integrations/next": "^3.0.0",
     "@beginwrite/app-graphql-codegen": "workspace:*",
@@ -30,6 +30,6 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
-    "@playwright/test": "^1.40.0"
+    "@playwright/test": "^1.40.1"
   }
 }

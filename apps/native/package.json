@@ -1,0 +1,35 @@
+{
+  "name": "native",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && pnpm cap sync ios && pnpm cap sync android",
+    "start": "next start",
+    "lint": "next lint",
+    "open:ios": "pnpm cap sync ios && pnpm cap open ios",
+    "open:android": "pnpm cap sync android && pnpm cap open android",
+    "sync:app": "pnpm cap sync",
+    "export": "next export",
+    "ionic:build": "pnpm run build",
+    "ionic:serve": "pnpm run start"
+  },
+  "dependencies": {
+    "@capacitor-community/react-hooks": "^0.0.11",
+    "@capacitor/android": "^5.5.1",
+    "@capacitor/core": "^5.5.1",
+    "@capacitor/ios": "^5.5.1",
+    "next": "14.0.3",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^5.5.1",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.3",
+    "typescript": "^5"
+  }
+}

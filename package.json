@@ -13,7 +13,7 @@
     "lint": "turbo run lint"
   },
   "dependencies": {
-    "@nestjs/cli": "^10.1.18",
-    "turbo": "^1.10.15"
+    "@nestjs/cli": "^10.3.0",
+    "turbo": "^1.11.3"
   }
 }

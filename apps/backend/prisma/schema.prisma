@@ -15,7 +15,7 @@ model User {
   user_id  String @db.VarChar(255) @unique
   name     String @db.VarChar(255)
   email    String @db.VarChar(255) @unique
-  password String @db.VarChar(255)
-  created_at  DateTime @default(now()) @db.Timestamp(0)
-  updated_at  DateTime @default(now()) @updatedAt @db.Timestamp(0)
+  hash String @db.VarChar(255)
+  created_at  Int @unique
+  updated_at  Int @unique
 }

@@ -3,5 +3,7 @@ type User {
   userId: String!
   name: String!
   email: String!
-  password: String!
+  hash: String!
+  createdAt: Int!
+  updatedAt: Int!
 }

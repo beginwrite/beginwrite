@@ -1,3 +1,10 @@
+input UserInput {
+  userId: String!
+  name: String!
+  email: String!
+  password: String!
+}
+
 type Mutation {
-  createUser(name: String!): User!
+  createUser(data: UserInput!): User!
 }

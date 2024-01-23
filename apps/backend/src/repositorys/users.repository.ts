@@ -3,6 +3,13 @@ import { User } from 'src/models/users.model';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
+export type CreateUserArgs = {
+  name: string;
+  email: string;
+  userId: string;
+  hash: string;
+};
+
 @Injectable()
 export class UsersRepository {
   constructor(
@@ -14,9 +21,14 @@ export class UsersRepository {
     return this.usersRepostiory.find();
   }
 
-  createUser(name: string): Promise<User> {
+  createUser(data: CreateUserArgs): Promise<User> {
     const user = new User();
-    user.name = name;
+    user.email = data.email;
+    user.hash = data.hash;
+    user.name = data.name;
+    user.userId = data.userId;
+    user.createdAt = Date.now();
+    user.updatedAt = Date.now();
     return this.usersRepostiory.save(user);
   }
 }

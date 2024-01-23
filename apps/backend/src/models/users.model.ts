@@ -8,7 +8,15 @@ export class User {
   @Field((type) => Int)
   id: number;
 
+  @Column({ name: 'user_id', unique: true })
+  @Field((type) => String)
+  userId: string;
+
   @Column()
   @Field((type) => String)
   name: string;
+
+  @Column({ unique: true })
+  @Field((type) => String)
+  email: string;
 }

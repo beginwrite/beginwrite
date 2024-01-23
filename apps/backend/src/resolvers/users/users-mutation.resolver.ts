@@ -1,13 +1,8 @@
 import { Resolver, Mutation, Args } from '@nestjs/graphql';
-import { Injectable } from '@nestjs/common';
 import { User } from 'src/models/users.model';
 import { UsersRepository } from '../../repositorys/users.repository';
 import * as bcrypt from 'bcrypt';
-import type {
-  IMutationCreateUserArgs,
-  IUserInput,
-} from '@beginwrite/app-graphql-codegen';
-import { InjectRepository } from '@nestjs/typeorm';
+import type { IMutationCreateUserArgs } from '@beginwrite/app-graphql-codegen';
 
 @Resolver((of) => User)
 export class UsersMutationResolver {

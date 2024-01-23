@@ -1,12 +1,10 @@
-
+/* tslint:disable */
+/* eslint-disable */
 /*
  * -------------------------------------------------------
  * THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
  * -------------------------------------------------------
  */
-
-/* tslint:disable */
-/* eslint-disable */
 
 export interface User {
     id: string;

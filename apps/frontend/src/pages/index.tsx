@@ -1,12 +1,11 @@
 import { useQuery, gql } from '@apollo/client';
 import type { IUser } from '@beginwrite/app-graphql-codegen';
 
-export type User = {
-  id: number;
-  name: string;
+export type UserQuery = {
+  users: Array<Pick<IUser, 'id' | 'name'>>;
 };
 
-const getUsers = gql`
+const getUsersQuery = gql`
   query users {
     users {
       id
@@ -16,14 +15,14 @@ const getUsers = gql`
 `;
 
 export default function Index() {
-  const { error, data } = useQuery(getUsers);
+  const { error, data } = useQuery<UserQuery>(getUsersQuery);
 
   if (error) return null;
 
   return (
     <div>
       <ul>
-        {data?.users.map((user: IUser) => <li key={user.id}>{user.name}</li>)}
+        {data?.users.map((user: Pick<IUser, 'id' | 'name'>) => <li key={user.id}>{user.name}</li>)}
       </ul>
     </div>
   );

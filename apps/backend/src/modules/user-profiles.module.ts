@@ -9,4 +9,4 @@ import { UserProfileQueryResolver } from 'src/resolvers/user-profiles/user-profi
   providers: [UsersRepository, UserProfileQueryResolver],
   exports: [UsersRepository, UserProfileQueryResolver],
 })
-export class UsersModule {}
+export class UserProfilesModule {}

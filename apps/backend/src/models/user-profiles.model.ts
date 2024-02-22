@@ -13,8 +13,8 @@ export class UserProfile {
   displayName: string;
 
   @Column({ unique: true, name: 'user_id' })
-  @Field((type) => String)
-  userId: string;
+  @Field((type) => Int)
+  userId: number;
 
   @Column()
   @Field((type) => Text)

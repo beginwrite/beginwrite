@@ -3,7 +3,6 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { UsersModule } from './modules/users.module';
-import { UserProfilesModule } from './modules/user-profiles.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { DataSource } from 'typeorm';
@@ -48,7 +47,6 @@ import * as fs from 'fs';
       },
     }),
     UsersModule,
-    UserProfilesModule,
   ],
 })
 export class AppModule {}

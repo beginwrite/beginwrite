@@ -3,6 +3,7 @@ type User {
   name: String!
   email: String!
   hash: String!
+  profile: UserProfile
   createdAt: Int!
   updatedAt: Int!
 }

@@ -1,5 +1,12 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  OneToOne,
+  JoinColumn,
+} from 'typeorm';
+import { UserProfile } from './user-profiles.model';
 
 @Entity()
 @ObjectType()
@@ -11,6 +18,10 @@ export class User {
   @Column()
   @Field((type) => String)
   name: string;
+
+  @OneToOne(() => UserProfile)
+  @JoinColumn()
+  profile: UserProfile;
 
   @Column({ unique: true })
   @Field((type) => String)

@@ -1,5 +1,6 @@
 type UserProfile {
   id: ID!
+  userId: Int!
   email: String!
   displayName: String!
   bio: String

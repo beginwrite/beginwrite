@@ -1,12 +1,12 @@
 import { Query, Resolver } from '@nestjs/graphql';
-import { User } from 'src/models/users.model';
+import { UserProfile } from 'src/models/user-profiles.model';
 import { UserProfileRepository } from 'src/repositorys/user-profiles.repository';
 
-@Resolver((of) => User)
+@Resolver((of) => UserProfile)
 export class UserProfileQueryResolver {
   constructor(private userProfileRepository: UserProfileRepository) {}
 
-  @Query((returns) => User)
+  @Query((returns) => UserProfile)
   async users(id: number) {
     return this.userProfileRepository.findbyId({ id });
   }

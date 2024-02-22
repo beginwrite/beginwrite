@@ -6,7 +6,7 @@ import {
   OneToOne,
   JoinColumn,
 } from 'typeorm';
-import { UserProfile } from './user-profiles.model';
+import { UserProfile } from './user-profile.model';
 
 @Entity()
 @ObjectType()

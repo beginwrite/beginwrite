@@ -20,6 +20,10 @@ export class UsersRepository {
     return this.usersRepostiory.find();
   }
 
+  findById(id: number): Promise<User> {
+    return this.usersRepostiory.findOne({ where: { id } });
+  }
+
   createUser(data: CreateUserArgs): Promise<User> {
     const user = new User();
     user.email = data.email;

@@ -24,7 +24,7 @@ model Post {
   title         String @db.VarChar(255)
   content       String @db.Text
   userId        Int @db.Int
-  published_at  BigInt @unique
-  created_at    BigInt @unique
-  updated_at    BigInt @unique
+  published_at  BigInt
+  created_at    BigInt
+  updated_at    BigInt
 }

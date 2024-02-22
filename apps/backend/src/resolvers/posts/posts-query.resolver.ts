@@ -3,7 +3,7 @@ import { User } from 'src/models/users.model';
 import { PostsRepository } from 'src/repositorys/posts.repository';
 
 @Resolver((of) => User)
-export class UsersQueryResolver {
+export class PostsQueryResolver {
   constructor(private postsRepository: PostsRepository) {}
 
   @Query((returns) => User)

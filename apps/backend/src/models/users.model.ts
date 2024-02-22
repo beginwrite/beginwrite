@@ -17,7 +17,7 @@ export class User {
   displayName: string;
 
   @Column()
-  @Field((type) => Text)
+  @Field((type) => String)
   bio: string;
 
   @Column()

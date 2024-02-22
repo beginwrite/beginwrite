@@ -3,7 +3,7 @@ type User {
   name: String!
   email: String!
   hash: String!
-  displayName: String!
+  displayName: String
   bio: String
   avatar: String
   createdAt: Int!

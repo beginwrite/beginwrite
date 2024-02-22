@@ -44,8 +44,8 @@ export class UsersMutationResolver {
         bio: args.data.bio,
         avatar: args.data.avatar,
       })
-      .then(() => {
-        const user = this.usersRepository.findById(args.data.id);
+      .then(async () => {
+        const user = await this.usersRepository.findById(args.data.id);
         return user;
       })
       .catch((err) => {

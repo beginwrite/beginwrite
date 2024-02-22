@@ -11,11 +11,20 @@ datasource db {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  user_id  String @db.VarChar(255) @unique
-  name     String @db.VarChar(255)
-  email    String @db.VarChar(255) @unique
-  hash String @db.VarChar(255)
+  id          Int    @id @default(autoincrement())
+  name        String @db.VarChar(255)
+  email       String @db.VarChar(255) @unique
+  hash        String @db.VarChar(255)
   created_at  BigInt @unique
   updated_at  BigInt @unique
+}
+
+model Post {
+  id            Int    @id @default(autoincrement())
+  title         String @db.VarChar(255)
+  content       String @db.Text
+  userId        Int @db.Int
+  published_at  BigInt
+  created_at    BigInt
+  updated_at    BigInt
 }

@@ -11,12 +11,14 @@ datasource db {
 }
 
 model user {
-  id          Int    @id @default(autoincrement())
-  name        String @db.VarChar(255)
-  email       String @db.VarChar(255) @unique
-  hash        String @db.VarChar(255)
-  created_at  BigInt @unique
-  updated_at  BigInt @unique
+  id              Int    @id @default(autoincrement())
+  name            String @db.VarChar(255)
+  email           String @db.VarChar(255) @unique
+  hash            String @db.VarChar(255)
+  display_name    String @db.VarChar(255)
+  bio             String @db.Text
+  created_at      BigInt @unique
+  updated_at      BigInt @unique
 }
 
 model post {
@@ -27,13 +29,4 @@ model post {
   published_at  BigInt
   created_at    BigInt
   updated_at    BigInt
-}
-
-model user_profile {
-  id              Int    @id @default(autoincrement())
-  user_id         Int @db.Int
-  display_name    String @db.VarChar(255)
-  bio             String @db.Text
-  created_at      BigInt
-  updated_at      BigInt
 }

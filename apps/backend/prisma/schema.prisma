@@ -23,7 +23,7 @@ model Post {
   id            Int    @id @default(autoincrement())
   title         String @db.VarChar(255)
   content       String @db.Text
-  userId        Int @db.Int
+  user_id       Int @db.Int
   published_at  BigInt
   created_at    BigInt
   updated_at    BigInt

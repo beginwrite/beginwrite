@@ -12,6 +12,18 @@ export class User {
   @Field((type) => String)
   name: string;
 
+  @Column({ name: 'display_name' })
+  @Field((type) => String)
+  displayName: string;
+
+  @Column()
+  @Field((type) => String)
+  bio: string;
+
+  @Column()
+  @Field((type) => String)
+  avatar: string;
+
   @Column({ unique: true })
   @Field((type) => String)
   email: string;

@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
+model user {
   id          Int    @id @default(autoincrement())
   name        String @db.VarChar(255)
   email       String @db.VarChar(255) @unique
@@ -19,7 +19,7 @@ model User {
   updated_at  BigInt @unique
 }
 
-model Post {
+model post {
   id            Int    @id @default(autoincrement())
   title         String @db.VarChar(255)
   content       String @db.Text
@@ -29,7 +29,7 @@ model Post {
   updated_at    BigInt
 }
 
-model userProfile {
+model user_profile {
   id              Int    @id @default(autoincrement())
   user_id         Int @db.Int
   display_name    String @db.VarChar(255)

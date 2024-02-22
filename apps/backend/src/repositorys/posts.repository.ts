@@ -8,10 +8,10 @@ import { Post } from '@prisma/client';
 export class PostsRepository {
   constructor(
     @InjectRepository(User)
-    private postsRepostiory: Repository<Post>,
+    private postsRepository: Repository<Post>,
   ) {}
 
   findAll(): Promise<Post[]> {
-    return this.postsRepostiory.find();
+    return this.postsRepository.find();
   }
 }

@@ -2,7 +2,10 @@ import { Resolver, Mutation, Args } from '@nestjs/graphql';
 import { User } from 'src/models/users.model';
 import { UsersRepository } from '../../repositorys/users.repository';
 import * as bcrypt from 'bcrypt';
-import type { IMutationCreateUserArgs } from '@beginwrite/app-graphql-codegen';
+import type {
+  IMutationCreateUserArgs,
+  IMutationUpdateUserProfileArgs,
+} from '@beginwrite/app-graphql-codegen';
 
 @Resolver((of) => User)
 export class UsersMutationResolver {
@@ -22,6 +25,27 @@ export class UsersMutationResolver {
         name: args.data.name,
       })
       .then((user) => {
+        return user;
+      })
+      .catch((err) => {
+        throw new Error(err.message);
+      });
+  }
+
+  @Mutation((returns) => User)
+  async updateUserProfile(@Args() args: IMutationUpdateUserProfileArgs) {
+    if (!args.data.displayName) throw new Error('Display Name is required');
+    if (!args.data.id) throw new Error('User ID is required');
+
+    return this.usersRepository
+      .updateUserProfile({
+        id: args.data.id,
+        displayName: args.data.displayName,
+        bio: args.data.bio,
+        avatar: args.data.avatar,
+      })
+      .then(() => {
+        const user = this.usersRepository.findById(args.data.id);
         return user;
       })
       .catch((err) => {

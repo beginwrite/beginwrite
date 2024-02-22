@@ -6,7 +6,6 @@ import { Repository } from 'typeorm';
 export type CreateUserArgs = {
   name: string;
   email: string;
-  userId: string;
   hash: string;
 };
 
@@ -26,7 +25,6 @@ export class UsersRepository {
     user.email = data.email;
     user.hash = data.hash;
     user.name = data.name;
-    user.userId = data.userId;
     user.createdAt = Date.now();
     user.updatedAt = Date.now();
     return this.usersRepostiory.save(user);

@@ -10,15 +10,15 @@ export class User {
 
   @Column()
   @Field((type) => String)
-  name: string;
+  title: string;
 
-  @Column({ unique: true })
+  @Column()
   @Field((type) => String)
-  email: string;
+  content: string;
 
-  @Column({ unique: true })
-  @Field((type) => String)
-  hash: string;
+  @Column({ name: 'published_at' })
+  @Field((type) => Int)
+  publishedAt: number;
 
   @Column({ name: 'created_at' })
   @Field((type) => Int)

@@ -28,3 +28,12 @@ model Post {
   created_at    BigInt
   updated_at    BigInt
 }
+
+model userProfile {
+  id              Int    @id @default(autoincrement())
+  user_id         Int @db.Int
+  display_name    String @db.VarChar(255)
+  bio             String @db.Text
+  created_at      BigInt
+  updated_at      BigInt
+}

@@ -1,10 +1,6 @@
-
-/**
- * @todo MSW のモックデータを使って、Storybookでのテストを行いたい
- */
-
 import { initialize, mswLoader, mswDecorator } from 'msw-storybook-addon';
 import Apollo from '../src/pages/_apollo';
+import { handlers } from '../src/mocks';
 initialize();
 
 export const decorators = [
@@ -27,6 +23,9 @@ const preview = {
       },
     },
     loaders: [mswLoader],
+    msw: {
+      handlers
+    }
   },
 };
 

@@ -1,6 +1,6 @@
 
 /**
- * @todo モックデータを使って、Storybookでのテストを行いたい
+ * @todo MSW のモックデータを使って、Storybookでのテストを行いたい
  */
 
 import { initialize, mswLoader, mswDecorator } from 'msw-storybook-addon';

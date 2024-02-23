@@ -5,13 +5,22 @@ const config: CodegenConfig = {
   documents: ["schemas/**/*.graphql"],
   generates: {
     "./dist/index.ts": {
-      plugins: ["typescript"],
+      plugins: [
+        'typescript',
+        'typescript-operations',
+        '@graphql-codegen/typescript-msw',
+         {
+          'graphql-codegen-typescript-mock-data': {
+            prefix: 'mock',
+         },
+       },
+      ],
       config: {
         enumsAsTypes: true,
         withComponent: true,
         enumPrefix: false,
         typesPrefix: 'I',
-        declarationKind: 'interface'
+        declarationKind: 'interface',
       }
     },
     "./dist/schema.graphql": {

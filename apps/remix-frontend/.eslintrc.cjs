@@ -47,6 +47,9 @@ module.exports = {
           typescript: {},
         },
       },
+      rules: {
+        'import/no-unresolved': 'off',
+      },
     },
 
     // Typescript

@@ -1,15 +1,21 @@
 import { initialize, mswLoader, mswDecorator } from 'msw-storybook-addon';
-import Apollo from '../src/pages/_apollo';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { handlers } from '../src/mocks';
+
+const client = new ApolloClient({
+  uri: 'http://localhost:8000/graphql',
+  cache: new InMemoryCache(),
+});
+
 initialize();
 
 export const decorators = [
   mswDecorator,
   story => (
-    <Apollo>
+    <ApolloProvider client={client}>
       {story()}
-    </Apollo>
-  ),
+    </ApolloProvider> 
+  )
 ];
 
 /** @type { import('@storybook/react').Preview } */

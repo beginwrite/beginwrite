@@ -12,14 +12,18 @@
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
-    "lint:eslint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "lint:prettier": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "lint:eslint": "eslint \"{src,apps,libs,test}/**/*.ts\"",
+    "lint:prettier": "prettier --check \"src/**/*.ts\" \"test/**/*.ts\"",
+    "lint:fix": "pnpm lint:eslint --fix && pnpm lint:prettier --write",
     "lint": "pnpm lint:eslint && pnpm lint:prettier",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js}": "pnpm lint:fix"
   },
   "dependencies": {
     "@apollo/server": "^4.10.0",

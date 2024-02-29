@@ -17,5 +17,5 @@ export const users = graphql.query<GetUserQuery>('users', (_, res, ctx) => {
     ctx.data({
       users: mock,
     }),
-  )
+  );
 });

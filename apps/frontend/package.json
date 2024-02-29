@@ -6,12 +6,16 @@
     "start:dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "eslint": "next lint --fix",
+    "eslint": "next lint",
     "e2e": "pnpm playwright test",
     "format": "prettier --write ./src/**/*",
     "lint": "pnpm eslint && pnpm format",
+    "lint:fix": "pnpm eslint --fix && pnpm format",
     "storybook": "storybook dev -p 6006",
     "build:storybook": "storybook build"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js}": "pnpm lint:fix"
   },
   "dependencies": {
     "@apollo/client": "^3.9.5",

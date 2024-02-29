@@ -7,5 +7,4 @@ export default {
   component: Users,
 } as Meta<typeof Users>;
 
-export const Primary: StoryObj<typeof Users> = {
-};
+export const Primary: StoryObj<typeof Users> = {};

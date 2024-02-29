@@ -7,8 +7,12 @@
 
 ### API
 - NestJS
+
+### DB
 - Prisma
 - MySQL
+
+### Query
 - GraphQL
 
 

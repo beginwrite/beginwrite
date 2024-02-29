@@ -14,12 +14,6 @@
     "storybook": "storybook dev -p 6006",
     "build:storybook": "storybook build"
   },
-  "lint-staged": {
-    "*.{ts,tsx,js}": [
-      "eslint --fix",
-      "prettier --write"
-    ]
-  },
   "dependencies": {
     "@apollo/client": "^3.9.5",
     "@apollo/server": "^4.10.0",

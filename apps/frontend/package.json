@@ -15,7 +15,10 @@
     "build:storybook": "storybook build"
   },
   "lint-staged": {
-    "*.{ts,tsx,js}": "pnpm lint:fix"
+    "*.{ts,tsx,js}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@apollo/client": "^3.9.5",

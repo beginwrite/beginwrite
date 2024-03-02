@@ -1,9 +1,0 @@
-{
-  "name": "e2e",
-  "scripts": {
-    "e2e": "pnpm playwright test"
-  },
-  "devDependencies": {
-    "@playwright/test": "^1.42.0"
-  }
-}

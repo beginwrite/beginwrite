@@ -24,15 +24,15 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+
       - name: Install Playwright
         working-directory: apps/frontend
         run: npx playwright install --with-deps
+
       - name: Build Storybook
         working-directory: apps/frontend
         run: pnpm build-storybook --quiet
+
       - name: Serve Storybook and run tests
         working-directory: apps/frontend
-        run: |
-          npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
-            "npx http-server storybook-static --port 6006 --silent" \
-            "npx wait-on tcp:6006 && pnpm test-storybook"
+        run: pnpm test-storybook:ci

@@ -15,6 +15,7 @@
     "build-storybook": "storybook build",
     "test-storybook": "test-storybook",
     "test-storybook:watch": "test-storybook --watch",
+    "test-storybook:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npm run build-storybook --quiet && npx http-server storybook-static --port 6066 --silent\" \"wait-on tcp:6066 && test-storybook --url http://localhost:6066\"",
     "chromatic": "npx chromatic --project-token=chpt_eaca3dfc657532b"
   },
   "dependencies": {

@@ -1,9 +1,8 @@
-import { render } from '@testing-library/react';
 import { describe, test, expect } from '@jest/globals';
 import { composeStories } from '@storybook/react';
 import * as stories from './index.stories';
 import { within } from '@storybook/test';
-import { testRenderer } from '@/utils/TestServerProvider';
+import { testRenderer } from '@/utils/testRenderer';
 
 const { Primary } = composeStories(stories);
 

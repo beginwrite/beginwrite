@@ -12,10 +12,12 @@ for (let i = 1; i <= 20; i++) {
   mock.push(user);
 }
 
-export const users = graphql.query<GetUsersQuery>('users', (_, res, ctx) => {
-  return res(
-    ctx.data({
-      users: mock,
-    }),
-  );
-});
+export const users = () => {
+  return graphql.query<GetUsersQuery>('users', (_, res, ctx) => {
+    return res(
+      ctx.data({
+        users: mock,
+      }),
+    );
+  });
+};

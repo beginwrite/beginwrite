@@ -11,11 +11,7 @@ initialize();
 
 export const decorators = [
   mswDecorator,
-  story => (
-    <ApolloProvider client={client}>
-      {story()}
-    </ApolloProvider> 
-  )
+  (story) => <ApolloProvider client={client}>{story()}</ApolloProvider>,
 ];
 
 /** @type { import('@storybook/react').Preview } */
@@ -30,8 +26,8 @@ const preview = {
     },
     loaders: [mswLoader],
     msw: {
-      handlers
-    }
+      handlers,
+    },
   },
 };
 

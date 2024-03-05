@@ -1,8 +1,7 @@
 import Input from './index';
 
 import type { Meta, StoryObj } from '@storybook/react';
-import { screen, userEvent } from '@storybook/test';
-import { within } from '@testing-library/react';
+import { within, userEvent } from '@storybook/test';
 
 export default {
   title: 'Compoments/Common/Input',
@@ -21,9 +20,6 @@ export const TextInput: StoryObj<typeof Input> = {
   },
 };
 
-/**
- * MEMO: PasswordInput.play() is not working
- */
 export const PasswordInput: StoryObj<typeof Input> = {
   args: {
     type: 'password',

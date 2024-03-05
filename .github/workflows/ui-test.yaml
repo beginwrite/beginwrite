@@ -1,4 +1,4 @@
-name: 'Storybook Tests'
+name: 'UI Tests'
 on: push
 
 jobs:
@@ -35,7 +35,4 @@ jobs:
 
       - name: Serve Storybook and run tests
         working-directory: apps/frontend
-        run: |
-          npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
-          "pnpm http-server storybook-static --port 6006 --silent" \
-          "pnpm wait-on http://127.0.0.1:6006 && pnpm test-storybook"
+        run: pnpm test

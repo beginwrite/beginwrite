@@ -21,8 +21,5 @@ export const testRenderer = (children: React.ReactNode) => {
     cache: new InMemoryCache(),
   });
 
-  const result = render(
-    <ApolloProvider client={client}>{children}</ApolloProvider>,
-  );
-  return result;
+  return render(<ApolloProvider client={client}>{children}</ApolloProvider>);
 };

@@ -8,4 +8,9 @@ export default {
   component: Users,
 } as Meta<typeof Users>;
 
-export const Primary: StoryObj<typeof Users> = {};
+export const Primary: StoryObj<typeof Users> = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    expect(await canvas.findByText('Name 1')).toBeTruthy();
+  },
+};

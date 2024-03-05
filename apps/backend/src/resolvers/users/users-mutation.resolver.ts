@@ -3,6 +3,7 @@ import { User } from 'src/models/users.model';
 import { UsersRepository } from '../../repositorys/users.repository';
 import * as bcrypt from 'bcrypt';
 import type {
+  IMutationAuthUserArgs,
   IMutationCreateUserArgs,
   IMutationUpdateUserProfileArgs,
 } from '@beginwrite/app-graphql-codegen';
@@ -23,6 +24,24 @@ export class UsersMutationResolver {
         email: args.data.email,
         hash,
         name: args.data.name,
+      })
+      .then((user) => {
+        return user;
+      })
+      .catch((err) => {
+        throw new Error(err.message);
+      });
+  }
+
+  @Mutation((returns) => User)
+  async authUser(@Args() args: IMutationAuthUserArgs) {
+    if (!args.data.password) throw new Error('Password is required');
+    if (!args.data.email) throw new Error('Email is required');
+
+    return this.usersRepository
+      .authUser({
+        email: args.data.email,
+        password: args.data.password,
       })
       .then((user) => {
         return user;

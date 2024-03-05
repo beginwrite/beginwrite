@@ -2,11 +2,17 @@ import { Injectable } from '@nestjs/common';
 import { User } from 'src/models/users.model';
 import { InjectRepository } from '@nestjs/typeorm';
 import type { UpdateResult, Repository } from 'typeorm';
+import * as bcrypt from 'bcrypt';
 
 export type CreateUserArgs = {
   name: string;
   email: string;
   hash: string;
+};
+
+export type AuthUserArgs = {
+  email: string;
+  password: string;
 };
 
 export type UpdateUserProfileArgs = {
@@ -31,6 +37,10 @@ export class UsersRepository {
     return this.usersRepostiory.findOne({ where: { id: Number(id) } });
   }
 
+  findByEmail(email: string): Promise<User> {
+    return this.usersRepostiory.findOne({ where: { email } });
+  }
+
   createUser(data: CreateUserArgs): Promise<User> {
     const user = new User();
     user.email = data.email;
@@ -39,6 +49,14 @@ export class UsersRepository {
     user.createdAt = Date.now();
     user.updatedAt = Date.now();
     return this.usersRepostiory.save(user);
+  }
+
+  async authUser(data: AuthUserArgs): Promise<User> {
+    const user = await this.findByEmail(data.email);
+    if (!user) throw new Error('User not found');
+    const isPasswordValid = await bcrypt.compare(data.password, user.hash);
+    if (!isPasswordValid) throw new Error('Invalid password');
+    return user;
   }
 
   updateUserProfile(data: UpdateUserProfileArgs): Promise<UpdateResult> {

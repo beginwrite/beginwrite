@@ -6,9 +6,9 @@ import { screen } from '@testing-library/react';
 
 const { Primary } = composeStories(stories);
 
-describe.skip('Primary', () => {
-  test('renders correctly', async () => {
+describe('Login', () => {
+  test('successful', async () => {
     testRenderer(<Primary />);
-    expect(await screen.findByText('Name 1')).toBeTruthy();
+    expect(await screen.findByText('Login')).toBeTruthy();
   });
 });

@@ -6,6 +6,7 @@ const createJestConfig = nextJest({
 });
 
 const customJestConfig: Config = {
+  maxWorkers: 3,
   moduleDirectories: ['node_modules', '<rootDir>/'],
   setupFilesAfterEnv: ['./jest.setup.ts'],
   moduleNameMapper: {

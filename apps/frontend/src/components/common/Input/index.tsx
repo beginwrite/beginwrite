@@ -1,4 +1,7 @@
 import React from 'react';
+import styled from '@emotion/styled';
+
+const StyledInput = styled.input``;
 
 export type InputProps = {
   type: string;
@@ -22,7 +25,7 @@ const Input: React.FC<InputProps> = ({
   autoComplete,
 }) => {
   return (
-    <input
+    <StyledInput
       type={type}
       placeholder={placeholder}
       value={value}

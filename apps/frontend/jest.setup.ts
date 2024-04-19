@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import 'isomorphic-unfetch';
-import { server } from '@/mocks/index';
+import { server } from '@/mocks/server';
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());

@@ -1,5 +1,5 @@
 import { IUser } from '@beginwrite/app-graphql-codegen';
-import { graphql } from 'msw';
+import { graphql, HttpResponse } from 'msw';
 import { GetUsersQuery } from '@/components/pages/Users/gql';
 
 const mock: Pick<IUser, 'id' | 'name'>[] = [];
@@ -13,11 +13,11 @@ for (let i = 1; i <= 20; i++) {
 }
 
 export const users = () => {
-  return graphql.query<GetUsersQuery>('users', (_, res, ctx) => {
-    return res(
-      ctx.data({
+  return graphql.query<GetUsersQuery>('users', () => {
+    return HttpResponse.json({
+      data: {
         users: mock,
-      }),
-    );
+      },
+    });
   });
 };

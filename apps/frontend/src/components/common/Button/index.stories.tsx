@@ -8,9 +8,4 @@ export default {
   component: Button,
 } as Meta<typeof Button>;
 
-export const Primary: StoryObj<typeof Button> = {
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    expect(await canvas.findByText('button')).toBeTruthy();
-  },
-};
+export const Primary: StoryObj<typeof Button> = {};

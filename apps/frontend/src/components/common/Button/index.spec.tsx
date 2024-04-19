@@ -1,13 +1,13 @@
 import { describe, test } from '@jest/globals';
 import { composeStories } from '@storybook/react';
 import * as stories from './index.stories';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
 const { Primary } = composeStories(stories);
 
 describe('Primary', () => {
-  test('renders correctly', () => {
+  test('renders correctly', async () => {
     render(<Primary />);
-    Primary.play({ canvasElement: document.body });
+    expect(await screen.findByText('button')).toBeTruthy();
   });
 });

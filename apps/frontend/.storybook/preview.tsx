@@ -1,5 +1,5 @@
 import React from 'react';
-import { initialize, mswLoader, mswDecorator } from 'msw-storybook-addon';
+import { initialize, mswLoader } from 'msw-storybook-addon';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { handlers } from '../src/mocks';
 import type { Preview } from '@storybook/react';
@@ -12,11 +12,11 @@ const client = new ApolloClient({
 initialize();
 
 export const decorators = [
-  mswDecorator,
   (story) => <ApolloProvider client={client}>{story()}</ApolloProvider>,
 ];
 
 const preview: Preview = {
+  loaders: [mswLoader],
   parameters: {
     controls: {
       matchers: {
@@ -24,7 +24,6 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
-    loaders: [mswLoader],
     msw: {
       handlers,
     },

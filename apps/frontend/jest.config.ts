@@ -8,6 +8,7 @@ const createJestConfig = nextJest({
 const customJestConfig: Config = {
   maxWorkers: 3,
   moduleDirectories: ['node_modules', '<rootDir>/'],
+  setupFiles: ['./jest.polyfills.js'],
   setupFilesAfterEnv: ['./jest.setup.ts'],
   moduleNameMapper: {
     '@/(.*)$': '<rootDir>/src/$1',
@@ -17,6 +18,9 @@ const customJestConfig: Config = {
   testPathIgnorePatterns: ['src/tests/e2e/'],
   transform: {
     '^.+\\.(ts|tsx|js|jsx)$': 'ts-jest',
+  },
+  testEnvironmentOptions: {
+    customExportConditions: [''],
   },
 };
 

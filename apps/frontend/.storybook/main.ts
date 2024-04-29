@@ -13,6 +13,7 @@ const config: StorybookConfig = {
     getAbsolutePath('@storybook/addon-onboarding'),
     getAbsolutePath('@storybook/addon-interactions'),
     getAbsolutePath('storybook-addon-apollo-client'),
+    getAbsolutePath('@storybook/addon-a11y'),
   ],
   framework: {
     name: '@storybook/nextjs',

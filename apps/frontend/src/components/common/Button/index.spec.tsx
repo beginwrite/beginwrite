@@ -8,6 +8,6 @@ const { Primary } = composeStories(stories);
 describe('Primary', () => {
   test('renders correctly', async () => {
     render(<Primary />);
-    expect(await screen.findByText('button')).toBeTruthy();
+    expect(await screen.findByRole('button')).toBeTruthy();
   });
 });

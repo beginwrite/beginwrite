@@ -3,8 +3,13 @@ import styled from '@emotion/styled';
 
 const StyledButton = styled.button``;
 
-const Button: React.FC = () => {
-  return <StyledButton>button</StyledButton>;
+export type ButtonProps = {
+  type?: 'button' | 'submit' | 'reset';
+  children: React.ReactNode;
+};
+
+const Button: React.FC<ButtonProps> = ({ type, children }) => {
+  return <StyledButton type={type}>{children}</StyledButton>;
 };
 
 export default Button;

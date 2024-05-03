@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   ApolloClient,
   ApolloProvider,
@@ -7,6 +6,7 @@ import {
 } from '@apollo/client';
 import { render } from '@testing-library/react';
 import fetch from 'cross-fetch';
+import React from 'react';
 
 export const testRenderer = (children: React.ReactNode) => {
   const link = new HttpLink({

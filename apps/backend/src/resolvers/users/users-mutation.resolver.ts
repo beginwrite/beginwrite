@@ -1,11 +1,12 @@
-import { Resolver, Mutation, Args } from '@nestjs/graphql';
-import { User } from 'src/models/users.model';
-import { UsersRepository } from '../../repositorys/users.repository';
-import * as bcrypt from 'bcrypt';
 import { UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard';
+import { Resolver, Mutation, Args } from '@nestjs/graphql';
+import * as bcrypt from 'bcrypt';
+import { User } from 'src/models/users.model';
+
+import { JwtAuthGuard } from '../../applications/guards/jwt-auth.guard';
+import { UsersRepository } from '../../repositorys/users.repository';
+
 import type {
-  IMutationAuthUserArgs,
   IMutationCreateUserArgs,
   IMutationUpdateUserProfileArgs,
 } from '@beginwrite/app-graphql-codegen';

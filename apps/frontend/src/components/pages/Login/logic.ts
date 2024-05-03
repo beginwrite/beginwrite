@@ -1,6 +1,7 @@
+import { useMutation } from '@apollo/client';
 import { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
-import { useMutation } from '@apollo/client';
+
 import {
   postAuthUserMutation,
   PostAuthUserMutation,

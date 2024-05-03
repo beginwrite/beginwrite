@@ -1,12 +1,14 @@
 import { Module } from '@nestjs/common';
-import { AuthRepository } from 'src/repositorys/auth.repository';
-import { PassportModule } from '@nestjs/passport';
-import { JwtModule } from '@nestjs/jwt';
-import { AuthMutationResolver } from 'src/resolvers/auth/auth-mutation.resolver';
-import { LocalStrategy } from 'src/auth/strategies/local.strategy';
-import { JwtStrategy } from 'src/auth/strategies/jwt.strategy';
-import { UsersModule } from './users.module';
 import { ConfigModule } from '@nestjs/config';
+import { JwtModule } from '@nestjs/jwt';
+import { PassportModule } from '@nestjs/passport';
+import { AuthRepository } from 'src/repositorys/auth.repository';
+
+import { JwtStrategy } from '../applications/strategies/jwt.strategy';
+import { LocalStrategy } from '../applications/strategies/local.strategy';
+import { AuthMutationResolver } from '../resolvers/auth/auth-mutation.resolver';
+
+import { UsersModule } from './users.module';
 
 @Module({
   imports: [

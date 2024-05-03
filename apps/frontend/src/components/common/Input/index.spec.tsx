@@ -1,8 +1,9 @@
 import { describe, test, expect } from '@jest/globals';
 import { composeStories } from '@storybook/react';
-import * as stories from './index.stories';
-import { render } from '@testing-library/react';
 import { screen } from '@testing-library/dom';
+import { render } from '@testing-library/react';
+
+import * as stories from './index.stories';
 
 const { TextInput } = composeStories(stories);
 

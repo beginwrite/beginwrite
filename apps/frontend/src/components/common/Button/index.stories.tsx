@@ -1,5 +1,6 @@
-import Button from './index';
 import { within, expect } from '@storybook/test';
+
+import Button from './index';
 
 import type { Meta, StoryObj } from '@storybook/react';
 

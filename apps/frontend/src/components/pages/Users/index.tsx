@@ -1,8 +1,10 @@
-import React from 'react';
 import { useQuery } from '@apollo/client';
-import type { IUser } from '@beginwrite/app-graphql-codegen';
+import React from 'react';
+
 import { getUsersQuery } from './gql';
+
 import type { GetUsersQuery } from './gql';
+import type { IUser } from '@beginwrite/app-graphql-codegen';
 
 const Users: React.FC = () => {
   const { error, data } = useQuery<GetUsersQuery>(getUsersQuery);

@@ -1,8 +1,9 @@
+import { UseGuards } from '@nestjs/common';
 import { Query, Resolver } from '@nestjs/graphql';
 import { User } from 'src/models/users.model';
+
+import { JwtAuthGuard } from '../../applications/guards/jwt-auth.guard';
 import { UsersRepository } from '../../repositorys/users.repository';
-import { UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard';
 
 @Resolver((of) => User)
 export class UsersQueryResolver {

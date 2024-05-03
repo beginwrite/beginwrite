@@ -62,6 +62,7 @@
     "@types/jest": "29.5.12",
     "chromatic": "^11.3.0",
     "cross-fetch": "^4.0.0",
+    "eslint-plugin-import": "^2.29.1",
     "extend-expect": "link:@testing-library/jest-dom/extend-expect",
     "http-server": "^14.1.1",
     "isomorphic-unfetch": "^4.0.2",

@@ -1,8 +1,10 @@
 import { describe, test, expect } from '@jest/globals';
 import { composeStories } from '@storybook/react';
-import * as stories from './index.stories';
-import { testRenderer } from '@/utils/testRenderer';
 import { screen } from '@testing-library/react';
+
+import { testRenderer } from '@/utils/testRenderer';
+
+import * as stories from './index.stories';
 
 const { Primary } = composeStories(stories);
 

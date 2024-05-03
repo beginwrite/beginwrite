@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { User } from 'src/models/users.model';
 import { InjectRepository } from '@nestjs/typeorm';
-import type { UpdateResult, Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
+import { User } from 'src/models/users.model';
+
+import type { UpdateResult, Repository } from 'typeorm';
 
 export type CreateUserArgs = {
   name: string;

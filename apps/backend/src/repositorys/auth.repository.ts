@@ -1,9 +1,10 @@
+import { IUserAuthInput } from '@beginwrite/app-graphql-codegen';
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { User } from 'src/models/users.model';
 import * as bcrypt from 'bcrypt';
+import { User } from 'src/models/users.model';
+
 import { UsersRepository } from './users.repository';
-import { IUserAuthInput } from '@beginwrite/app-graphql-codegen';
 
 export type AuthUserArgs = {
   email: string;

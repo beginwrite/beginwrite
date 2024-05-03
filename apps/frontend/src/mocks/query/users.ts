@@ -1,5 +1,6 @@
 import { IUser } from '@beginwrite/app-graphql-codegen';
 import { graphql, HttpResponse } from 'msw';
+
 import { GetUsersQuery } from '@/components/pages/Users/gql';
 
 const mock: Pick<IUser, 'id' | 'name'>[] = [];

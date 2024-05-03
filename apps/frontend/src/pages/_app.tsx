@@ -1,5 +1,6 @@
-import type { AppType } from 'next/app';
 import Apollo from './_apollo';
+
+import type { AppType } from 'next/app';
 
 const App: AppType = ({ Component, pageProps }) => {
   return (

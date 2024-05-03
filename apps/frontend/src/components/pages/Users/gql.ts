@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client';
+
 import type { IUser } from '@beginwrite/app-graphql-codegen';
 
 export type GetUsersQuery = {

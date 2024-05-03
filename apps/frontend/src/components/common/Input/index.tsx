@@ -1,5 +1,5 @@
-import React, { ComponentPropsWithoutRef, forwardRef } from 'react';
 import styled from '@emotion/styled';
+import React, { ComponentPropsWithoutRef, forwardRef } from 'react';
 
 const StyledInput = styled.input``;
 

@@ -7,7 +7,6 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { onError } from '@apollo/client/link/error';
-import { useRouter } from 'next/router';
 import React from 'react';
 
 const redirect = (path: string) => {
@@ -32,6 +31,7 @@ const authLink = setContext((_, { headers }) => {
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
+    sessionStorage.removeItem('token');
     graphQLErrors.forEach(({ message, locations, path }) => {
       console.error(
         `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
@@ -41,7 +41,6 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   }
   if (networkError) {
     console.error(`[Network error]: ${networkError}`);
-    redirect('/login');
   }
 });
 

@@ -4,5 +4,5 @@ input UserAuthInput {
 }
 
 type Mutation {
-  authUser(data: UserAuthInput!): User!
+  auth(data: UserAuthInput!): User!
 }

@@ -6,7 +6,7 @@ import { AuthRepository } from 'src/repositorys/auth.repository';
 
 import { GqlAuthGuard } from '../../applications/guards/gql-auth.guard';
 
-import type { IMutationAuthUserArgs } from '@beginwrite/app-graphql-codegen';
+import type { IMutationAuthArgs } from '@beginwrite/app-graphql-codegen';
 
 @Resolver((of) => User)
 export class AuthMutationResolver {
@@ -14,7 +14,7 @@ export class AuthMutationResolver {
 
   @Mutation(() => User)
   @UseGuards(GqlAuthGuard)
-  async authUser(@Args() args: IMutationAuthUserArgs, @Context() context) {
+  async auth(@Args() args: IMutationAuthArgs, @Context() context) {
     return await this.authRepository.auth(context.user);
   }
 }

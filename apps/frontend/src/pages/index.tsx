@@ -1,5 +1,3 @@
-import Users from '../components/pages/Users';
-
 export default function Index() {
-  return <Users />;
+  return <h1>Index</h1>;
 }

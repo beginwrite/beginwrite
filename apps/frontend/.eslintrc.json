@@ -1,6 +1,6 @@
 {
   "extends": "next/core-web-vitals",
-  "plugins": ["@typescript-eslint", "prettier", "import"],
+  "plugins": ["@typescript-eslint", "import", "prettier"],
   "rules": {
     "react/display-name": "off", // MEMO: React.forwardRef でアロー関数を使用したいので、off
     "@typescript-eslint/no-unused-vars": "off",

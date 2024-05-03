@@ -6,6 +6,7 @@ import { UsersModule } from './modules/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { DataSource } from 'typeorm';
+import { AuthModule } from './modules/auth.module';
 import * as fs from 'fs';
 
 @Module({
@@ -46,6 +47,7 @@ import * as fs from 'fs';
         return await new DataSource(options).initialize();
       },
     }),
+    AuthModule,
     UsersModule,
   ],
 })

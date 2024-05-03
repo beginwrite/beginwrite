@@ -32,6 +32,10 @@ export class User {
   @Field((type) => String)
   hash: string;
 
+  @Column({ name: 'access_token' })
+  @Field((type) => String)
+  accessToken: string;
+
   @Column({ name: 'created_at' })
   @Field((type) => Int)
   createdAt: number;

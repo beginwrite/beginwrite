@@ -2,6 +2,8 @@ import { Resolver, Mutation, Args } from '@nestjs/graphql';
 import { User } from 'src/models/users.model';
 import { UsersRepository } from '../../repositorys/users.repository';
 import * as bcrypt from 'bcrypt';
+import { UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard';
 import type {
   IMutationAuthUserArgs,
   IMutationCreateUserArgs,
@@ -34,24 +36,7 @@ export class UsersMutationResolver {
   }
 
   @Mutation((returns) => User)
-  async authUser(@Args() args: IMutationAuthUserArgs) {
-    if (!args.data.password) throw new Error('Password is required');
-    if (!args.data.email) throw new Error('Email is required');
-
-    return this.usersRepository
-      .authUser({
-        email: args.data.email,
-        password: args.data.password,
-      })
-      .then((user) => {
-        return user;
-      })
-      .catch((err) => {
-        throw new Error(err.message);
-      });
-  }
-
-  @Mutation((returns) => User)
+  @UseGuards(JwtAuthGuard)
   async updateUserProfile(@Args() args: IMutationUpdateUserProfileArgs) {
     if (!args.data.displayName) throw new Error('Display Name is required');
     if (!args.data.id) throw new Error('User ID is required');

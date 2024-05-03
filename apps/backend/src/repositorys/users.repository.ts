@@ -70,4 +70,13 @@ export class UsersRepository {
       },
     );
   }
+
+  updateUserAccessToken({ id, token }): Promise<UpdateResult> {
+    return this.usersRepostiory.update(
+      { id: Number(id) },
+      {
+        accessToken: token,
+      },
+    );
+  }
 }

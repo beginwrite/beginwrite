@@ -15,6 +15,7 @@ model user {
   name            String   @db.VarChar(255)
   email           String   @db.VarChar(255) @unique
   hash            String   @db.VarChar(255)
+  access_token    String?   @db.VarChar(1024)
   display_name    String?  @db.VarChar(255)
   bio             String?  @db.Text
   avatar          String?  @db.VarChar(1000)

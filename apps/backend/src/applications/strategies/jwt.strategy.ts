@@ -4,10 +4,14 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
 
 import { User } from '../../models/users.model';
 import { UsersRepository } from '../../repositorys/users.repository';
+import { RedisService } from '../services/redis.service';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor(private readonly usersRepository: UsersRepository) {
+  constructor(
+    private readonly usersRepository: UsersRepository,
+    private readonly redis: RedisService,
+  ) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
@@ -19,6 +23,9 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     email: string;
     sub: string;
   }): Promise<User | null> {
-    return this.usersRepository.findByEmail(payload.email);
+    const user = await this.usersRepository.findById(payload.sub);
+    const accessToken = await this.redis.store.get(user.uuid);
+    if (!accessToken) return null;
+    return user;
   }
 }

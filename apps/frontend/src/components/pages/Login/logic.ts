@@ -15,10 +15,7 @@ export const useLogin = () => {
     PostAuthUserMutationVariables
   >(postAuthUserMutation, {
     onCompleted: (data) => {
-      sessionStorage.setItem(
-        'access_token',
-        data.authUser.accessToken as string,
-      );
+      localStorage.setItem('access_token', data.auth.accessToken as string);
     },
     onError: (error) => {
       console.error(error);

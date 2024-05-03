@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
+import { RedisService } from 'src/applications/services/redis.service';
 import { AuthRepository } from 'src/repositorys/auth.repository';
 
 import { JwtStrategy } from '../applications/strategies/jwt.strategy';
@@ -22,7 +23,19 @@ import { UsersModule } from './users.module';
       signOptions: { expiresIn: '1h' },
     }),
   ],
-  providers: [AuthRepository, AuthMutationResolver, LocalStrategy, JwtStrategy],
-  exports: [AuthRepository, AuthMutationResolver, LocalStrategy, JwtStrategy],
+  providers: [
+    AuthRepository,
+    AuthMutationResolver,
+    LocalStrategy,
+    JwtStrategy,
+    RedisService,
+  ],
+  exports: [
+    AuthRepository,
+    AuthMutationResolver,
+    LocalStrategy,
+    JwtStrategy,
+    RedisService,
+  ],
 })
 export class AuthModule {}

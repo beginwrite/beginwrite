@@ -44,6 +44,7 @@ export class UsersRepository {
 
   createUser(data: CreateUserArgs): Promise<User> {
     const user = new User();
+    user.uuid = crypto.randomUUID();
     user.email = data.email;
     user.hash = data.hash;
     user.name = data.name;

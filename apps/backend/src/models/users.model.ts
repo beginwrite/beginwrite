@@ -8,6 +8,10 @@ export class User {
   @Field((type) => Int)
   id: number;
 
+  @Column({ unique: true })
+  @Field((type) => String)
+  uuid: string;
+
   @Column()
   @Field((type) => String)
   name: string;

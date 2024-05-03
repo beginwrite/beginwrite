@@ -1,5 +1,6 @@
 type User {
   id: ID!
+  uuid: String!
   name: String!
   email: String!
   hash: String!

@@ -7,7 +7,6 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { onError } from '@apollo/client/link/error';
-import { useRouter } from 'next/router';
 import React from 'react';
 
 const redirect = (path: string) => {
@@ -19,9 +18,7 @@ const httpLink = createHttpLink({
 });
 
 const authLink = setContext((_, { headers }) => {
-  // get the authentication token from local storage if it exists
-  const token = sessionStorage.getItem('token');
-  // return the headers to the context so httpLink can read them
+  const token = localStorage.getItem('token');
   return {
     headers: {
       ...headers,
@@ -32,6 +29,7 @@ const authLink = setContext((_, { headers }) => {
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
+    localStorage.removeItem('token');
     graphQLErrors.forEach(({ message, locations, path }) => {
       console.error(
         `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
@@ -41,7 +39,6 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   }
   if (networkError) {
     console.error(`[Network error]: ${networkError}`);
-    redirect('/login');
   }
 });
 

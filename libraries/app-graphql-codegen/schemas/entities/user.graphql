@@ -4,6 +4,7 @@ type User {
   email: String!
   hash: String!
   displayName: String
+  accessToken: String
   bio: String
   avatar: String
   createdAt: Int!

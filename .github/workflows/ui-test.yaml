@@ -26,13 +26,13 @@ jobs:
         run: pnpm install
 
       - name: Install Playwright
-        working-directory: apps/frontend
+        working-directory: apps/web
         run: npx playwright install --with-deps
 
       - name: Build Storybook
-        working-directory: apps/frontend
+        working-directory: apps/web
         run: pnpm build-storybook --quiet
 
       - name: Serve Storybook and run tests
-        working-directory: apps/frontend
+        working-directory: apps/web
         run: pnpm test

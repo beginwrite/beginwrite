@@ -11,49 +11,33 @@
 ### DB
 - Prisma
 - MySQL
+- Redis
 
 ### Query
 - GraphQL
 
+## 起動方法
+開発環境については、Docker で管理しています。
 
-## インストール
-
-以下コマンドでインストールします。
+### Docker のインストール
 
 ```bash
-$ pnpm install
+$ brew install docker
 ```
 
-## MySQL のインストール
-
-Mac の場合、homebrew を使用して、MySQL をインストールします。
+### Docker 起動
 
 ```bash
-$ brew install mysql-client
+$ docker-compose up --build -d
 ```
 
-### MySQL の起動
-
-以下コマンドを実行します。
-
-```bash
-$ mysql.server start
-```
-
-## DB Migration
-
-DBマイグレーションは Prisma で管理しています。
-以下コマンドでマイグレーションを実行します。
+### マイグレーション実行
+apps/server の環境変数定義した後、
+apps コンテナに入り、マイグレーションを実行します。
 
 ```bash
-$ cd apps/backend
+$ docker exec -it beginwrite-apps-1 bash
 $ pnpm prisma migrate dev
 ```
 
-## サーバ起動
-以下コマンドを実行して、サーバを起動します。
-
-```bash
-$ cd ../..
-$ pnpm start:dev
-```
+その後、http://localhost:3000 にアクセスして、サーバーが正常に動いているか、確認お願いします。

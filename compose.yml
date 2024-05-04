@@ -1,0 +1,46 @@
+version: '3.7'
+
+services:
+  apps:
+    build: 
+      context: .
+      dockerfile: ./docker/apps/Dockerfile
+    ports:
+      - "3000:3000"
+      - "8000:8000"
+    networks:
+      - common_link
+    command: "pnpm start:dev"
+    volumes:
+      - "./apps:/apps"
+    depends_on:
+      - db
+      - redis
+  redis:
+    image: "redis:latest"
+    build: 
+      context: .
+      dockerfile: ./docker/redis/Dockerfile
+    networks:
+      - common_link
+    ports:
+      - "6379:6379"
+    volumes:
+      - "./data/redis:/data"
+  db:
+    image: "mysql:latest"
+    build: 
+      context: .
+      dockerfile: ./docker/mysql/Dockerfile
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    networks:
+      - common_link
+    ports:
+      - "3306:3306"
+    volumes:
+      - "./data/mysql:/var/lib/mysql"
+
+networks:
+  common_link:
+    external: true

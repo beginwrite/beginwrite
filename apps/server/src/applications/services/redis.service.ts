@@ -3,5 +3,7 @@ import Redis from 'ioredis';
 
 @Injectable()
 export class RedisService {
-  public store = new Redis();
+  public store = new Redis({
+    host: process.env.REDIS_HOST,
+  });
 }

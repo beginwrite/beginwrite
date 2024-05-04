@@ -6,3 +6,4 @@ dist/**
 .next/**
 **/storybook-static
 dump.rdb
+data/*

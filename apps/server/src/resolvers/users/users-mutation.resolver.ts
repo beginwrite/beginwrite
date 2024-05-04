@@ -1,6 +1,6 @@
 import { UseGuards } from '@nestjs/common';
 import { Resolver, Mutation, Args } from '@nestjs/graphql';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 import { User } from 'src/models/users.model';
 
 import { JwtAuthGuard } from '../../applications/guards/jwt-auth.guard';

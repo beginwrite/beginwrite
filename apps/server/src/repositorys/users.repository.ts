@@ -87,8 +87,15 @@ export class UsersRepository {
   }
 
   // 型定義すると file データが取れないので、any にしている
-  async uploadProfileAvatar(file: any, id: number): Promise<UpdateResult> {
-    const { createReadStream, filename } = file.file;
+  async uploadProfileAvatar(
+    file: any,
+    id: number,
+    uuid: string,
+  ): Promise<UpdateResult> {
+    const { createReadStream } = file.file;
+    console.log(file.file);
+    // MEMO: 拡張子は jpeg に固定
+    const filename = `${uuid}.png`;
     const stream = await this.loadStream(createReadStream());
     const s3Response = await this.s3Service.uploadFile(filename, stream);
     console.log(s3Response);

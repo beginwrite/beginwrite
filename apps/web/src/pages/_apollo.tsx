@@ -43,7 +43,10 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
         `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
       );
     });
-    // redirect('/login');
+
+    if (graphQLErrors.some((error) => error.message === 'Unauthorized')) {
+      redirect('/login');
+    }
   }
   if (networkError) {
     console.error(`[Network error]: ${networkError}`);

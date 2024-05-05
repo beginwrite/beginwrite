@@ -60,13 +60,15 @@ export class UsersMutationResolver {
   }
 
   @Mutation((returns) => User)
+  @UseGuards(JwtAuthGuard)
   async uploadProfileAvatar(
     @Args({ name: 'id', type: () => String }) id: string,
     @Args({ name: 'file', type: () => GraphQLUpload }) file: FileUpload,
   ) {
     if (!file) throw new Error('File is required');
+    const user = await this.usersRepository.findById(id);
     return this.usersRepository
-      .uploadProfileAvatar(file, Number(id))
+      .uploadProfileAvatar(file, Number(id), user.uuid)
       .then(async () => {
         return await this.usersRepository.findById(id);
       })

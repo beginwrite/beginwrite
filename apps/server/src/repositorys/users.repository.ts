@@ -1,8 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcryptjs';
+import { FileUpload } from 'graphql-upload-minimal';
+import { S3Service } from 'src/applications/services/s3.service';
 import { User } from 'src/models/users.model';
 
+import type { ReadStream } from 'fs';
 import type { UpdateResult, Repository } from 'typeorm';
 
 export type CreateUserArgs = {
@@ -28,6 +31,7 @@ export class UsersRepository {
   constructor(
     @InjectRepository(User)
     private usersRepostiory: Repository<User>,
+    private s3Service: S3Service,
   ) {}
 
   findAll(): Promise<User[]> {
@@ -80,5 +84,29 @@ export class UsersRepository {
         accessToken: token,
       },
     );
+  }
+
+  // 型定義すると file データが取れないので、any にしている
+  async uploadProfileAvatar(file: any, id: number): Promise<UpdateResult> {
+    const { createReadStream, filename } = file.file;
+    const stream = await this.loadStream(createReadStream());
+    const s3Response = await this.s3Service.uploadFile(filename, stream);
+    console.log(s3Response);
+    return this.usersRepostiory.update(
+      { id: id },
+      {
+        avatar: `${process.env.AWS_ENDPOINT}/${process.env.AWS_BUCKET}/${filename}`,
+        updatedAt: Date.now(),
+      },
+    );
+  }
+
+  private loadStream(stream: ReadStream): Promise<Buffer> {
+    return new Promise((resolve, reject) => {
+      const chunks = [];
+      stream.on('data', (chunk) => chunks.push(chunk));
+      stream.on('error', reject);
+      stream.on('end', () => resolve(Buffer.concat(chunks)));
+    });
   }
 }

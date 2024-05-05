@@ -1,6 +1,7 @@
 import { UseGuards } from '@nestjs/common';
 import { Resolver, Mutation, Args } from '@nestjs/graphql';
 import * as bcrypt from 'bcryptjs';
+import { FileUpload, GraphQLUpload } from 'graphql-upload-minimal';
 import { User } from 'src/models/users.model';
 
 import { JwtAuthGuard } from '../../applications/guards/jwt-auth.guard';
@@ -54,6 +55,23 @@ export class UsersMutationResolver {
         return user;
       })
       .catch((err) => {
+        throw new Error(err.message);
+      });
+  }
+
+  @Mutation((returns) => User)
+  async uploadProfileAvatar(
+    @Args({ name: 'id', type: () => String }) id: string,
+    @Args({ name: 'file', type: () => GraphQLUpload }) file: FileUpload,
+  ) {
+    if (!file) throw new Error('File is required');
+    return this.usersRepository
+      .uploadProfileAvatar(file, Number(id))
+      .then(async () => {
+        return await this.usersRepository.findById(id);
+      })
+      .catch((err) => {
+        console.log(err);
         throw new Error(err.message);
       });
   }

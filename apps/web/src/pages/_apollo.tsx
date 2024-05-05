@@ -7,14 +7,22 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { onError } from '@apollo/client/link/error';
+import { default as createUploadLink } from 'apollo-upload-client/createUploadLink.mjs';
 import React from 'react';
 
 const redirect = (path: string) => {
   window.location.href = path;
 };
 
-const httpLink = createHttpLink({
+const httpLink = createUploadLink({
   uri: 'http://localhost:8000/graphql',
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    'content-type': 'application/json, multipart/form-data',
+    'apollo-require-preflight': 'true',
+  },
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -35,7 +43,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
         `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
       );
     });
-    redirect('/login');
+    // redirect('/login');
   }
   if (networkError) {
     console.error(`[Network error]: ${networkError}`);

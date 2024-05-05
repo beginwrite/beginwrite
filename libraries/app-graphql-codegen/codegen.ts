@@ -21,7 +21,7 @@ const config: CodegenConfig = {
         enumPrefix: false,
         typesPrefix: 'I',
         declarationKind: 'interface',
-      }
+      },
     },
     "./dist/schema.graphql": {
       plugins: ["schema-ast"],

@@ -1,0 +1,5 @@
+scalar FileUpload
+
+type Mutation {
+  uploadProfileAvatar(id: ID!, file: FileUpload!): User!
+}

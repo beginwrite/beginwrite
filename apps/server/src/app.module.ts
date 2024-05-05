@@ -2,15 +2,15 @@ import * as fs from 'fs';
 import { join } from 'path';
 
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { Module } from '@nestjs/common';
+import { Module, MiddlewareConsumer } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { graphqlUploadExpress } from 'graphql-upload-minimal';
 import { DataSource } from 'typeorm';
 
 import { AuthModule } from './modules/auth.module';
 import { UsersModule } from './modules/users.module';
-
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -53,4 +53,8 @@ import { UsersModule } from './modules/users.module';
     UsersModule,
   ],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(graphqlUploadExpress()).forRoutes('graphql');
+  }
+}

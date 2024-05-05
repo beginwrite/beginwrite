@@ -14,7 +14,7 @@ const redirect = (path: string) => {
   window.location.href = path;
 };
 
-const httpLink = createUploadLink({
+const httpUploadLink = createUploadLink({
   uri: 'http://localhost:8000/graphql',
   headers: {
     'Access-Control-Allow-Origin': '*',
@@ -25,8 +25,12 @@ const httpLink = createUploadLink({
   },
 });
 
+const httpLink = createHttpLink({
+  uri: 'http://localhost:8000/graphql',
+});
+
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem('access_token');
   return {
     headers: {
       ...headers,
@@ -37,7 +41,6 @@ const authLink = setContext((_, { headers }) => {
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
-    localStorage.removeItem('token');
     graphQLErrors.forEach(({ message, locations, path }) => {
       console.error(
         `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
@@ -45,6 +48,8 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
     });
 
     if (graphQLErrors.some((error) => error.message === 'Unauthorized')) {
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('user_id');
       redirect('/login');
     }
   }
@@ -54,7 +59,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 });
 
 const client = new ApolloClient({
-  link: ApolloLink.from([authLink, errorLink, httpLink]),
+  link: ApolloLink.from([authLink, errorLink, httpLink.concat(httpUploadLink)]),
   cache: new InMemoryCache(),
 });
 

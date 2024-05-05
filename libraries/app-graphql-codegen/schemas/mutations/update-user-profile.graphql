@@ -2,7 +2,6 @@ input UserProfileInput {
   id: ID!
   displayName: String!
   bio: String
-  avatar: String
 }
 
 type Mutation {

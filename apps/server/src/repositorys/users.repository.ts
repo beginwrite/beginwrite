@@ -23,7 +23,6 @@ export type UpdateUserProfileArgs = {
   id: string;
   displayName: string;
   bio?: string;
-  avatar?: string;
 };
 
 @Injectable()
@@ -52,17 +51,10 @@ export class UsersRepository {
     user.email = data.email;
     user.hash = data.hash;
     user.name = data.name;
+    user.displayName = data.name;
     user.createdAt = Date.now();
     user.updatedAt = Date.now();
     return this.usersRepostiory.save(user);
-  }
-
-  async authUser(data: AuthUserArgs): Promise<User> {
-    const user = await this.findByEmail(data.email);
-    if (!user) throw new Error('User not found');
-    const isPasswordValid = await bcrypt.compare(data.password, user.hash);
-    if (!isPasswordValid) throw new Error('Invalid password');
-    return user;
   }
 
   updateUserProfile(data: UpdateUserProfileArgs): Promise<UpdateResult> {
@@ -71,7 +63,6 @@ export class UsersRepository {
       {
         displayName: data.displayName,
         bio: data.bio,
-        avatar: data.avatar,
         updatedAt: Date.now(),
       },
     );

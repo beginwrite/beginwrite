@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { RedisService } from 'src/applications/services/redis.service';
 import { S3Service } from 'src/applications/services/s3.service';
 
 import { User } from '../models/users.model';
@@ -13,12 +14,14 @@ import { UsersQueryResolver } from '../resolvers/users/users-query.resolver';
     UsersQueryResolver,
     UsersMutationResolver,
     S3Service,
+    RedisService,
   ],
   exports: [
     UsersRepository,
     UsersQueryResolver,
     UsersMutationResolver,
     S3Service,
+    RedisService,
   ],
 })
 export class UsersModule {}

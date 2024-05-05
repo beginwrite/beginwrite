@@ -15,6 +15,7 @@ export const useLogin = () => {
     PostAuthUserMutationVariables
   >(postAuthUserMutation, {
     onCompleted: (data) => {
+      localStorage.setItem('user_id', data.auth.id as string);
       localStorage.setItem('access_token', data.auth.accessToken as string);
     },
     onError: (error) => {

@@ -48,7 +48,6 @@ export class UsersMutationResolver {
         id: args.data.id,
         displayName: args.data.displayName,
         bio: args.data.bio,
-        avatar: args.data.avatar,
       })
       .then(async () => {
         const user = await this.usersRepository.findById(args.data.id);

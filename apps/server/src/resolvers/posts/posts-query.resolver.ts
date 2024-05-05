@@ -11,7 +11,7 @@ export class PostsQueryResolver {
 
   @Query((returns) => User)
   @UseGuards(JwtAuthGuard)
-  async users() {
+  async posts() {
     return this.postsRepository.findAll();
   }
 }

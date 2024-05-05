@@ -13,7 +13,7 @@ export class S3Service {
       accessKeyId: process.env.AWS_ACCESS_KEY,
       secretAccessKey: process.env.AWS_SECRET_KEY,
     },
-    endpoint: 'http://beginwrite-minio-1:9000',
+    endpoint: process.env.AWS_ENDPOINT,
     region: process.env.AWS_REGION,
     forcePathStyle: true,
   });

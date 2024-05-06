@@ -46,6 +46,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
     if (graphQLErrors.some((error) => error.message === 'Unauthorized')) {
       localStorage.removeItem('access_token');
       localStorage.removeItem('user_id');
+      sessionStorage.setItem('redirect_path', window.location.pathname);
       redirect('/login');
     }
   }

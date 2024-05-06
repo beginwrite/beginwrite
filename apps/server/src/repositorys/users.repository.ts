@@ -97,7 +97,7 @@ export class UsersRepository {
     return await this.usersRepostiory.update(
       { id: id },
       {
-        avatar: `${process.env.AWS_ENDPOINT}/${process.env.AWS_BUCKET}/${filename}`,
+        avatar: `${process.env.AWS_S3_URL}/${filename}`,
         updatedAt: Date.now(),
       },
     );

@@ -17,6 +17,11 @@ export const useLogin = () => {
     onCompleted: (data) => {
       localStorage.setItem('user_id', data.auth.id as string);
       localStorage.setItem('access_token', data.auth.accessToken as string);
+      if (sessionStorage.getItem('redirect_path')) {
+        const redirectPath = sessionStorage.getItem('redirect_path');
+        sessionStorage.removeItem('redirect_path');
+        window.location.href = redirectPath as string;
+      }
     },
     onError: (error) => {
       console.error(error);

@@ -50,8 +50,7 @@ export class UsersMutationResolver {
         bio: args.data.bio,
       })
       .then(async () => {
-        const user = await this.usersRepository.findById(args.data.id);
-        return user;
+        return await this.usersRepository.findById(args.data.id);
       })
       .catch((err) => {
         throw new Error(err.message);
@@ -67,7 +66,7 @@ export class UsersMutationResolver {
     if (!file) throw new Error('File is required');
     const user = await this.usersRepository.findById(id);
     return this.usersRepository
-      .uploadProfileAvatar(file, Number(id), user.uuid)
+      .uploadProfileAvatar(file, Number(id), user.avatar)
       .then(async () => {
         return await this.usersRepository.findById(id);
       })

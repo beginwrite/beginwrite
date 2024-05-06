@@ -16,3 +16,27 @@ export const getUserQuery = gql`
     }
   }
 `;
+
+export type UpdateUserProfileMutation = {
+  updateProfile: Pick<IUser, 'id'>;
+};
+
+export const updateUserProfileMutation = gql`
+  mutation UpdateUserProfileMutation($data: UserProfileInput!) {
+    updateUserProfile(data: $data) {
+      id
+    }
+  }
+`;
+
+export type UploadProfileAvatarMutation = {
+  uploadProfileAvatar: Pick<IUser, 'id'>;
+};
+
+export const uploadProfileAvatarMutation = gql`
+  mutation uploadAvatar($id: ID!, $file: FileUpload!) {
+    uploadProfileAvatar(id: $id, file: $file) {
+      id
+    }
+  }
+`;

@@ -28,19 +28,19 @@ export class S3Service {
     );
   }
 
-  public async deleteFile(bucket: string, key: string) {
+  public async deleteFile(key: string) {
     return await this.s3.send(
       new DeleteObjectCommand({
-        Bucket: bucket,
+        Bucket: `${process.env.AWS_BUCKET}`,
         Key: key,
       }),
     );
   }
 
-  public async getFile(bucket: string, key: string) {
+  public async getFile(key: string) {
     return await this.s3.send(
       new GetObjectCommand({
-        Bucket: bucket,
+        Bucket: `${process.env.AWS_BUCKET}`,
         Key: key,
       }),
     );

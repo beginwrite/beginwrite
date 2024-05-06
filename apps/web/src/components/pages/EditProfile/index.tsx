@@ -1,11 +1,14 @@
-import { useQuery } from '@apollo/client';
 import styled from '@emotion/styled';
 import Image from 'next/image';
 import React from 'react';
 
-import { getUserQuery } from './gql';
+import Button from '@/components/common/Button';
 
-import type { GetUserQuery } from './gql';
+import {
+  useFetchData,
+  useUpdateProfile,
+  useUpdateProfileAvatar,
+} from './logic';
 
 const Form = styled.form`
   display: flex;
@@ -17,9 +20,9 @@ export type EditProfileProps = {
 };
 
 const EditProfile: React.FC<EditProfileProps> = ({ id }) => {
-  const { error, data } = useQuery<GetUserQuery>(getUserQuery, {
-    variables: { id },
-  });
+  const { error, data } = useFetchData(id);
+  const { handleSubmit, register } = useUpdateProfile(id);
+  const { handleAvatarUpload } = useUpdateProfileAvatar(id);
 
   if (error || !data) return null;
 
@@ -34,10 +37,19 @@ const EditProfile: React.FC<EditProfileProps> = ({ id }) => {
       />
       <h2>{data?.user.displayName}</h2>
       <p>{data?.user.bio}</p>
-      <Form>
-        <input type="file" accept="image/png, image/jpeg" />
-        <input type="text" defaultValue={data?.user.displayName ?? ''} />
-        <textarea defaultValue={data?.user.bio ?? ''} />
+      <input
+        type="file"
+        accept="image/png, image/jpeg"
+        onChange={handleAvatarUpload}
+      />
+      <Form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          defaultValue={data?.user.displayName ?? ''}
+          {...register('displayName')}
+        />
+        <textarea defaultValue={data?.user.bio ?? ''} {...register('bio')} />
+        <Button type="submit">Update</Button>
       </Form>
     </div>
   );

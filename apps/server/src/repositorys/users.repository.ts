@@ -45,7 +45,7 @@ export class UsersRepository {
     return this.usersRepostiory.findOne({ where: { email } });
   }
 
-  createUser(data: CreateUserArgs): Promise<User> {
+  async createUser(data: CreateUserArgs): Promise<User> {
     const user = new User();
     user.uuid = crypto.randomUUID();
     user.email = data.email;
@@ -54,11 +54,11 @@ export class UsersRepository {
     user.displayName = data.name;
     user.createdAt = Date.now();
     user.updatedAt = Date.now();
-    return this.usersRepostiory.save(user);
+    return await this.usersRepostiory.save(user);
   }
 
-  updateUserProfile(data: UpdateUserProfileArgs): Promise<UpdateResult> {
-    return this.usersRepostiory.update(
+  async updateUserProfile(data: UpdateUserProfileArgs): Promise<UpdateResult> {
+    return await this.usersRepostiory.update(
       { id: Number(data.id) },
       {
         displayName: data.displayName,
@@ -68,8 +68,8 @@ export class UsersRepository {
     );
   }
 
-  updateUserAccessToken({ id, token }): Promise<UpdateResult> {
-    return this.usersRepostiory.update(
+  async updateUserAccessToken({ id, token }): Promise<UpdateResult> {
+    return await this.usersRepostiory.update(
       { id: Number(id) },
       {
         accessToken: token,
@@ -81,16 +81,20 @@ export class UsersRepository {
   async uploadProfileAvatar(
     file: any,
     id: number,
-    uuid: string,
+    avatar: string,
   ): Promise<UpdateResult> {
     const { createReadStream } = file.file;
-    console.log(file.file);
-    // MEMO: 拡張子は jpeg に固定
+    // MEMO: 拡張子は png に固定
+    const uuid = crypto.randomUUID();
     const filename = `${uuid}.png`;
     const stream = await this.loadStream(createReadStream());
-    const s3Response = await this.s3Service.uploadFile(filename, stream);
-    console.log(s3Response);
-    return this.usersRepostiory.update(
+    // 前の画像を削除
+    if (avatar) {
+      const oldFilename = avatar.split('/').pop();
+      await this.s3Service.deleteFile(oldFilename);
+    }
+    await this.s3Service.uploadFile(filename, stream);
+    return await this.usersRepostiory.update(
       { id: id },
       {
         avatar: `${process.env.AWS_ENDPOINT}/${process.env.AWS_BUCKET}/${filename}`,

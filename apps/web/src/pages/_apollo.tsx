@@ -20,13 +20,9 @@ const httpUploadLink = createUploadLink({
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-    'content-type': 'application/json, multipart/form-data',
+    'content-type': 'application/json',
     'apollo-require-preflight': 'true',
   },
-});
-
-const httpLink = createHttpLink({
-  uri: 'http://localhost:8000/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -59,7 +55,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 });
 
 const client = new ApolloClient({
-  link: ApolloLink.from([authLink, errorLink, httpLink.concat(httpUploadLink)]),
+  link: ApolloLink.from([authLink, errorLink, httpUploadLink]),
   cache: new InMemoryCache(),
 });
 

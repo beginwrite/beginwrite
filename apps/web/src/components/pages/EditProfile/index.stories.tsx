@@ -1,10 +1,10 @@
-import Users from './index';
+import EditProfile from './index';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
 export default {
-  title: 'Compoments/Pages/Users',
-  component: Users,
-} as Meta<typeof Users>;
+  title: 'Compoments/Pages/EditProfile',
+  component: EditProfile,
+} as Meta<typeof EditProfile>;
 
-export const Primary: StoryObj<typeof Users> = {};
+export const Primary: StoryObj<typeof EditProfile> = {};

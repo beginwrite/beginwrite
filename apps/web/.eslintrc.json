@@ -5,7 +5,7 @@
     "react/display-name": "off", // MEMO: React.forwardRef でアロー関数を使用したいので、off
     "@typescript-eslint/no-unused-vars": "off",
     "import/order": [
-      "off",
+      "warn",
       {
         "groups": [
           "builtin",

@@ -1,11 +1,14 @@
 import Apollo from './_apollo';
+import Auth from './_auth';
 
 import type { AppType } from 'next/app';
 
 const App: AppType = ({ Component, pageProps }) => {
   return (
     <Apollo>
-      <Component {...pageProps} />
+      <Auth>
+        <Component {...pageProps} />
+      </Auth>
     </Apollo>
   );
 };

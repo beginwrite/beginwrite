@@ -21,6 +21,8 @@ export const useLogin = () => {
         const redirectPath = sessionStorage.getItem('redirect_path');
         sessionStorage.removeItem('redirect_path');
         window.location.href = redirectPath as string;
+      } else {
+        window.location.href = '/home';
       }
     },
     onError: (error) => {

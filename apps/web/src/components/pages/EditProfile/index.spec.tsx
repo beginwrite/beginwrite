@@ -11,6 +11,6 @@ const { Primary } = composeStories(stories);
 describe.skip('Primary', () => {
   test('renders correctly', async () => {
     testRenderer(<Primary />);
-    expect(await screen.findByText('Name 1')).toBeTruthy();
+    expect(await screen.findByText('Edit Profile')).toBeTruthy();
   });
 });

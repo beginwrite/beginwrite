@@ -47,7 +47,9 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
       localStorage.removeItem('access_token');
       localStorage.removeItem('user_id');
       sessionStorage.setItem('redirect_path', window.location.pathname);
-      redirect('/login');
+      if (sessionStorage.getItem('redirect_path') !== '/login') {
+        redirect('/login');
+      }
     }
   }
   if (networkError) {

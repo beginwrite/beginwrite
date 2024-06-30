@@ -1,3 +1,6 @@
+import { useRouter } from 'next/router';
+import { useState, useEffect } from 'react';
+
 import { useAuthUser } from '@/hooks/useAuthUser';
 
 export type AuthProps = {
@@ -5,13 +8,19 @@ export type AuthProps = {
 };
 
 export default function Auth({ children }: AuthProps) {
+  const router = useRouter();
   const id =
-    typeof window !== 'undefined' ? localStorage.getItem('user_id') : '0';
+    typeof window !== 'undefined' ? localStorage.getItem('user_id') : null;
   const authUser = useAuthUser(id as string);
+  const [isRedirect, setIsRedirect] = useState(true);
 
-  if (!authUser) {
-    return null;
-  }
+  useEffect(() => {
+    if (router.isReady && !id && !authUser && router.pathname !== '/login') {
+      router.replace('/login');
+    } else {
+      setIsRedirect(false);
+    }
+  }, [authUser, router, id]);
 
-  return <>{children}</>;
+  return isRedirect ? null : <>{children}</>;
 }

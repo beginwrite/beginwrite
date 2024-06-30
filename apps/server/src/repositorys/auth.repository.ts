@@ -1,6 +1,5 @@
-import { UUID } from 'crypto';
-
 import { IUserAuthInput } from '@beginwrite/app-graphql-codegen';
+import { UnauthorizedException } from '@nestjs/common';
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcryptjs';
@@ -52,6 +51,7 @@ export class AuthRepository {
   }
 
   async authUser(id: number) {
+    if (!id) throw new UnauthorizedException();
     const user = await this.usersRepostiory.findById(String(id));
     if (!user) throw new Error('User not found');
     return user;

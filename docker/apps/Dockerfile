@@ -4,7 +4,7 @@ WORKDIR /
 
 COPY ./ ./
 
-RUN npm install -g pnpm@9.0.6
+RUN npm install -g pnpm@9.5.0
 
 RUN pnpm install
 

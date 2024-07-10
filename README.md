@@ -37,6 +37,7 @@ apps コンテナに入り、マイグレーションを実行します。
 
 ```bash
 $ docker exec -it beginwrite-apps-1 bash
+$ cd apps/server
 $ pnpm prisma migrate dev
 ```
 
@@ -45,6 +46,9 @@ $ pnpm prisma migrate dev
 ### ファイル管理用のストレージサーバのセットアップ
 開発環境では MinIO で画像ファイル保存用のストレージサーバを構築しています。
 以下で、使用できるようにセットアップします。
+
+### ファイルサーバにアクセス
+http://localhost:9001 から入ります。
 
 ### バケットの作成
 コンソールからバケットをセットアップします。

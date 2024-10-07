@@ -1,10 +1,10 @@
-FROM node:20.9.0
+FROM node:22.9.0
 
 WORKDIR /
 
 COPY ./ ./
 
-RUN npm install -g pnpm@9.5.0
+RUN npm install -g pnpm@9.12.1
 
 RUN pnpm install
 

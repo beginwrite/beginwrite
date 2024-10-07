@@ -1,13 +1,11 @@
 {
   "extends": [
     "config:recommended",
-    "docker:pinDigests",
-    "helpers:pinGitHubActionDigests",
-    ":configMigration",
-    ":pinDevDependencies",
+    ":pinAllExceptPeerDependencies",
     "mergeConfidence:all-badges"
   ],
   "ignorePresets": [":prHourlyLimit2", ":prConcurrentLimit10"],
+  "timezone": "Asia/Tokyo",
   "major": {
     "stabilityDays": 7
   },

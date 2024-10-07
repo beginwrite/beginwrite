@@ -7,6 +7,7 @@
   ],
   "ignorePresets": [":prHourlyLimit2", ":prConcurrentLimit10"],
   "assignees": ["bebeji-nappa"],
+  "automerge": true,
   "timezone": "Asia/Tokyo",
   "major": {
     "stabilityDays": 7

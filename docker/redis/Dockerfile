@@ -1,3 +1,3 @@
-FROM redis:latest@sha256:6725a7dc7a44a6486b9d0a5172b10ccaf0c2ea600df87c0b93450d0e7769297f
+FROM redis:latest
 
 EXPOSE 6379

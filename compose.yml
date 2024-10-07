@@ -42,7 +42,7 @@ services:
     volumes:
       - "./data/mysql:/var/lib/mysql"
   minio:
-    image: minio/minio:latest
+    image: minio/minio:latest@sha256:ea15e53e66f96f63e12f45509d2d2d8fad774808debb490f48508b3130bd22d3
     volumes:
       - ./data/minio:/xxx/minio/data
     ports:

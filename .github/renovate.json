@@ -1,13 +1,14 @@
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended",
-    "docker:pinDigests",
-    "helpers:pinGitHubActionDigests",
-    ":configMigration",
-    ":pinDevDependencies",
+    ":pinAllExceptPeerDependencies",
     "mergeConfidence:all-badges"
   ],
   "ignorePresets": [":prHourlyLimit2", ":prConcurrentLimit10"],
+  "assignees": ["bebeji-nappa"],
+  "automerge": true,
+  "timezone": "Asia/Tokyo",
   "major": {
     "stabilityDays": 7
   },

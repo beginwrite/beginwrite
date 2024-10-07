@@ -1,3 +1,3 @@
-FROM mysql:latest
+FROM mysql:latest@sha256:92dc869678019f65d761155dacac660a904f6245bfe1b7997da0a73b2bfc68c9
 
 EXPOSE 3306

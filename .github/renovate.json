@@ -6,6 +6,7 @@
     "mergeConfidence:all-badges"
   ],
   "ignorePresets": [":prHourlyLimit2", ":prConcurrentLimit10"],
+  "assignees": ["bebeji-nappa"],
   "timezone": "Asia/Tokyo",
   "major": {
     "stabilityDays": 7

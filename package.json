@@ -3,8 +3,8 @@
   "private": true,
   "packageManager": "pnpm@9.0.6",
   "volta": {
-    "node": "22.9.0",
-    "pnpm": "9.12.1"
+    "node": "23.7.0",
+    "pnpm": "10.2.1"
   },
   "scripts": {
     "clean": "turbo run clean",
@@ -15,9 +15,9 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@nestjs/cli": "^10.4.2",
-    "husky": "^9.0.11",
-    "lint-staged": "15.2.7",
-    "turbo": "^2.0.6"
+    "@nestjs/cli": "^11.0.2",
+    "husky": "^9.1.7",
+    "lint-staged": "15.4.3",
+    "turbo": "^2.4.0"
   }
 }

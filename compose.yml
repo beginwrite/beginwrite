@@ -1,22 +1,4 @@
-version: '3.7'
-
 services:
-  apps:
-    build: 
-      context: .
-      dockerfile: ./docker/apps/Dockerfile
-    ports:
-      - "3000:3000"
-      - "8000:8000"
-    networks:
-      - common_link
-    command: "pnpm start:dev"
-    volumes:
-      - "./apps:/apps"
-    depends_on:
-      - db
-      - redis
-      - minio
   redis:
     image: "redis:latest"
     build: 

@@ -19,26 +19,42 @@
 
 ## 開発環境の構築
 
+### パッケージインストール
+パッケージをインストールします。
+
+```bash
+$ pnpm install
+```
+
 ### Docker のインストール
 
 ```bash
 $ brew install docker
 ```
 
-### Docker 起動
+### Docker セットアップ
+以下コマンドでセットアップします。
 
 ```bash
-$ docker-compose up --build -d
+$ docker network create common_link
+$ docker compose up --build -d
 ```
+
 
 ### マイグレーション実行
 apps/server の環境変数定義した後、
-apps コンテナに入り、マイグレーションを実行します。
+以下コマンドを実行します。
 
 ```bash
-$ docker exec -it beginwrite-apps-1 bash
 $ cd apps/server
 $ pnpm prisma migrate dev
+```
+
+### アプリ起動
+ルートディレクトリで以下コマンドを実行すると、アプリが起動します。
+
+```bash
+pnpm start:dev
 ```
 
 その後、http://localhost:3000 にアクセスして、サーバーが正常に動いているか、確認します。

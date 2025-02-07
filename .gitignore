@@ -8,3 +8,4 @@ dist/**
 dump.rdb
 data/*
 .vscode
+.github/backup_**

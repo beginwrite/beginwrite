@@ -19,8 +19,7 @@
     "build-storybook": "storybook build",
     "test-storybook": "test-storybook",
     "test-storybook:watch": "test-storybook --watch",
-    "test": "jest",
-    "chromatic": "npx chromatic --project-token=chpt_eaca3dfc657532b"
+    "test": "jest"
   },
   "dependencies": {
     "@apollo/client": "^3.12.10",

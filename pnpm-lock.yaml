@@ -271,6 +271,9 @@ importers:
         specifier: ^7.3.0
         version: 7.3.0
     devDependencies:
+      '@eslint/compat':
+        specifier: ^1.2.6
+        version: 1.2.6(eslint@9.19.0(jiti@2.4.2))
       '@jest/globals':
         specifier: ^29.7.0
         version: 29.7.0

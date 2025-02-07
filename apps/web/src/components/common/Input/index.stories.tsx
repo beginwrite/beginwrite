@@ -17,6 +17,7 @@ export const TextInput: StoryObj<typeof Input> = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     await userEvent.type(canvas.getByRole('textbox'), 'Hello, World!');
+
     expect(canvas.getByRole('textbox')).toHaveValue('Hello, World!');
   },
 };

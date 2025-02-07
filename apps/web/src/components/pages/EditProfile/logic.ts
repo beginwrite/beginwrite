@@ -77,7 +77,7 @@ export const useUpdateProfileAvatar = (id: string) => {
 
   const handleAvatarUpload: ChangeEventHandler<HTMLInputElement> = useCallback(
     async (e) => {
-      // @ts-ignore
+      // @ts-expect-error - TS doesn't know about files
       const file = e.target.files[0];
       if (file === null || typeof file === 'undefined') return;
       const reader = new FileReader();

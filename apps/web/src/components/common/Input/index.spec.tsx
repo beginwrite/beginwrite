@@ -9,7 +9,9 @@ const { TextInput } = composeStories(stories);
 
 describe('Input', () => {
   test('Text Input', async () => {
-    render(<TextInput />);
+    const { container } = render(<TextInput />);
+
     expect(await screen.findByRole('textbox')).toBeTruthy();
+    expect(await TextInput.play!({ canvasElement: container })).toBeUndefined();
   });
 });

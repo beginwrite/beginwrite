@@ -11,6 +11,7 @@ const { Primary } = composeStories(stories);
 describe('Login', () => {
   test('successful', async () => {
     testRenderer(<Primary />);
+
     expect(await screen.findByText('Login')).toBeTruthy();
   });
 });

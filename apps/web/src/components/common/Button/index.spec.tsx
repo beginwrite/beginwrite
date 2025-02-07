@@ -9,6 +9,7 @@ const { Primary } = composeStories(stories);
 describe('Primary', () => {
   test('renders correctly', async () => {
     render(<Primary />);
+
     expect(await screen.findByRole('button')).toBeTruthy();
   });
 });

@@ -45,6 +45,7 @@
     "undici": "^7.3.0"
   },
   "devDependencies": {
+    "@eslint/compat": "^1.2.6",
     "@jest/globals": "^29.7.0",
     "@mswjs/data": "^0.16.2",
     "@playwright/test": "^1.50.1",

@@ -2,13 +2,13 @@ import styled from '@emotion/styled';
 import Image from 'next/image';
 import React from 'react';
 
+import Button from '@/components/common/Button';
+
 import {
   useFetchData,
   useUpdateProfile,
   useUpdateProfileAvatar,
 } from './logic';
-
-import Button from '@/components/common/Button';
 
 const Form = styled.form`
   display: flex;

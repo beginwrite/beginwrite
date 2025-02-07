@@ -31,6 +31,7 @@ export const useLogin = () => {
   });
 
   const submit = useCallback(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     async (data: any) => {
       await fetchPost({ variables: { data } });
     },

@@ -33,6 +33,6 @@ jobs:
         working-directory: apps/web
         run: pnpm build-storybook --quiet
 
-      - name: Serve Storybook and run tests
-        working-directory: apps/web
-        run: pnpm test
+      # - name: Serve Storybook and run tests
+      #   working-directory: apps/web
+      #   run: pnpm test

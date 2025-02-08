@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
-import React from 'react';
+import React, { useId } from 'react';
 
 import Button from '@/components/common/Button';
+import Input from '@/components/common/Input';
 
 import {
   useFetchData,
@@ -16,13 +17,15 @@ const Form = styled.form`
 `;
 
 export type EditProfileProps = {
-  id: string;
+  id: number;
 };
 
 const EditProfile: React.FC<EditProfileProps> = ({ id }) => {
   const { error, data } = useFetchData(id);
   const { handleSubmit, register } = useUpdateProfile(id);
   const { handleAvatarUpload } = useUpdateProfileAvatar(id);
+
+  const fileId = useId();
 
   if (error || !data) return null;
 
@@ -37,11 +40,14 @@ const EditProfile: React.FC<EditProfileProps> = ({ id }) => {
       />
       <h2>{data?.user.displayName}</h2>
       <p>{data?.user.bio}</p>
-      <input
-        type="file"
-        accept="image/png, image/jpeg"
-        onChange={handleAvatarUpload}
-      />
+      <section aria-labelledby={fileId}>
+        <Input
+          id={fileId}
+          type="file"
+          accept="image/png, image/jpeg"
+          onChange={handleAvatarUpload}
+        />
+      </section>
       <Form onSubmit={handleSubmit}>
         <input
           type="text"

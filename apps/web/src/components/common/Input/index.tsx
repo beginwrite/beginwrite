@@ -4,6 +4,7 @@ import React, { ComponentPropsWithoutRef, forwardRef } from 'react';
 const StyledInput = styled.input``;
 
 export type InputProps = ComponentPropsWithoutRef<'input'> & {
+  id?: string;
   type: string;
   name?: string;
   placeholder?: string;
@@ -20,6 +21,7 @@ export type InputProps = ComponentPropsWithoutRef<'input'> & {
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
+      id,
       name,
       type,
       placeholder,
@@ -36,6 +38,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
   ) => {
     return (
       <StyledInput
+        id={id}
         ref={ref}
         name={name}
         type={type}

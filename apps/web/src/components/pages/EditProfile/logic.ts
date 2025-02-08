@@ -15,7 +15,7 @@ import type {
   UploadProfileAvatarMutation,
 } from './gql';
 
-export const useFetchData = (id: string) => {
+export const useFetchData = (id: number) => {
   const { error, data } = useQuery<GetUserQuery>(getUserQuery, {
     variables: { id },
     fetchPolicy: 'network-only',
@@ -25,7 +25,7 @@ export const useFetchData = (id: string) => {
   return { error, data };
 };
 
-export const useUpdateProfile = (id: string) => {
+export const useUpdateProfile = (id: number) => {
   const { handleSubmit, register } = useForm();
   const [fetchPost] = useMutation<UpdateUserProfileMutation>(
     updateUserProfileMutation,
@@ -61,7 +61,7 @@ export const useUpdateProfile = (id: string) => {
   };
 };
 
-export const useUpdateProfileAvatar = (id: string) => {
+export const useUpdateProfileAvatar = (id: number) => {
   const [fetchPost] = useMutation<UploadProfileAvatarMutation>(
     uploadProfileAvatarMutation,
     {
@@ -97,7 +97,6 @@ export const useUpdateProfileAvatar = (id: string) => {
             const newFile = new File([blob], 'avatar.png', {
               type: 'image/png',
             });
-            console.log(newFile);
             await fetchPost({
               variables: {
                 id,

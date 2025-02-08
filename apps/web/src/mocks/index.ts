@@ -1,2 +1,6 @@
+import { user } from './query/user';
 import { users } from './query/users';
-export const handlers = [users()];
+
+export const handlers = [user(), users()];
+
+console.log(handlers);

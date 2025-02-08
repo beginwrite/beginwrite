@@ -36,17 +36,23 @@ $ brew install docker
 以下コマンドでセットアップします。
 
 ```bash
+$ cd apps/server
 $ docker network create common_link
 $ docker compose up --build -d
 ```
 
-
-### マイグレーション実行
-apps/server の環境変数定義した後、
-以下コマンドを実行します。
+### 環境変数の設定
+`apps/server` の環境変数を設定します。
 
 ```bash
 $ cd apps/server
+$ cp .env.sample .env
+```
+
+### マイグレーション実行
+apps/server の環境変数定義した後、以下コマンドを実行します。
+
+```bash
 $ pnpm prisma migrate dev
 ```
 
@@ -54,7 +60,8 @@ $ pnpm prisma migrate dev
 ルートディレクトリで以下コマンドを実行すると、アプリが起動します。
 
 ```bash
-pnpm start:dev
+$ cd ../..   # apps/server 内にいる場合に実行
+$ pnpm start:dev
 ```
 
 その後、http://localhost:3000 にアクセスして、サーバーが正常に動いているか、確認します。
@@ -95,3 +102,13 @@ http://localhost:9001 から入ります。
 Prefix: *
 Access: readonly
 ```
+
+### 開発用 JWT シークレットキーの発行
+開発用 JWT シークレットキーを Crypto API を使って作成します。 
+以下コマンドを実行します。
+
+```js
+node -e "console.log(require('crypto').randomBytes(256).toString('base64'));"
+```
+
+出力されたデータを `apps/server/.env` にある `JWT_SECRET` に設定します。

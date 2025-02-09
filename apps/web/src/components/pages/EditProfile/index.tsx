@@ -36,7 +36,7 @@ const EditProfile: React.FC<EditProfileProps> = ({ id }) => {
         width={100}
         height={100}
         src={data?.user.avatar ?? ''}
-        alt={data?.user.displayName ?? ''}
+        alt="アバター画像"
       />
       <h2>{data?.user.displayName}</h2>
       <p>{data?.user.bio}</p>
@@ -49,7 +49,7 @@ const EditProfile: React.FC<EditProfileProps> = ({ id }) => {
         />
       </section>
       <Form onSubmit={handleSubmit}>
-        <input
+        <Input
           type="text"
           defaultValue={data?.user.displayName ?? ''}
           {...register('displayName')}

@@ -9,8 +9,13 @@ import {
   PostAuthUserMutationVariables,
 } from './gql';
 
+type LoginForm = {
+  email: string;
+  password: string;
+};
+
 export const useLogin = () => {
-  const { handleSubmit, register } = useForm();
+  const { handleSubmit, register } = useForm<LoginForm>();
   const router = useRouter();
   const [fetchPost] = useMutation<
     PostAuthUserMutation,
@@ -33,9 +38,15 @@ export const useLogin = () => {
   });
 
   const submit = useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    async (data: any) => {
-      await fetchPost({ variables: { data } });
+    async (data: LoginForm) => {
+      await fetchPost({
+        variables: {
+          data: {
+            email: data.email,
+            password: data.password,
+          },
+        },
+      });
     },
     [fetchPost],
   );

@@ -8,7 +8,7 @@ import * as stories from './index.stories';
 
 const { Primary } = composeStories(stories);
 
-describe.skip('Primary', () => {
+describe('Primary', () => {
   test('renders correctly', async () => {
     testRenderer(<Primary />);
 

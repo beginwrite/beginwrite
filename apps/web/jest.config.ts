@@ -9,12 +9,11 @@ const createJestConfig = nextJest({
 const customJestConfig: Config = {
   maxWorkers: 3,
   moduleDirectories: ['node_modules', '<rootDir>/'],
-  setupFiles: ['./jest.polyfills.js'],
   setupFilesAfterEnv: ['./jest.setup.ts'],
   moduleNameMapper: {
     '@/(.*)$': '<rootDir>/src/$1',
   },
-  testEnvironment: 'jest-environment-jsdom',
+  testEnvironment: 'jest-fixed-jsdom',
   testMatch: ['**/*.spec.ts', '**/*.spec.tsx'],
   testPathIgnorePatterns: ['src/tests/e2e/'],
   transform: {

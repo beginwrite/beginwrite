@@ -1,4 +1,5 @@
 import { useMutation } from '@apollo/client';
+import { useRouter } from 'next/router';
 import { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -10,6 +11,7 @@ import {
 
 export const useLogin = () => {
   const { handleSubmit, register } = useForm();
+  const router = useRouter();
   const [fetchPost] = useMutation<
     PostAuthUserMutation,
     PostAuthUserMutationVariables
@@ -20,9 +22,9 @@ export const useLogin = () => {
       if (sessionStorage.getItem('redirect_path')) {
         const redirectPath = sessionStorage.getItem('redirect_path');
         sessionStorage.removeItem('redirect_path');
-        window.location.href = redirectPath as string;
+        router.push(redirectPath as string);
       } else {
-        window.location.href = '/home';
+        router.push('/home');
       }
     },
     onError: (error) => {

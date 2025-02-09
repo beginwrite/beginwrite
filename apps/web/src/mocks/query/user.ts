@@ -31,25 +31,25 @@ const mocks: Map<
   ],
 ]);
 
-export const user = () => {
-  return graphql.query<GetUserQuery>('GetUserQuery', ({ variables }) => {
-    const { id } = variables;
-    const user = mocks.get(id);
+const user = graphql.query<GetUserQuery>('GetUserQuery', ({ variables }) => {
+  const { id } = variables;
+  const user = mocks.get(id);
 
-    if (!user) {
-      return HttpResponse.json({
-        errors: [
-          {
-            message: `User not found: ${id}`,
-          },
-        ],
-      });
-    }
-
+  if (!user) {
     return HttpResponse.json({
-      data: {
-        user: mocks.get(id)!,
-      },
+      errors: [
+        {
+          message: `User not found: ${id}`,
+        },
+      ],
     });
+  }
+
+  return HttpResponse.json({
+    data: {
+      user: mocks.get(id)!,
+    },
   });
-};
+});
+
+export const UserQuery = [user];

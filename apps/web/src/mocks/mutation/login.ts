@@ -2,10 +2,9 @@ import { graphql, HttpResponse } from 'msw';
 
 import { PostAuthUserMutation } from '@/components/pages/Login/gql';
 
-export const login = () => {
-  return graphql.mutation<PostAuthUserMutation>('Login', ({ variables }) => {
-    const { data } = variables;
-
+const Login = graphql.mutation<PostAuthUserMutation>(
+  'Login',
+  ({ variables }) => {
     return HttpResponse.json({
       data: {
         auth: {
@@ -15,5 +14,7 @@ export const login = () => {
         },
       },
     });
-  });
-};
+  },
+);
+
+export const LoginMutation = [Login];

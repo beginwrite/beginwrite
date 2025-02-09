@@ -1,12 +1,4 @@
-import { login } from './mutation/login';
-import { uploadProfileAvatar, uploadProfile } from './mutation/profile';
-import { user } from './query/user';
-import { users } from './query/users';
+import { mutation } from './mutation';
+import { query } from './query';
 
-export const handlers = [
-  user(),
-  users(),
-  uploadProfileAvatar(),
-  uploadProfile(),
-  login(),
-];
+export const handlers = [...query, ...mutation];

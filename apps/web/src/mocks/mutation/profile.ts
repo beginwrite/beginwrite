@@ -5,36 +5,34 @@ import {
   UploadProfileAvatarMutation,
 } from '@/components/pages/EditProfile/gql';
 
-export const uploadProfileAvatar = () => {
-  return graphql.mutation<UploadProfileAvatarMutation>(
-    'uploadAvatar',
-    ({ variables }) => {
-      const { id } = variables;
+const UploadProfileAvatar = graphql.mutation<UploadProfileAvatarMutation>(
+  'uploadAvatar',
+  ({ variables }) => {
+    const { id } = variables;
 
-      return HttpResponse.json({
-        data: {
-          uploadProfileAvatar: {
-            id,
-          },
+    return HttpResponse.json({
+      data: {
+        uploadProfileAvatar: {
+          id,
         },
-      });
-    },
-  );
-};
+      },
+    });
+  },
+);
 
-export const uploadProfile = () => {
-  return graphql.mutation<UpdateUserProfileMutation>(
-    'UpdateUserProfileMutation',
-    ({ variables }) => {
-      const { data } = variables;
+const UploadProfile = graphql.mutation<UpdateUserProfileMutation>(
+  'UpdateUserProfileMutation',
+  ({ variables }) => {
+    const { data } = variables;
 
-      return HttpResponse.json({
-        data: {
-          updateProfile: {
-            id: data.id,
-          },
+    return HttpResponse.json({
+      data: {
+        updateProfile: {
+          id: data.id,
         },
-      });
-    },
-  );
-};
+      },
+    });
+  },
+);
+
+export const ProfileMutaion = [UploadProfileAvatar, UploadProfile];

@@ -3,15 +3,6 @@ import { graphql, HttpResponse } from 'msw';
 
 import { GetUserQuery } from '@/components/pages/EditProfile/gql';
 
-// const mock: Omit<IUser, 'hash' | 'uuid' | 'createdAt' | 'updatedAt'> = {
-//     id: '1',
-//     name: 'Name1',
-//     bio: 'Bio Profile',
-//     displayName: 'Name 1',
-//     avatar: 'https://placehold.jp/200x200.png',
-//     email: 'sample@example.com',
-// };
-
 const mocks: Map<
   number,
   Pick<IUser, 'id' | 'name' | 'displayName' | 'avatar' | 'bio'>

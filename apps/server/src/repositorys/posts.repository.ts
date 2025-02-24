@@ -52,4 +52,12 @@ export class PostsRepository {
 
     return await this.postsRepository.save(post);
   }
+
+  async deletePost(id: string): Promise<Post> {
+    const post = await this.findById(id);
+    if (!post) throw new Error('Post not found');
+
+    post.deletedAt = Date.now().toString();
+    return await this.postsRepository.save(post);
+  }
 }

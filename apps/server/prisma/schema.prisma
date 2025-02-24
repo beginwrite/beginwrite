@@ -21,7 +21,7 @@ model user {
   bio             String?  @db.Text
   avatar          String?  @db.VarChar(1000)
   created_at      String   
-  updated_at      String   
+  updated_at      String
 }
 
 model post {
@@ -33,4 +33,5 @@ model post {
   published_at   String?
   created_at     String
   updated_at     String?
+  deleted_at     String?
 }

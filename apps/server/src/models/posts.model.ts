@@ -35,4 +35,8 @@ export class Post {
   @Column({ name: 'updated_at' })
   @Field((type) => String)
   updatedAt: string;
+
+  @Column({ name: 'deleted_at' })
+  @Field((type) => String)
+  deletedAt: string;
 }

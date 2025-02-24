@@ -52,8 +52,8 @@ export class UsersRepository {
     user.hash = data.hash;
     user.name = data.name;
     user.displayName = data.name;
-    user.createdAt = Date.now();
-    user.updatedAt = Date.now();
+    user.createdAt = Date.now().toString();
+    user.updatedAt = Date.now().toString();
     return await this.usersRepostiory.save(user);
   }
 
@@ -63,7 +63,7 @@ export class UsersRepository {
       {
         displayName: data.displayName,
         bio: data.bio,
-        updatedAt: Date.now(),
+        updatedAt: Date.now().toString(),
       },
     );
   }
@@ -98,7 +98,7 @@ export class UsersRepository {
       { id: id },
       {
         avatar: `${process.env.AWS_S3_URL}/${filename}`,
-        updatedAt: Date.now(),
+        updatedAt: Date.now().toString(),
       },
     );
   }

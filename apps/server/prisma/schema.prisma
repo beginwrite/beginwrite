@@ -26,6 +26,7 @@ model user {
 
 model post {
   id            Int    @id @default(autoincrement())
+  uuid          String   @db.VarChar(1024)
   title         String @db.VarChar(255)
   content       String @db.Text
   user_id       Int    @db.Int

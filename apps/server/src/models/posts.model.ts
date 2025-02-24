@@ -26,13 +26,13 @@ export class Post {
 
   @Column({ name: 'published_at' })
   @Field((type) => Int)
-  publishedAt: number;
+  publishedAt: string;
 
   @Column({ name: 'created_at' })
   @Field((type) => Int)
-  createdAt: number;
+  createdAt: string;
 
   @Column({ name: 'updated_at' })
   @Field((type) => Int)
-  updatedAt: number;
+  updatedAt: string;
 }

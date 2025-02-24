@@ -31,7 +31,7 @@ export class PostsRepository {
     post.content = data.content;
     post.userId = Number(data.userId);
     post.uuid = crypto.randomUUID();
-    post.createdAt = Date.now();
+    post.createdAt = Date.now().toString();
 
     return await this.postsRepository.save(post);
   }
@@ -39,7 +39,17 @@ export class PostsRepository {
   async publishPost(id: string): Promise<Post> {
     const post = await this.findById(id);
     if (!post) throw new Error('Post not found');
-    post.publishedAt = Date.now();
+    post.publishedAt = Date.now().toString();
+    return await this.postsRepository.save(post);
+  }
+
+  async updatePost(data: CreatePostArgs): Promise<Post> {
+    const post = await this.findById(data.userId);
+
+    post.title = data.title;
+    post.content = data.content;
+    post.updatedAt = Date.now().toString();
+
     return await this.postsRepository.save(post);
   }
 }

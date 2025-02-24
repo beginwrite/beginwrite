@@ -19,20 +19,20 @@
     "start:dev": "pnpm build"
   },
   "dependencies": {
-    "@graphql-codegen/cli": "^5.0.4",
-    "@graphql-codegen/client-preset": "^4.6.1",
-    "@graphql-codegen/fragment-matcher": "^5.0.2",
+    "@graphql-codegen/cli": "^5.0.5",
+    "@graphql-codegen/client-preset": "^4.6.4",
+    "@graphql-codegen/fragment-matcher": "^5.1.0",
     "@graphql-codegen/introspection": "^4.0.3",
-    "@graphql-codegen/typescript": "^4.1.3",
-    "@graphql-codegen/typescript-resolvers": "^4.4.2",
+    "@graphql-codegen/typescript": "^4.1.5",
+    "@graphql-codegen/typescript-resolvers": "^4.4.4",
     "npm-run-all2": "^7.0.2",
     "typescript": "^5.7.3"
   },
   "devDependencies": {
     "@graphql-codegen/schema-ast": "4.1.0",
     "@graphql-codegen/typescript-msw": "3.0.0",
-    "@graphql-codegen/typescript-operations": "4.4.1",
+    "@graphql-codegen/typescript-operations": "4.5.1",
     "graphql-codegen-typescript-mock-data": "4.2.0",
-    "msw": "2.7.0"
+    "msw": "2.7.1"
   }
 }

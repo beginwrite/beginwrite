@@ -16,6 +16,10 @@ export class PostsRepository {
     private postsRepository: Repository<Post>,
   ) {}
 
+  findById(id: string): Promise<Post> {
+    return this.postsRepository.findOne({ where: { id: Number(id) } });
+  }
+
   findAll(): Promise<Post[]> {
     return this.postsRepository.find();
   }
@@ -29,6 +33,13 @@ export class PostsRepository {
     post.uuid = crypto.randomUUID();
     post.createdAt = Date.now();
 
+    return await this.postsRepository.save(post);
+  }
+
+  async publishPost(id: string): Promise<Post> {
+    const post = await this.findById(id);
+    if (!post) throw new Error('Post not found');
+    post.publishedAt = Date.now();
     return await this.postsRepository.save(post);
   }
 }

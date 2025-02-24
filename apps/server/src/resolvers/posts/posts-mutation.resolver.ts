@@ -1,4 +1,7 @@
-import { IMutationCreatePostArgs } from '@beginwrite/app-graphql-codegen';
+import {
+  IMutationCreatePostArgs,
+  IMutationPublishPostArgs,
+} from '@beginwrite/app-graphql-codegen';
 import { UseGuards } from '@nestjs/common';
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 
@@ -23,6 +26,21 @@ export class PostsMutationResolver {
         content: args.data.content,
         userId: args.data.userId,
       })
+      .then((post) => {
+        return post;
+      })
+      .catch((err) => {
+        throw new Error(err.message);
+      });
+  }
+
+  @Mutation((returns) => Post)
+  @UseGuards(JwtAuthGuard)
+  async publishPost(@Args() args: IMutationPublishPostArgs) {
+    if (!args.id) throw new Error('Post ID is required');
+
+    return this.postsRepository
+      .publishPost(args.id)
       .then((post) => {
         return post;
       })

@@ -10,11 +10,19 @@ export class Post {
 
   @Column()
   @Field((type) => String)
+  uuid: string;
+
+  @Column()
+  @Field((type) => String)
   title: string;
 
   @Column()
   @Field((type) => String)
   content: string;
+
+  @Column({ name: 'user_id' })
+  @Field((type) => Int)
+  userId: number;
 
   @Column({ name: 'published_at' })
   @Field((type) => Int)

@@ -25,12 +25,12 @@ model user {
 }
 
 model post {
-  id            Int    @id @default(autoincrement())
-  uuid          String   @db.VarChar(1024)
-  title         String @db.VarChar(255)
-  content       String @db.Text
-  user_id       Int    @db.Int
-  published_at  BigInt
-  created_at    BigInt
-  updated_at    BigInt
+  id             Int     @id @default(autoincrement())
+  uuid           String  @db.VarChar(1024)
+  title          String  @db.VarChar(255)
+  content        String  @db.Text
+  user_id        Int     @db.Int
+  published_at   BigInt?
+  created_at     BigInt  @unique
+  updated_at     BigInt? @unique
 }

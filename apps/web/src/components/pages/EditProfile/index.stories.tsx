@@ -6,7 +6,7 @@ export default {
   title: 'Compoments/Pages/EditProfile',
   component: EditProfile,
   args: {
-    id: 1,
+    id: '1',
   },
 } as Meta<typeof EditProfile>;
 

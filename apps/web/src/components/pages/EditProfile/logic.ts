@@ -15,7 +15,7 @@ import type {
   UploadProfileAvatarMutation,
 } from './gql';
 
-export const useFetchData = (id: number) => {
+export const useFetchData = (id: string) => {
   const { error, data } = useQuery<GetUserQuery>(getUserQuery, {
     variables: { id },
     fetchPolicy: 'network-only',
@@ -25,7 +25,7 @@ export const useFetchData = (id: number) => {
   return { error, data };
 };
 
-export const useUpdateProfile = (id: number) => {
+export const useUpdateProfile = (id: string) => {
   const { handleSubmit, register } = useForm();
   const [fetchPost] = useMutation<UpdateUserProfileMutation>(
     updateUserProfileMutation,
@@ -61,7 +61,7 @@ export const useUpdateProfile = (id: number) => {
   };
 };
 
-export const useUpdateProfileAvatar = (id: number) => {
+export const useUpdateProfileAvatar = (id: string) => {
   const [fetchPost] = useMutation<UploadProfileAvatarMutation>(
     uploadProfileAvatarMutation,
     {

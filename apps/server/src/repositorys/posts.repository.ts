@@ -60,4 +60,12 @@ export class PostsRepository {
     post.deletedAt = Date.now().toString();
     return await this.postsRepository.save(post);
   }
+
+  async destroyPost(id: string): Promise<Post> {
+    const post = await this.findById(id);
+    if (!post) throw new Error('Post not found');
+
+    await this.postsRepository.delete({ id: Number(id) });
+    return post;
+  }
 }

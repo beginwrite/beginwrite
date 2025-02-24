@@ -41,10 +41,10 @@ export class User {
   accessToken: string;
 
   @Column({ name: 'created_at' })
-  @Field((type) => Int)
-  createdAt: number;
+  @Field((type) => String)
+  createdAt: string;
 
   @Column({ name: 'updated_at' })
-  @Field((type) => Int)
-  updatedAt: number;
+  @Field((type) => String)
+  updatedAt: string;
 }

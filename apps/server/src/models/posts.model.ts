@@ -25,14 +25,14 @@ export class Post {
   userId: number;
 
   @Column({ name: 'published_at' })
-  @Field((type) => Int)
+  @Field((type) => String)
   publishedAt: string;
 
   @Column({ name: 'created_at' })
-  @Field((type) => Int)
+  @Field((type) => String)
   createdAt: string;
 
   @Column({ name: 'updated_at' })
-  @Field((type) => Int)
+  @Field((type) => String)
   updatedAt: string;
 }

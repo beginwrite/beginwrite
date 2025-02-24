@@ -51,7 +51,7 @@ export class PostsMutationResolver {
   }
 
   @Mutation((returns) => Post)
-  // @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   async updatePost(@Args() args: IMutationUpdatePostArgs) {
     if (!args.data.title) throw new Error('Title is required');
     if (!args.data.content) throw new Error('Content is required');

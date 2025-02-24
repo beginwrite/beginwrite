@@ -11,7 +11,7 @@ export class PostsMutationResolver {
   constructor(private postsRepository: PostsRepository) {}
 
   @Mutation((returns) => Post)
-  // @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   async createPost(@Args() args: IMutationCreatePostArgs) {
     if (!args.data.title) throw new Error('Title is required');
     if (!args.data.content) throw new Error('Content is required');

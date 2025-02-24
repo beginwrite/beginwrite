@@ -17,7 +17,7 @@ const Form = styled.form`
 `;
 
 export type EditProfileProps = {
-  id: number;
+  id: string;
 };
 
 const EditProfile: React.FC<EditProfileProps> = ({ id }) => {

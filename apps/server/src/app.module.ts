@@ -10,7 +10,11 @@ import { graphqlUploadExpress } from 'graphql-upload-minimal';
 import { DataSource } from 'typeorm';
 
 import { AuthModule } from './modules/auth.module';
+import { PostModule } from './modules/post.module';
 import { UsersModule } from './modules/users.module';
+
+const modules = [AuthModule, UsersModule, PostModule];
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -49,8 +53,7 @@ import { UsersModule } from './modules/users.module';
         return await new DataSource(options).initialize();
       },
     }),
-    AuthModule,
-    UsersModule,
+    ...modules,
   ],
 })
 export class AppModule {

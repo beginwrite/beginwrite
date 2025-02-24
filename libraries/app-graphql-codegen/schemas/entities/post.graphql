@@ -3,7 +3,7 @@ type Post {
   userId: Int!
   title: String!
   content: String!
-  published_at: Int!
-  createdAt: Int!
-  updatedAt: Int!
+  published_at: String
+  createdAt: String!
+  updatedAt: String
 }

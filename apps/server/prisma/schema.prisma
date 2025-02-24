@@ -20,16 +20,18 @@ model user {
   display_name    String?  @db.VarChar(255)
   bio             String?  @db.Text
   avatar          String?  @db.VarChar(1000)
-  created_at      BigInt   @unique
-  updated_at      BigInt   @unique
+  created_at      String   
+  updated_at      String
 }
 
 model post {
-  id            Int    @id @default(autoincrement())
-  title         String @db.VarChar(255)
-  content       String @db.Text
-  user_id       Int    @db.Int
-  published_at  BigInt
-  created_at    BigInt
-  updated_at    BigInt
+  id             Int     @id @default(autoincrement())
+  uuid           String  @db.VarChar(1024)
+  title          String  @db.VarChar(255)
+  content        String  @db.Text
+  user_id        Int     @db.Int
+  published_at   String?
+  created_at     String
+  updated_at     String?
+  deleted_at     String?
 }

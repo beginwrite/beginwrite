@@ -1,7 +1,13 @@
 import styled from '@emotion/styled';
 import React, { ComponentPropsWithoutRef } from 'react';
 
-const StyledInput = styled.input``;
+const StyledInput = styled.input`
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+`;
 
 export type InputProps = ComponentPropsWithoutRef<'input'> & {
   id?: string;
@@ -17,6 +23,7 @@ export type InputProps = ComponentPropsWithoutRef<'input'> & {
   disabled?: boolean;
   autoFocus?: boolean;
   autoComplete?: string;
+  className?: string;
   ref?: React.Ref<HTMLInputElement>;
 };
 
@@ -34,6 +41,7 @@ const Input = ({
   disabled,
   autoFocus,
   autoComplete,
+  className,
   ref,
 }: InputProps) => {
   return (
@@ -52,6 +60,7 @@ const Input = ({
       disabled={disabled}
       autoFocus={autoFocus}
       autoComplete={autoComplete}
+      className={className}
     />
   );
 };

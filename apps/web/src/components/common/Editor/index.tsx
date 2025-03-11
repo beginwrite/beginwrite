@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import React, { FC, useCallback } from 'react';
+import { ChangeHandler, UseFormRegister } from 'react-hook-form';
 import { richmd } from 'richmd';
 import 'richmd/richmd.css';
 
@@ -32,15 +33,25 @@ const Line = styled.span`
 `;
 
 type EditorProps = {
-  value: string;
+  id?: string;
+  name?: string;
+  value?: string;
   className?: string;
-  onChange: (value: string) => void;
+  register?: UseFormRegister<{ title: string; content: string }>;
+  setValue?: (value: string) => void;
 };
 
-const Editor: FC<EditorProps> = ({ value, onChange, className }) => {
+const Editor: FC<EditorProps> = ({
+  name,
+  value,
+  className,
+  register,
+  setValue,
+}) => {
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-      onChange(e.target.value);
+      const { value } = e.target;
+      setValue?.(value);
     },
     [],
   );
@@ -48,12 +59,14 @@ const Editor: FC<EditorProps> = ({ value, onChange, className }) => {
   return (
     <Wrapper className={className}>
       <StyledEditor
+        name={name}
         placeholder="Write your note here..."
-        value={value}
         onChange={handleChange}
+        value={value}
+        {...register}
       />
       <Line />
-      <Preview dangerouslySetInnerHTML={{ __html: richmd(value) }} />
+      <Preview dangerouslySetInnerHTML={{ __html: richmd(value ?? '') }} />
     </Wrapper>
   );
 };

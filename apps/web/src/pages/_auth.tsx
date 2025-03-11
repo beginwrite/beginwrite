@@ -11,7 +11,8 @@ export default function Auth({ children }: AuthProps) {
   const router = useRouter();
   const id =
     typeof window !== 'undefined' ? localStorage.getItem('user_id') : null;
-  const authUser = useAuthUser(id as string);
+
+  const authUser = useAuthUser(id!);
   const [isRedirect, setIsRedirect] = useState(true);
 
   useEffect(() => {

@@ -1,8 +1,14 @@
+import { useMutation } from '@apollo/client';
 import styled from '@emotion/styled';
 import React, { useCallback, useRef, useState } from 'react';
+import { useForm } from 'react-hook-form';
 
+import Button from '@/components/common/Button';
 import Editor from '@/components/common/Editor';
 import Input from '@/components/common/Input';
+import { useAuthUser } from '@/hooks/useAuthUser';
+
+import { createPostMutation, CreatePostMutation } from './gql';
 
 const PageWrapper = styled.div`
   padding: 1rem;
@@ -10,7 +16,7 @@ const PageWrapper = styled.div`
   flex-direction: column;
 `;
 
-const EditorWrapper = styled.div`
+const Form = styled.form`
   width: 100%;
   height: 100vh;
   display: flex;
@@ -34,35 +40,67 @@ const StyledEditor = styled(Editor)`
   border-radius: 0.25rem;
 `;
 
+const SubmitButton = styled(Button)`
+  width: 95%;
+  padding: 1rem;
+  margin: 1rem;
+  font-size: 1.5rem;
+`;
+
 const PostCreatePage: React.FC = () => {
-  const titleRef = useRef<HTMLInputElement>(null);
-  const [title, setTitle] = useState('');
-  const [value, setValue] = useState('');
+  const id = localStorage.getItem('user_id');
+  const authUser = useAuthUser(id!);
 
-  const handleTitleChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setTitle(e.target.value);
+  const form = useForm<{
+    title: string;
+    content: string;
+  }>({
+    defaultValues: {
+      title: '',
+      content: '',
     },
-    [],
-  );
+  });
 
-  const handleContentChange = useCallback((value: string) => {
-    setValue(value);
+  const [submitPost] = useMutation<CreatePostMutation>(createPostMutation, {
+    onCompleted: () => {
+      // TODO: 投稿詳細ページに遷移
+    },
+    onError: () => {
+      // TODO: エラーハンドリング
+    },
+  });
+
+  const submit = form.handleSubmit(async (values) => {
+    await submitPost({
+      variables: {
+        data: {
+          ...values,
+          userId: authUser?.id,
+        },
+      },
+    });
+  });
+
+  const handleSetContentValue = useCallback((value: string) => {
+    form.setValue('content', value);
   }, []);
 
   return (
     <PageWrapper>
-      <h1>投稿作成画面</h1>
-      <EditorWrapper>
+      <Form onSubmit={submit}>
+        <SubmitButton type="submit">投稿</SubmitButton>
         <TitleInput
-          ref={titleRef}
           type="text"
-          defaultValue={title}
-          onChange={handleTitleChange}
           placeholder="タイトルを入力"
+          {...form.register('title')}
         />
-        <StyledEditor onChange={handleContentChange} value={value} />
-      </EditorWrapper>
+        <StyledEditor
+          name="content"
+          register={form.register}
+          setValue={handleSetContentValue}
+          value={form.watch('content')}
+        />
+      </Form>
     </PageWrapper>
   );
 };

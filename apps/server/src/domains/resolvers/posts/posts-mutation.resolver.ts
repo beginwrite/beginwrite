@@ -7,8 +7,8 @@ import {
 import { UseGuards } from '@nestjs/common';
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 
-import { JwtAuthGuard } from '../../applications/guards/jwt-auth.guard';
-import { Post } from '../../models/posts.model';
+import { JwtAuthGuard } from '../../../applications/guards/jwt-auth.guard';
+import { Post } from '../../entities/posts.entity';
 import { PostsRepository } from '../../repositorys/posts.repository';
 
 @Resolver((of) => Post)

@@ -2,9 +2,9 @@ import { UseGuards } from '@nestjs/common';
 import { Resolver, Mutation, Args } from '@nestjs/graphql';
 import * as bcrypt from 'bcryptjs';
 import { FileUpload, GraphQLUpload } from 'graphql-upload-minimal';
-import { User } from 'src/models/users.model';
+import { User } from 'src/domains/entities/users.entity';
 
-import { JwtAuthGuard } from '../../applications/guards/jwt-auth.guard';
+import { JwtAuthGuard } from '../../../applications/guards/jwt-auth.guard';
 import { UsersRepository } from '../../repositorys/users.repository';
 
 import type {

@@ -1,6 +1,6 @@
 import { createMock } from '@golevelup/ts-vitest';
 import { Test, TestingModule } from '@nestjs/testing';
-import { User } from 'src/models/users.model';
+import { User } from 'src/domains/entities/users.entity';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 import { UsersRepository } from '../../repositorys/users.repository';

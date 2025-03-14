@@ -3,11 +3,11 @@ import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { RedisService } from 'src/applications/services/redis.service';
-import { AuthRepository } from 'src/repositorys/auth.repository';
+import { AuthRepository } from 'src/domains/repositorys/auth.repository';
 
 import { JwtStrategy } from '../applications/strategies/jwt.strategy';
 import { LocalStrategy } from '../applications/strategies/local.strategy';
-import { AuthMutationResolver } from '../resolvers/auth/auth-mutation.resolver';
+import { AuthMutationResolver } from '../domains/resolvers/auth/auth-mutation.resolver';
 
 import { UsersModule } from './users.module';
 

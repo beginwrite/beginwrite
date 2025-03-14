@@ -43,8 +43,9 @@ export class PostsRepository {
     return await this.postsRepository.save(post);
   }
 
-  async updatePost(data: CreatePostArgs): Promise<Post> {
-    const post = await this.findById(data.userId);
+  async updatePost(data: CreatePostArgs & { id: string }): Promise<Post> {
+    const post = await this.findById(data.id);
+    if (!post) throw new Error('Post not found');
 
     post.title = data.title;
     post.content = data.content;

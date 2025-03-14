@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { Post } from '../models/posts.model';
-import { PostsRepository } from '../repositorys/posts.repository';
-import { PostsMutationResolver } from '../resolvers/posts/posts-mutation.resolver';
-import { PostsQueryResolver } from '../resolvers/posts/posts-query.resolver';
+import { Post } from '../domains/entities/posts.entity';
+import { PostsRepository } from '../domains/repositorys/posts.repository';
+import { PostsMutationResolver } from '../domains/resolvers/posts/posts-mutation.resolver';
+import { PostsQueryResolver } from '../domains/resolvers/posts/posts-query.resolver';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Post])],

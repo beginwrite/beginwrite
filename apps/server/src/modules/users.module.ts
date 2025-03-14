@@ -3,10 +3,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { RedisService } from 'src/applications/services/redis.service';
 import { S3Service } from 'src/applications/services/s3.service';
 
-import { User } from '../models/users.model';
-import { UsersRepository } from '../repositorys/users.repository';
-import { UsersMutationResolver } from '../resolvers/users/users-mutation.resolver';
-import { UsersQueryResolver } from '../resolvers/users/users-query.resolver';
+import { User } from '../domains/entities/users.entity';
+import { UsersRepository } from '../domains/repositorys/users.repository';
+import { UsersMutationResolver } from '../domains/resolvers/users/users-mutation.resolver';
+import { UsersQueryResolver } from '../domains/resolvers/users/users-query.resolver';
 @Module({
   imports: [TypeOrmModule.forFeature([User])],
   providers: [

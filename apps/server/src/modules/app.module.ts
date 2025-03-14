@@ -9,9 +9,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { graphqlUploadExpress } from 'graphql-upload-minimal';
 import { DataSource } from 'typeorm';
 
-import { AuthModule } from './modules/auth.module';
-import { PostModule } from './modules/post.module';
-import { UsersModule } from './modules/users.module';
+import { AuthModule } from './auth.module';
+import { PostModule } from './post.module';
+import { UsersModule } from './users.module';
 
 const modules = [AuthModule, UsersModule, PostModule];
 

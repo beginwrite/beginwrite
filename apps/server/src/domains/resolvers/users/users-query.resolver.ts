@@ -2,9 +2,9 @@ import { IQueryUserArgs } from '@beginwrite/app-graphql-codegen';
 import { UseGuards } from '@nestjs/common';
 import { Query, Resolver } from '@nestjs/graphql';
 import { Args } from '@nestjs/graphql';
-import { User } from 'src/models/users.model';
+import { User } from 'src/domains/entities/users.entity';
 
-import { JwtAuthGuard } from '../../applications/guards/jwt-auth.guard';
+import { JwtAuthGuard } from '../../../applications/guards/jwt-auth.guard';
 import { UsersRepository } from '../../repositorys/users.repository';
 
 @Resolver((of) => User)

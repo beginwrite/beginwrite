@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 
-import { User } from '../../models/users.model';
-import { UsersRepository } from '../../repositorys/users.repository';
+import { User } from '../../domains/entities/users.entity';
+import { UsersRepository } from '../../domains/repositorys/users.repository';
 import { RedisService } from '../services/redis.service';
 
 @Injectable()

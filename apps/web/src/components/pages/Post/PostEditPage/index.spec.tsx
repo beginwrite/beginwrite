@@ -1,1 +1,3 @@
-// TODO: 後ほど実装する
+import { describe, it } from 'vitest';
+
+describe.skip('PostEditPage', () => {});

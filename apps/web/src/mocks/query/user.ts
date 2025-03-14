@@ -4,11 +4,11 @@ import { graphql, HttpResponse } from 'msw';
 import { GetUserQuery } from '@/components/pages/EditProfile/gql';
 
 const mocks: Map<
-  number,
+  string,
   Pick<IUser, 'id' | 'name' | 'displayName' | 'avatar' | 'bio'>
 > = new Map([
   [
-    1,
+    '1',
     {
       id: '1',
       name: 'Name1',
@@ -19,7 +19,7 @@ const mocks: Map<
     },
   ],
   [
-    2,
+    '2',
     {
       id: '2',
       name: 'Name2',

@@ -1,6 +1,6 @@
-import { describe, test } from '@jest/globals';
 import { composeStories } from '@storybook/react';
 import { render, screen } from '@testing-library/react';
+import { describe, test } from 'vitest';
 
 import * as stories from './index.stories';
 

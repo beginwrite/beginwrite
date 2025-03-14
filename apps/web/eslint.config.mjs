@@ -1,5 +1,5 @@
 import typescriptEslint from "@typescript-eslint/eslint-plugin";
-import jest from "eslint-plugin-jest";
+import vitest from "@vitest/eslint-plugin";
 import importPlugin from 'eslint-plugin-import';
 import prettier from "eslint-plugin-prettier";
 import { fixupPluginRules } from "@eslint/compat";
@@ -22,11 +22,10 @@ export default [
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
-    "plugin:jest/recommended",
   ), {
   plugins: {
     "@typescript-eslint": typescriptEslint,
-    jest,
+    vitest,
     prettier,
   },
 
@@ -54,8 +53,8 @@ export default [
         caseInsensitive: true,
       },
     }],
-
-    "jest/padding-around-all": "error",
+    ...vitest.configs.recommended.rules,
+    "vitest/padding-around-all": "error",
   },
     ignores: ['jest.polyfills.js'],
 }];

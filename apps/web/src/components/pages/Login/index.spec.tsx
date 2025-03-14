@@ -1,6 +1,6 @@
-import { describe, test, expect } from '@jest/globals';
 import { composeStories } from '@storybook/react';
 import { fireEvent, screen } from '@testing-library/react';
+import { describe, test, expect, vi } from 'vitest';
 
 import { testRenderer } from '@/utils/testRenderer';
 
@@ -9,16 +9,16 @@ import { useLogin } from './logic';
 
 const { Primary } = composeStories(stories);
 
-jest.mock('next/router', () => ({
-  useRouter: jest.fn().mockReturnValue({
-    push: jest.fn(),
+vi.mock('next/router', () => ({
+  useRouter: vi.fn().mockReturnValue({
+    push: vi.fn(),
   }),
 }));
 
-jest.mock('./logic', () => ({
-  useLogin: jest.fn().mockReturnValue({
-    handleSubmit: jest.fn(),
-    register: jest.fn(),
+vi.mock('./logic', () => ({
+  useLogin: vi.fn().mockReturnValue({
+    handleSubmit: vi.fn(),
+    register: vi.fn(),
   }),
 }));
 

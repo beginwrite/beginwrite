@@ -1,5 +1,8 @@
 import { gql, useQuery } from '@apollo/client';
 import { IUser } from '@beginwrite/app-graphql-codegen';
+import { useAtom, useAtomValue } from 'jotai';
+
+import { authAtom } from '../store/auth';
 
 export type GetAuthUserQuery = {
   user: Pick<IUser, 'id'>;
@@ -13,15 +16,19 @@ const getAuthUserQuery = gql`
   }
 `;
 
-export const useAuthUser = (id: string) => {
-  const { data, error } = useQuery<GetAuthUserQuery>(getAuthUserQuery, {
-    variables: { id },
-  });
+export const useAuthUser = () => {
+  const userId = useAtomValue(authAtom);
 
-  if (error) {
-    console.error(error);
-    return null;
-  }
+  const { data, error, loading } = useQuery<GetAuthUserQuery>(
+    getAuthUserQuery,
+    {
+      variables: { id: userId },
+      skip: !userId,
+    },
+  );
 
-  return data?.user;
+  return {
+    authUser: error ? null : data?.user,
+    loading,
+  };
 };

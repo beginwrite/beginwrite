@@ -1,14 +1,13 @@
-import { useMutation } from '@apollo/client';
 import styled from '@emotion/styled';
-import React, { useCallback, useRef, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useAtomValue } from 'jotai';
+import React from 'react';
 
 import Button from '@/components/common/Button';
 import Editor from '@/components/common/Editor';
 import Input from '@/components/common/Input';
-import { useAuthUser } from '@/hooks/useAuthUser';
+import { authAtom } from '@/store/auth';
 
-import { createPostMutation, CreatePostMutation } from './gql';
+import { useCreatePost } from './logic';
 
 const PageWrapper = styled.div`
   padding: 1rem;
@@ -48,47 +47,17 @@ const SubmitButton = styled(Button)`
 `;
 
 const PostCreatePage: React.FC = () => {
-  const id = localStorage.getItem('user_id');
-  const authUser = useAuthUser(id!);
-
-  const form = useForm<{
-    title: string;
-    content: string;
-  }>({
-    defaultValues: {
-      title: '',
-      content: '',
-    },
-  });
-
-  const [submitPost] = useMutation<CreatePostMutation>(createPostMutation, {
-    onCompleted: () => {
-      // TODO: 投稿詳細ページに遷移
-    },
-    onError: () => {
-      // TODO: エラーハンドリング
-    },
-  });
-
-  const submit = form.handleSubmit(async (values) => {
-    await submitPost({
-      variables: {
-        data: {
-          ...values,
-          userId: authUser?.id,
-        },
-      },
-    });
-  });
-
-  const handleSetContentValue = useCallback((value: string) => {
-    form.setValue('content', value);
-  }, []);
+  const userId = useAtomValue(authAtom);
+  const { form, submit, handleSetContentValue, loading } = useCreatePost(
+    userId!,
+  );
 
   return (
     <PageWrapper>
       <Form onSubmit={submit}>
-        <SubmitButton type="submit">投稿</SubmitButton>
+        <SubmitButton type="submit">
+          {loading ? '投稿中...' : '投稿'}
+        </SubmitButton>
         <TitleInput
           type="text"
           placeholder="タイトルを入力"

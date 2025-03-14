@@ -1,7 +1,10 @@
 import { useMutation } from '@apollo/client';
+import { useAtom, useSetAtom } from 'jotai';
 import { useRouter } from 'next/router';
 import { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
+
+import { authAtom } from '@/store/auth';
 
 import {
   postAuthUserMutation,
@@ -17,17 +20,19 @@ type LoginForm = {
 export const useLogin = () => {
   const { handleSubmit, register } = useForm<LoginForm>();
   const router = useRouter();
+  const setUserId = useSetAtom(authAtom);
   const [fetchPost] = useMutation<
     PostAuthUserMutation,
     PostAuthUserMutationVariables
   >(postAuthUserMutation, {
     onCompleted: (data) => {
-      localStorage.setItem('user_id', data.auth.id as string);
-      localStorage.setItem('access_token', data.auth.accessToken as string);
+      //TODO: 状態管理を jotai に完全移管したい
+      localStorage.setItem('access_token', data.auth.accessToken!);
+      setUserId(data.auth.id!);
       if (sessionStorage.getItem('redirect_path')) {
         const redirectPath = sessionStorage.getItem('redirect_path');
         sessionStorage.removeItem('redirect_path');
-        router.push(redirectPath as string);
+        router.push(redirectPath!);
       } else {
         router.push('/home');
       }

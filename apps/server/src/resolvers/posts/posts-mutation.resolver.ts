@@ -54,12 +54,14 @@ export class PostsMutationResolver {
   @Mutation((returns) => Post)
   @UseGuards(JwtAuthGuard)
   async updatePost(@Args() args: IMutationUpdatePostArgs) {
+    if (!args.id) throw new Error('Post ID is required');
     if (!args.data.title) throw new Error('Title is required');
     if (!args.data.content) throw new Error('Content is required');
     if (!args.data.userId) throw new Error('User ID is required');
 
     return await this.postsRepository
       .updatePost({
+        id: args.id,
         title: args.data.title,
         content: args.data.content,
         userId: args.data.userId,

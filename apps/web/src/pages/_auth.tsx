@@ -9,18 +9,20 @@ export type AuthProps = {
 
 export default function Auth({ children }: AuthProps) {
   const router = useRouter();
-  const id =
-    typeof window !== 'undefined' ? localStorage.getItem('user_id') : null;
-  const authUser = useAuthUser(id as string);
+  const { authUser, loading } = useAuthUser();
+
   const [isRedirect, setIsRedirect] = useState(true);
 
   useEffect(() => {
-    if (router.isReady && !id && !authUser && router.pathname !== '/login') {
-      router.replace('/login');
-    } else {
-      setIsRedirect(false);
+    if (!loading) {
+      if (router.isReady && !authUser && router.pathname !== '/login') {
+        // router.replace('/login');
+        console.log('redirect to login');
+      } else {
+        setIsRedirect(false);
+      }
     }
-  }, [authUser, router, id]);
+  }, [authUser, router, loading]);
 
   return isRedirect ? null : <>{children}</>;
 }

@@ -4,8 +4,8 @@ import { Query, Resolver } from '@nestjs/graphql';
 import { Args } from '@nestjs/graphql';
 import { User } from 'src/domains/entities/users.entity';
 
-import { JwtAuthGuard } from '../../../applications/guards/jwt-auth.guard';
-import { UsersRepository } from '../../repositorys/users.repository';
+import { JwtAuthGuard } from '../../applications/guards/jwt-auth.guard';
+import { UsersRepository } from '../../domains/repositorys/users.repository';
 
 @Resolver((of) => User)
 export class UsersQueryResolver {

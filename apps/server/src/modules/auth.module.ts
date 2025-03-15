@@ -7,7 +7,7 @@ import { AuthRepository } from 'src/domains/repositorys/auth.repository';
 
 import { JwtStrategy } from '../applications/strategies/jwt.strategy';
 import { LocalStrategy } from '../applications/strategies/local.strategy';
-import { AuthMutationResolver } from '../domains/resolvers/auth/auth-mutation.resolver';
+import { AuthMutationResolver } from '../resolvers/auth/auth-mutation.resolver';
 
 import { UsersModule } from './users.module';
 

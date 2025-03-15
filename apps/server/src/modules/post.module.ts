@@ -3,8 +3,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { Post } from '../domains/posts/entities/posts.entity';
 import { PostsRepository } from '../domains/posts/repositories/posts.repository';
-import { PostsMutationResolver } from '../domains/resolvers/posts/posts-mutation.resolver';
-import { PostsQueryResolver } from '../domains/resolvers/posts/posts-query.resolver';
+import { PostsMutationResolver } from '../resolvers/posts/posts-mutation.resolver';
+import { PostsQueryResolver } from '../resolvers/posts/posts-query.resolver';
 import { CreatePostUseCase } from '../use-cases/posts/create-post.use-case';
 import { DeletePostUseCase } from '../use-cases/posts/delete-post.use-case';
 import { DestroyPostUseCase } from '../use-cases/posts/destroy-post.use-case';

@@ -4,8 +4,8 @@ import * as bcrypt from 'bcryptjs';
 import { FileUpload, GraphQLUpload } from 'graphql-upload-minimal';
 import { User } from 'src/domains/entities/users.entity';
 
-import { JwtAuthGuard } from '../../../applications/guards/jwt-auth.guard';
-import { UsersRepository } from '../../repositorys/users.repository';
+import { JwtAuthGuard } from '../../applications/guards/jwt-auth.guard';
+import { UsersRepository } from '../../domains/repositorys/users.repository';
 
 import type {
   IMutationCreateUserArgs,

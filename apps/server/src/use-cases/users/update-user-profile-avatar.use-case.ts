@@ -1,7 +1,9 @@
+import { Injectable } from '@nestjs/common';
 import { FileUpload } from 'graphql-upload-minimal';
 import { User } from 'src/domains/users/entities/users.entity';
 import { UsersRepository } from 'src/domains/users/repositories/users.repository';
 
+@Injectable()
 export class UpdateUserProfileAvatarUseCase {
   constructor(private usersRepository: UsersRepository) {}
 

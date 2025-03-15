@@ -3,9 +3,6 @@ import { Injectable } from '@nestjs/common';
 import { User } from 'src/domains/users/entities/users.entity';
 import { UsersRepository } from 'src/domains/users/repositories/users.repository';
 
-import { Post } from '../../domains/posts/entities/posts.entity';
-import { PostsRepository } from '../../domains/posts/repositories/posts.repository';
-
 @Injectable()
 export class FindUserByIdUseCase {
   constructor(private usersRepository: UsersRepository) {}

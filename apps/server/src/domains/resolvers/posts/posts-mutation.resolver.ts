@@ -8,99 +8,50 @@ import { UseGuards } from '@nestjs/common';
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 
 import { JwtAuthGuard } from '../../../applications/guards/jwt-auth.guard';
-import { Post } from '../../entities/posts.entity';
-import { PostsRepository } from '../../repositorys/posts.repository';
+import { CreatePostUseCase } from '../../../use-cases/posts/create-post.use-case';
+import { DeletePostUseCase } from '../../../use-cases/posts/delete-post.use-case';
+import { DestroyPostUseCase } from '../../../use-cases/posts/destroy-post.use-case';
+import { PublishPostUseCase } from '../../../use-cases/posts/publish-post.use-case';
+import { UpdatePostUseCase } from '../../../use-cases/posts/update-post.use-case';
+import { Post } from '../../posts/entities/posts.entity';
 
 @Resolver((of) => Post)
 export class PostsMutationResolver {
-  constructor(private postsRepository: PostsRepository) {}
+  constructor(
+    private createPostUseCase: CreatePostUseCase,
+    private publishPostUseCase: PublishPostUseCase,
+    private updatePostUseCase: UpdatePostUseCase,
+    private deletePostUseCase: DeletePostUseCase,
+    private destroyPostUseCase: DestroyPostUseCase,
+  ) {}
 
   @Mutation((returns) => Post)
   @UseGuards(JwtAuthGuard)
   async createPost(@Args() args: IMutationCreatePostArgs) {
-    if (!args.data.title) throw new Error('Title is required');
-    if (!args.data.content) throw new Error('Content is required');
-    if (!args.data.userId) throw new Error('User ID is required');
-
-    return await this.postsRepository
-      .createPost({
-        title: args.data.title,
-        content: args.data.content,
-        userId: args.data.userId,
-      })
-      .then((post) => {
-        return post;
-      })
-      .catch((err) => {
-        throw new Error(err.message);
-      });
+    return await this.createPostUseCase.execute(args);
   }
 
   @Mutation((returns) => Post)
   @UseGuards(JwtAuthGuard)
   async publishPost(@Args() args: IMutationPublishPostArgs) {
-    if (!args.id) throw new Error('Post ID is required');
-
-    return await this.postsRepository
-      .publishPost(args.id)
-      .then((post) => {
-        return post;
-      })
-      .catch((err) => {
-        throw new Error(err.message);
-      });
+    return await this.publishPostUseCase.execute(args);
   }
 
   @Mutation((returns) => Post)
   @UseGuards(JwtAuthGuard)
   async updatePost(@Args() args: IMutationUpdatePostArgs) {
-    if (!args.id) throw new Error('Post ID is required');
-    if (!args.data.title) throw new Error('Title is required');
-    if (!args.data.content) throw new Error('Content is required');
-    if (!args.data.userId) throw new Error('User ID is required');
-
-    return await this.postsRepository
-      .updatePost({
-        id: args.id,
-        title: args.data.title,
-        content: args.data.content,
-        userId: args.data.userId,
-      })
-      .then((post) => {
-        return post;
-      })
-      .catch((err) => {
-        throw new Error(err.message);
-      });
+    return await this.updatePostUseCase.execute(args);
   }
 
   @Mutation((returns) => Post)
   @UseGuards(JwtAuthGuard)
   async deletePost(@Args() args: IMutationDeletePostArgs) {
-    if (!args.id) throw new Error('Post ID is required');
-
-    return await this.postsRepository
-      .deletePost(args.id)
-      .then((post) => {
-        return post;
-      })
-      .catch((err) => {
-        throw new Error(err.message);
-      });
+    return await this.deletePostUseCase.execute(args);
   }
 
   @Mutation((returns) => Post)
   @UseGuards(JwtAuthGuard)
   async destroyPost(@Args() args: IMutationDeletePostArgs) {
-    if (!args.id) throw new Error('Post ID is required');
-
-    return await this.postsRepository
-      .destroyPost(args.id)
-      .then((post) => {
-        return post;
-      })
-      .catch((err) => {
-        throw new Error(err.message);
-      });
+    return await this.destroyPostUseCase.execute(args);
   }
 }

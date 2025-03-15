@@ -10,7 +10,7 @@ export class UpdateUserProfileAvatarUseCase {
   async execute(id: string, file: FileUpload): Promise<User> {
     if (!file) throw new Error('File is required');
     const user = await this.usersRepository.findById(id);
-    return this.usersRepository
+    return await this.usersRepository
       .uploadProfileAvatar(file, Number(id), user.avatar)
       .then(async () => {
         return await this.usersRepository.findById(id);

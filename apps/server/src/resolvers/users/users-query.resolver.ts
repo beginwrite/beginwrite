@@ -25,6 +25,6 @@ export class UsersQueryResolver {
   @Query((returns) => User)
   @UseGuards(JwtAuthGuard)
   async user(@Args('id') id: IQueryUserArgs['id']) {
-    return this.findUserByIdUseCase.execute(id);
+    return await this.findUserByIdUseCase.execute(id);
   }
 }

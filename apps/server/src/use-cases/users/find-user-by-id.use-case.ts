@@ -8,6 +8,6 @@ export class FindUserByIdUseCase {
   constructor(private usersRepository: UsersRepository) {}
 
   async execute(id: IQueryUserArgs['id']): Promise<User> {
-    return this.usersRepository.findById(id);
+    return await this.usersRepository.findById(id);
   }
 }

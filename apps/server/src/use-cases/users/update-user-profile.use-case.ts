@@ -11,7 +11,7 @@ export class UpdateUserProfileUseCase {
     if (!args.data.displayName) throw new Error('Display Name is required');
     if (!args.data.id) throw new Error('User ID is required');
 
-    return this.usersRepository
+    return await this.usersRepository
       .updateUserProfile({
         id: args.data.id,
         displayName: args.data.displayName,

@@ -1,8 +1,10 @@
 import { IMutationCreateUserArgs } from '@beginwrite/app-graphql-codegen';
 import { Injectable } from '@nestjs/common';
+import { Args } from '@nestjs/graphql';
 import * as bcrypt from 'bcryptjs';
-import { User } from 'src/domains/users/entities/users.entity';
-import { UsersRepository } from 'src/domains/users/repositories/users.repository';
+
+import { User } from '../../domains/users/entities/users.entity';
+import { UsersRepository } from '../../domains/users/repositories/users.repository';
 
 @Injectable()
 export class CreateUserUseCase {
@@ -14,7 +16,8 @@ export class CreateUserUseCase {
     if (!args.data.name) throw new Error('Name is required');
 
     const hash = await bcrypt.hash(args.data.password, 12);
-    return this.usersRepository
+
+    return await this.usersRepository
       .createUser({
         email: args.data.email,
         hash,

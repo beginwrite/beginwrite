@@ -1,8 +1,8 @@
 import { UseGuards } from '@nestjs/common';
 import { Resolver, Mutation, Args } from '@nestjs/graphql';
 import { Context } from '@nestjs/graphql';
-import { User } from 'src/domains/entities/users.entity';
-import { AuthRepository } from 'src/domains/repositorys/auth.repository';
+import { AuthRepository } from 'src/domains/auth/repositories/auth.repository';
+import { User } from 'src/domains/users/entities/users.entity';
 
 import { GqlAuthGuard } from '../../applications/guards/gql-auth.guard';
 

@@ -1,9 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import * as bcrypt from 'bcryptjs';
-import { FileUpload } from 'graphql-upload-minimal';
 import { S3Service } from 'src/applications/services/s3.service';
-import { User } from 'src/domains/entities/users.entity';
+import { User } from 'src/domains/users/entities/users.entity';
 
 import type { ReadStream } from 'fs';
 import type { UpdateResult, Repository } from 'typeorm';

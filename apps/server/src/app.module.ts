@@ -9,9 +9,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { graphqlUploadExpress } from 'graphql-upload-minimal';
 import { DataSource } from 'typeorm';
 
-import { AuthModule } from './auth.module';
-import { PostModule } from './post.module';
-import { UsersModule } from './users.module';
+import { AuthModule } from './modules/auth.module';
+import { PostModule } from './modules/post.module';
+import { UsersModule } from './modules/users.module';
 
 const modules = [AuthModule, UsersModule, PostModule];
 
@@ -47,7 +47,7 @@ const modules = [AuthModule, UsersModule, PostModule];
         password: process.env.DB_PASSWORD,
         database: 'beginwrite',
         synchronize: false,
-        entities: [join(__dirname, './models/*.model{.ts,.js}')],
+        entities: [join(__dirname, './**/*.entity{.ts,.js}')],
       }),
       dataSourceFactory: async (options) => {
         return await new DataSource(options).initialize();

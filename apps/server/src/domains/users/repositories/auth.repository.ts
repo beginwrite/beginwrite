@@ -4,7 +4,7 @@ import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcryptjs';
 import { RedisService } from 'src/applications/services/redis.service';
-import { User } from 'src/domains/entities/users.entity';
+import { User } from 'src/domains/users/entities/users.entity';
 
 import { UsersRepository } from './users.repository';
 

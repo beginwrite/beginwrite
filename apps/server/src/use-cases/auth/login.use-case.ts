@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { User } from 'src/domains/users/entities/users.entity';
 
-import { AuthRepository } from '../../domains/auth/repositories/auth.repository';
+import { AuthRepository } from '../../domains/users/repositories/auth.repository';
 
 @Injectable()
 export class LoginUseCase {

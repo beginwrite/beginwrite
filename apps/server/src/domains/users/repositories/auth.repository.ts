@@ -6,7 +6,7 @@ import * as bcrypt from 'bcryptjs';
 import { RedisService } from 'src/applications/services/redis.service';
 import { User } from 'src/domains/users/entities/users.entity';
 
-import { UsersRepository } from '../../users/repositories/users.repository';
+import { UsersRepository } from './users.repository';
 
 export type AuthUserArgs = {
   email: string;

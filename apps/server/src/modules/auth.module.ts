@@ -4,6 +4,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { RedisService } from 'src/applications/services/redis.service';
 import { AuthRepository } from 'src/domains/auth/repositories/auth.repository';
+import { LoginUseCase } from 'src/use-cases/auth/login.use-case';
 
 import { JwtStrategy } from '../applications/strategies/jwt.strategy';
 import { LocalStrategy } from '../applications/strategies/local.strategy';
@@ -26,6 +27,7 @@ import { UsersModule } from './users.module';
   providers: [
     AuthRepository,
     AuthMutationResolver,
+    LoginUseCase,
     LocalStrategy,
     JwtStrategy,
     RedisService,
@@ -33,6 +35,7 @@ import { UsersModule } from './users.module';
   exports: [
     AuthRepository,
     AuthMutationResolver,
+    LoginUseCase,
     LocalStrategy,
     JwtStrategy,
     RedisService,

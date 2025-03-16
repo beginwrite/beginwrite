@@ -36,7 +36,8 @@ export class UsersMutationResolver {
   @UseGuards(JwtAuthGuard)
   async uploadProfileAvatar(
     @Args({ name: 'id', type: () => String }) id: string,
-    @Args({ name: 'file', type: () => GraphQLUpload }) file: FileUpload,
+    @Args({ name: 'file', type: () => GraphQLUpload })
+    file: { file: FileUpload },
   ) {
     return await this.updateProfileAvatarUseCase.execute(id, file);
   }

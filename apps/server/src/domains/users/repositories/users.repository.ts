@@ -3,7 +3,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { S3Service } from 'src/applications/services/s3.service';
 import { User } from 'src/domains/users/entities/users.entity';
 
-import type { ReadStream } from 'fs';
 import type { UpdateResult, Repository } from 'typeorm';
 
 export type CreateUserArgs = {
@@ -28,7 +27,6 @@ export class UsersRepository {
   constructor(
     @InjectRepository(User)
     private usersRepostiory: Repository<User>,
-    private s3Service: S3Service,
   ) {}
 
   findAll(): Promise<User[]> {
@@ -75,38 +73,16 @@ export class UsersRepository {
     );
   }
 
-  // 型定義すると file データが取れないので、any にしている
-  async uploadProfileAvatar(
-    file: any,
-    id: number,
-    avatar: string,
+  async updateProfileAvatarUrl(
+    filename: string,
+    id: string,
   ): Promise<UpdateResult> {
-    const { createReadStream } = file.file;
-    // MEMO: 拡張子は png に固定
-    const uuid = crypto.randomUUID();
-    const filename = `${uuid}.png`;
-    const stream = await this.loadStream(createReadStream());
-    // 前の画像を削除
-    if (avatar) {
-      const oldFilename = avatar.split('/').pop();
-      await this.s3Service.deleteFile(oldFilename);
-    }
-    await this.s3Service.uploadFile(filename, stream);
     return await this.usersRepostiory.update(
-      { id: id },
+      { id: Number(id) },
       {
         avatar: `${process.env.AWS_S3_URL}/${filename}`,
         updatedAt: Date.now().toString(),
       },
     );
-  }
-
-  private loadStream(stream: ReadStream): Promise<Buffer> {
-    return new Promise((resolve, reject) => {
-      const chunks = [];
-      stream.on('data', (chunk) => chunks.push(chunk));
-      stream.on('error', reject);
-      stream.on('end', () => resolve(Buffer.concat(chunks)));
-    });
   }
 }

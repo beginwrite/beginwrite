@@ -24,7 +24,7 @@ Guard や 外部ツールの連携などを格納します。
 各 Entity 情報を管理しています。
 
 ##### `repositories`
-APIで必要な処理を管理しています。
+DB操作の処理を管理しています。
 
 #### `graphql`
 graphql の情報が記載されたファイルが格納されています。
@@ -34,7 +34,7 @@ graphql の情報が記載されたファイルが格納されています。
 query, mutation の処理を管理しています。
 
 #### `modules`
-use-case, repository 等のファイルをモジュールとして管理しています。
+各ドメインのモジュールを管理しています。
 (`app.module.ts` は src 直下に設置してます)
 
 #### `use-cases`

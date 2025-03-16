@@ -5,8 +5,7 @@ import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcryptjs';
 import { RedisService } from 'src/applications/services/redis.service';
 import { User } from 'src/domains/users/entities/users.entity';
-
-import { UsersRepository } from './users.repository';
+import { DataSource, Repository, UpdateResult } from 'typeorm';
 
 export type AuthUserArgs = {
   email: string;
@@ -14,22 +13,39 @@ export type AuthUserArgs = {
 };
 
 @Injectable()
-export class AuthRepository {
+export class AuthRepository extends Repository<User> {
   constructor(
-    private usersRepostiory: UsersRepository,
+    private dataSource: DataSource,
     private jwtService: JwtService,
     private redis: RedisService,
-  ) {}
+  ) {
+    super(User, dataSource.createEntityManager());
+  }
 
-  findByEmail(email: string): Promise<User> {
-    return this.usersRepostiory.findByEmail(email);
+  async findByEmail(email: string): Promise<User> {
+    return await this.findOne({ where: { email } });
+  }
+
+  async updateUserAccessToken({ id, token }): Promise<UpdateResult> {
+    return await this.update(
+      { id: Number(id) },
+      {
+        accessToken: token,
+      },
+    );
   }
 
   async validateUser(data: IUserAuthInput): Promise<User> {
     const user = await this.findByEmail(data.email);
-    if (!user) throw new Error('User not found');
+    if (!user)
+      throw new UnauthorizedException({
+        message: 'User not found',
+      });
     const isPasswordValid = await bcrypt.compare(data.password, user.hash);
-    if (!isPasswordValid) throw new Error('Invalid password');
+    if (!isPasswordValid)
+      throw new UnauthorizedException({
+        message: 'Invalid password',
+      });
     return user;
   }
 
@@ -38,7 +54,7 @@ export class AuthRepository {
     const redisToken = await this.redis.store.get(`${user.uuid}`);
     if (!redisToken || redisToken !== user.accessToken) {
       const token = this.jwtService.sign(payload);
-      await this.usersRepostiory.updateUserAccessToken({
+      await this.updateUserAccessToken({
         id: user.id,
         token,
       });
@@ -52,7 +68,7 @@ export class AuthRepository {
 
   async authUser(id: number) {
     if (!id) throw new UnauthorizedException();
-    const user = await this.usersRepostiory.findById(String(id));
+    const user = await this.findOne({ where: { id } });
     if (!user) throw new Error('User not found');
     return user;
   }
@@ -60,7 +76,7 @@ export class AuthRepository {
   async logout(user: User) {
     // ログアウト時にRedis&DBからトークンを削除
     await this.redis.store.del(`${user.uuid}`);
-    await this.usersRepostiory.updateUserAccessToken({
+    await this.updateUserAccessToken({
       id: user.id,
       token: null,
     });

@@ -1,9 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { S3Service } from 'src/applications/services/s3.service';
 import { User } from 'src/domains/users/entities/users.entity';
-
-import type { UpdateResult, Repository } from 'typeorm';
+import { UpdateResult, Repository, DataSource } from 'typeorm';
 
 export type CreateUserArgs = {
   name: string;
@@ -23,22 +20,17 @@ export type UpdateUserProfileArgs = {
 };
 
 @Injectable()
-export class UsersRepository {
-  constructor(
-    @InjectRepository(User)
-    private usersRepostiory: Repository<User>,
-  ) {}
-
-  findAll(): Promise<User[]> {
-    return this.usersRepostiory.find();
+export class UsersRepository extends Repository<User> {
+  constructor(private dataSource: DataSource) {
+    super(User, dataSource.createEntityManager());
   }
 
-  findById(id: string): Promise<User> {
-    return this.usersRepostiory.findOne({ where: { id: Number(id) } });
+  async findAll(): Promise<User[]> {
+    return await this.find();
   }
 
-  findByEmail(email: string): Promise<User> {
-    return this.usersRepostiory.findOne({ where: { email } });
+  async findById(id: string): Promise<User> {
+    return await this.findOne({ where: { id: Number(id) } });
   }
 
   async createUser(data: CreateUserArgs): Promise<User> {
@@ -50,11 +42,11 @@ export class UsersRepository {
     user.displayName = data.name;
     user.createdAt = Date.now().toString();
     user.updatedAt = Date.now().toString();
-    return await this.usersRepostiory.save(user);
+    return await this.save(user);
   }
 
   async updateUserProfile(data: UpdateUserProfileArgs): Promise<UpdateResult> {
-    return await this.usersRepostiory.update(
+    return await this.update(
       { id: Number(data.id) },
       {
         displayName: data.displayName,
@@ -64,20 +56,11 @@ export class UsersRepository {
     );
   }
 
-  async updateUserAccessToken({ id, token }): Promise<UpdateResult> {
-    return await this.usersRepostiory.update(
-      { id: Number(id) },
-      {
-        accessToken: token,
-      },
-    );
-  }
-
   async updateProfileAvatarUrl(
     filename: string,
     id: string,
   ): Promise<UpdateResult> {
-    return await this.usersRepostiory.update(
+    return await this.update(
       { id: Number(id) },
       {
         avatar: `${process.env.AWS_S3_URL}/${filename}`,

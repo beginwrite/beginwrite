@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Post } from 'src/domains/posts/entities/posts.entity';
-import { Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
 
 export type CreatePostArgs = {
   title: string;
@@ -10,18 +10,17 @@ export type CreatePostArgs = {
 };
 
 @Injectable()
-export class PostsRepository {
-  constructor(
-    @InjectRepository(Post)
-    private postsRepository: Repository<Post>,
-  ) {}
+export class PostsRepository extends Repository<Post> {
+  constructor(private dataSource: DataSource) {
+    super(Post, dataSource.createEntityManager());
+  }
 
   findById(id: string): Promise<Post> {
-    return this.postsRepository.findOne({ where: { id: Number(id) } });
+    return this.findOne({ where: { id: Number(id) } });
   }
 
   findAll(): Promise<Post[]> {
-    return this.postsRepository.find();
+    return this.find();
   }
 
   async createPost(data: CreatePostArgs): Promise<Post> {
@@ -33,14 +32,14 @@ export class PostsRepository {
     post.uuid = crypto.randomUUID();
     post.createdAt = Date.now().toString();
 
-    return await this.postsRepository.save(post);
+    return await this.save(post);
   }
 
   async publishPost(id: string): Promise<Post> {
     const post = await this.findById(id);
     if (!post) throw new Error('Post not found');
     post.publishedAt = Date.now().toString();
-    return await this.postsRepository.save(post);
+    return await this.save(post);
   }
 
   async updatePost(data: CreatePostArgs & { id: string }): Promise<Post> {
@@ -51,7 +50,7 @@ export class PostsRepository {
     post.content = data.content;
     post.updatedAt = Date.now().toString();
 
-    return await this.postsRepository.save(post);
+    return await this.save(post);
   }
 
   async deletePost(id: string): Promise<Post> {
@@ -59,14 +58,14 @@ export class PostsRepository {
     if (!post) throw new Error('Post not found');
 
     post.deletedAt = Date.now().toString();
-    return await this.postsRepository.save(post);
+    return await this.save(post);
   }
 
   async destroyPost(id: string): Promise<Post> {
     const post = await this.findById(id);
     if (!post) throw new Error('Post not found');
 
-    await this.postsRepository.delete({ id: Number(id) });
+    await this.delete({ id: Number(id) });
     return post;
   }
 }

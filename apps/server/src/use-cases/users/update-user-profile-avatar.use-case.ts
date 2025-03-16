@@ -14,7 +14,7 @@ export class UpdateUserProfileAvatarUseCase {
     private s3Service: S3Service,
   ) {}
 
-  async execute(id: string, file: { file: FileUpload }): Promise<UpdateResult> {
+  async execute(id: string, file: { file: FileUpload }): Promise<User> {
     if (!file) throw new Error('File is required');
     const user = await this.usersRepository.findById(id);
 
@@ -34,8 +34,8 @@ export class UpdateUserProfileAvatarUseCase {
 
     return await this.usersRepository
       .updateProfileAvatarUrl(filename, id)
-      .then(async (user) => {
-        return user;
+      .then(async () => {
+        return await this.usersRepository.findById(id);
       })
       .catch((err) => {
         console.log(err);

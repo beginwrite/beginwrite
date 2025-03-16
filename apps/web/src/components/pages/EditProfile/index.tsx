@@ -40,10 +40,11 @@ const EditProfile: React.FC<EditProfileProps> = ({ id }) => {
       />
       <h2>{data?.user.displayName}</h2>
       <p>{data?.user.bio}</p>
-      <section aria-labelledby={fileId}>
+      <section aria-label="ファイルを選択">
         <Input
           id={fileId}
           type="file"
+          name="avatar"
           accept="image/png, image/jpeg"
           onChange={handleAvatarUpload}
         />

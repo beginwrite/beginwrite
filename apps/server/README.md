@@ -14,16 +14,15 @@ Guard や 外部ツールの連携などを格納します。
 
 #### `domains`
 各ドメイン情報のファイルを格納しています。
-ドメインは以下には以下のフォルダがあります。
+ドメインは以下のフォルダがあります。
 
 - `entities`
 - `repositories`
 
-
-##### `entities`
+#### `domains/entities`
 各 Entity 情報を管理しています。
 
-##### `repositories`
+#### `domains/repositories`
 DB操作の処理を管理しています。
 
 #### `graphql`

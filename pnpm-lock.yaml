@@ -295,6 +295,9 @@ importers:
       '@eslint/compat':
         specifier: ^1.2.7
         version: 1.2.7(eslint@9.21.0(jiti@2.4.2))
+      '@golevelup/ts-vitest':
+        specifier: ^0.5.2
+        version: 0.5.2
       '@mswjs/data':
         specifier: ^0.16.2
         version: 0.16.2(@types/node@22.13.5)(typescript@5.7.3)

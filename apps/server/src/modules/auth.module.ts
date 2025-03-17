@@ -2,12 +2,12 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
-import { RedisService } from 'src/applications/services/redis.service';
-import { AuthRepository } from 'src/domains/users/repositories/auth.repository';
-import { LoginUseCase } from 'src/use-cases/auth/login.use-case';
 
+import { RedisService } from '../applications/services/redis.service';
 import { JwtStrategy } from '../applications/strategies/jwt.strategy';
 import { LocalStrategy } from '../applications/strategies/local.strategy';
+import { AuthRepository } from '../domains/users/repositories/auth.repository';
+import { LoginUseCase } from '../domains/users/use-cases/login.use-case';
 import { AuthMutationResolver } from '../resolvers/auth/auth-mutation.resolver';
 
 import { UsersModule } from './users.module';

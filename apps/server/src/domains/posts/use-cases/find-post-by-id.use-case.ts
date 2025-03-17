@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 
-import { Post } from '../../domains/posts/entities/posts.entity';
-import { PostsRepository } from '../../domains/posts/repositories/posts.repository';
+import { Post } from '../entities/posts.entity';
+import { PostsRepository } from '../repositories/posts.repository';
 
 @Injectable()
 export class FindPostByIdUseCase {

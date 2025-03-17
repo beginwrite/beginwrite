@@ -1,9 +1,9 @@
 import { createMock } from '@golevelup/ts-vitest';
 import { Test, TestingModule } from '@nestjs/testing';
 import { S3Service } from 'src/applications/services/s3.service';
-import { CreateUserUseCase } from 'src/use-cases/users/create-user.use-case';
-import { UpdateUserProfileAvatarUseCase } from 'src/use-cases/users/update-user-profile-avatar.use-case';
-import { UpdateUserProfileUseCase } from 'src/use-cases/users/update-user-profile.use-case';
+import { CreateUserUseCase } from 'src/domains/users/use-cases/create-user.use-case';
+import { UpdateUserProfileAvatarUseCase } from 'src/domains/users/use-cases/update-user-profile-avatar.use-case';
+import { UpdateUserProfileUseCase } from 'src/domains/users/use-cases/update-user-profile.use-case';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 import { UsersRepository } from '../../domains/users/repositories/users.repository';

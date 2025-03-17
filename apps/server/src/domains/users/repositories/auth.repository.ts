@@ -49,7 +49,8 @@ export class AuthRepository extends Repository<User> {
     return user;
   }
 
-  async auth(user: User) {
+  // 認証処理の関係で、ユーザーのトークンの保存処理も実装する
+  async auth(user: User): Promise<User> {
     const payload = { email: user.email, sub: user.id };
     const redisToken = await this.redis.store.get(`${user.uuid}`);
     if (!redisToken || redisToken !== user.accessToken) {
@@ -66,14 +67,15 @@ export class AuthRepository extends Repository<User> {
     return user;
   }
 
-  async authUser(id: number) {
+  async authUser(id: number): Promise<User> {
     if (!id) throw new UnauthorizedException();
     const user = await this.findOne({ where: { id } });
     if (!user) throw new Error('User not found');
+    if (!user.accessToken) throw new UnauthorizedException();
     return user;
   }
 
-  async logout(user: User) {
+  async logout(user: User): Promise<User> {
     // ログアウト時にRedis&DBからトークンを削除
     await this.redis.store.del(`${user.uuid}`);
     await this.updateUserAccessToken({

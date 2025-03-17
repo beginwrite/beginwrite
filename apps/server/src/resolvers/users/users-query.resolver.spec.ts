@@ -1,6 +1,6 @@
 import { createMock } from '@golevelup/ts-vitest';
 import { Test, TestingModule } from '@nestjs/testing';
-import { FindUserByIdUseCase } from 'src/use-cases/users/find-user-by-id.use-case';
+import { FindUserByIdUseCase } from 'src/domains/users/use-cases/find-user-by-id.use-case';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 import { UsersRepository } from '../../domains/users/repositories/users.repository';

@@ -3,8 +3,8 @@ import { Injectable } from '@nestjs/common';
 import { Args } from '@nestjs/graphql';
 import * as bcrypt from 'bcryptjs';
 
-import { User } from '../../domains/users/entities/users.entity';
-import { UsersRepository } from '../../domains/users/repositories/users.repository';
+import { User } from '../entities/users.entity';
+import { UsersRepository } from '../repositories/users.repository';
 
 @Injectable()
 export class CreateUserUseCase {

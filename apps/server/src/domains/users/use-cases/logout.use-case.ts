@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { User } from 'src/domains/users/entities/users.entity';
 
-import { AuthRepository } from '../../domains/users/repositories/auth.repository';
+import { AuthRepository } from '../repositories/auth.repository';
 
 @Injectable()
-export class LoginUseCase {
+export class LogoutUseCase {
   constructor(private authRepository: AuthRepository) {}
 
   async execute(user: User): Promise<User> {
-    return await this.authRepository.auth(user);
+    return await this.authRepository.logout(user);
   }
 }

@@ -16,11 +16,11 @@ export class PostsRepository extends Repository<Post> {
   }
 
   findById(id: string): Promise<Post> {
-    return this.findOne({ where: { id: Number(id) } });
+    return this.findOne({ where: { id: Number(id) }, relations: ['user'] });
   }
 
   findAll(): Promise<Post[]> {
-    return this.find();
+    return this.find({ relations: ['user'] });
   }
 
   async createPost(data: CreatePostArgs): Promise<Post> {

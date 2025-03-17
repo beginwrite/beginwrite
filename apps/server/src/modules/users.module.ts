@@ -11,6 +11,7 @@ import { CreateUserUseCase } from '../domains/users/use-cases/create-user.use-ca
 import { FindUserByIdUseCase } from '../domains/users/use-cases/find-user-by-id.use-case';
 import { UsersMutationResolver } from '../resolvers/users/users-mutation.resolver';
 import { UsersQueryResolver } from '../resolvers/users/users-query.resolver';
+
 @Module({
   imports: [TypeOrmModule.forFeature([User])],
   providers: [

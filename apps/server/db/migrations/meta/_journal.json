@@ -8,6 +8,20 @@
       "when": 1741985313195,
       "tag": "0000_mean_zombie",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1742222600855,
+      "tag": "0001_magenta_the_renegades",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1742222636326,
+      "tag": "0002_next_phalanx",
+      "breakpoints": true
     }
   ]
 }

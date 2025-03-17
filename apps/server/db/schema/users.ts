@@ -1,5 +1,7 @@
 import { mysqlTable, text, int, varchar } from 'drizzle-orm/mysql-core';
 
+import { posts } from './posts';
+
 export const users = mysqlTable('user', {
   id: int().autoincrement().primaryKey(),
   uuid: varchar({ length: 1024 }).notNull(),
@@ -12,4 +14,5 @@ export const users = mysqlTable('user', {
   avatar: varchar({ length: 1000 }),
   created_at: varchar({ length: 255 }).notNull(),
   updated_at: varchar({ length: 255 }).notNull(),
+  posts: int('post_id').references(() => posts.id, { onDelete: 'cascade' }),
 });

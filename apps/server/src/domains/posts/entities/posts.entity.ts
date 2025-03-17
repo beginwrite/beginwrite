@@ -1,5 +1,13 @@
-import { Field, Int, ObjectType } from '@nestjs/graphql';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { IPost } from '@beginwrite/app-graphql-codegen';
+import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
+import { User } from 'src/domains/users/entities/users.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 @ObjectType()
@@ -21,8 +29,11 @@ export class Post {
   content: string;
 
   @Column({ name: 'user_id' })
-  @Field((type) => Int)
   userId: number;
+
+  @ManyToOne((type) => User)
+  @JoinColumn({ name: 'user_id' })
+  user: User;
 
   @Column({ name: 'published_at' })
   @Field((type) => String)

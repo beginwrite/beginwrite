@@ -1,0 +1,2 @@
+ALTER TABLE `user` ADD `post_id` int;--> statement-breakpoint
+ALTER TABLE `user` ADD CONSTRAINT `user_post_id_post_id_fk` FOREIGN KEY (`post_id`) REFERENCES `post`(`id`) ON DELETE cascade ON UPDATE no action;

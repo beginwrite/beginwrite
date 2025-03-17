@@ -70,6 +70,7 @@ export class AuthRepository extends Repository<User> {
     if (!id) throw new UnauthorizedException();
     const user = await this.findOne({ where: { id } });
     if (!user) throw new Error('User not found');
+    if (!user.accessToken) throw new UnauthorizedException();
     return user;
   }
 

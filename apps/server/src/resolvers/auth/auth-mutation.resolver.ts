@@ -1,10 +1,10 @@
 import { UseGuards } from '@nestjs/common';
 import { Resolver, Mutation, Args } from '@nestjs/graphql';
 import { Context } from '@nestjs/graphql';
-import { User } from 'src/domains/users/entities/users.entity';
-import { LoginUseCase } from 'src/use-cases/auth/login.use-case';
 
 import { GqlAuthGuard } from '../../applications/guards/gql-auth.guard';
+import { User } from '../../domains/users/entities/users.entity';
+import { LoginUseCase } from '../../domains/users/use-cases/login.use-case';
 
 import type { IMutationAuthArgs } from '@beginwrite/app-graphql-codegen';
 

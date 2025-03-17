@@ -1,13 +1,13 @@
 import { createMock } from '@golevelup/ts-vitest';
 import { Test, TestingModule } from '@nestjs/testing';
-import { CreatePostUseCase } from 'src/use-cases/posts/create-post.use-case';
-import { DeletePostUseCase } from 'src/use-cases/posts/delete-post.use-case';
-import { DestroyPostUseCase } from 'src/use-cases/posts/destroy-post.use-case';
-import { PublishPostUseCase } from 'src/use-cases/posts/publish-post.use-case';
-import { UpdatePostUseCase } from 'src/use-cases/posts/update-post.use-case';
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 
 import { PostsRepository } from '../../domains/posts/repositories/posts.repository';
+import { CreatePostUseCase } from '../../domains/posts/use-cases/create-post.use-case';
+import { DeletePostUseCase } from '../../domains/posts/use-cases/delete-post.use-case';
+import { DestroyPostUseCase } from '../../domains/posts/use-cases/destroy-post.use-case';
+import { PublishPostUseCase } from '../../domains/posts/use-cases/publish-post.use-case';
+import { UpdatePostUseCase } from '../../domains/posts/use-cases/update-post.use-case';
 
 import { PostsMutationResolver } from './posts-mutation.resolver';
 

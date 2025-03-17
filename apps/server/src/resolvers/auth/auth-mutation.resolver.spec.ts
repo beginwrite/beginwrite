@@ -1,8 +1,8 @@
 import { createMock } from '@golevelup/ts-vitest';
 import { Test, TestingModule } from '@nestjs/testing';
-import { LoginUseCase } from 'src/use-cases/auth/login.use-case';
 import { describe, it, expect, beforeEach } from 'vitest';
 
+import { LoginUseCase } from '../../domains/users/use-cases/login.use-case';
 import { mockUsers } from '../../mocks/users';
 
 import { AuthMutationResolver } from './auth-mutation.resolver';

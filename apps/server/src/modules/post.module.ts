@@ -3,14 +3,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { Post } from '../domains/posts/entities/posts.entity';
 import { PostsRepository } from '../domains/posts/repositories/posts.repository';
+import { CreatePostUseCase } from '../domains/posts/use-cases/create-post.use-case';
+import { DeletePostUseCase } from '../domains/posts/use-cases/delete-post.use-case';
+import { DestroyPostUseCase } from '../domains/posts/use-cases/destroy-post.use-case';
+import { FindPostByIdUseCase } from '../domains/posts/use-cases/find-post-by-id.use-case';
+import { PublishPostUseCase } from '../domains/posts/use-cases/publish-post.use-case';
+import { UpdatePostUseCase } from '../domains/posts/use-cases/update-post.use-case';
 import { PostsMutationResolver } from '../resolvers/posts/posts-mutation.resolver';
 import { PostsQueryResolver } from '../resolvers/posts/posts-query.resolver';
-import { CreatePostUseCase } from '../use-cases/posts/create-post.use-case';
-import { DeletePostUseCase } from '../use-cases/posts/delete-post.use-case';
-import { DestroyPostUseCase } from '../use-cases/posts/destroy-post.use-case';
-import { FindPostByIdUseCase } from '../use-cases/posts/find-post-by-id.use-case';
-import { PublishPostUseCase } from '../use-cases/posts/publish-post.use-case';
-import { UpdatePostUseCase } from '../use-cases/posts/update-post.use-case';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Post])],

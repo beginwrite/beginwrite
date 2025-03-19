@@ -9,7 +9,7 @@
   "private": true,
   "volta": {
     "node": "23.7.0",
-    "pnpm": "10.2.1"
+    "pnpm": "10.6.4"
   },
   "scripts": {
     "build": "npm-run-all build:schema -p build:esm build:cjs",

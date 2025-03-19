@@ -1,4 +1,4 @@
-import { IQueryUserArgs } from '@beginwrite/app-graphql-codegen';
+import { IQueryUserArgs } from '@beginwrite/graphql-codegen';
 import { UseGuards } from '@nestjs/common';
 import { Query, Resolver } from '@nestjs/graphql';
 import { Args } from '@nestjs/graphql';

@@ -1,4 +1,4 @@
-import { IUserAuthInput } from '@beginwrite/app-graphql-codegen';
+import { IUserAuthInput } from '@beginwrite/graphql-codegen';
 import { UnauthorizedException } from '@nestjs/common';
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';

@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-import type { IUser } from '@beginwrite/app-graphql-codegen';
+import type { IUser } from '@beginwrite/graphql-codegen';
 
 export type GetUserQuery = {
   user: Pick<IUser, 'id' | 'name' | 'displayName' | 'avatar' | 'bio'>;

@@ -1,4 +1,4 @@
-import { IUser } from '@beginwrite/app-graphql-codegen';
+import { IUser } from '@beginwrite/graphql-codegen';
 import { graphql, HttpResponse } from 'msw';
 
 import { GetUserQuery } from '@/components/pages/EditProfile/gql';

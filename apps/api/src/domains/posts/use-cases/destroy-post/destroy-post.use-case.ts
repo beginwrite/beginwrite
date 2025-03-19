@@ -1,4 +1,4 @@
-import { IMutationDestroyPostArgs } from '@beginwrite/app-graphql-codegen';
+import { IMutationDestroyPostArgs } from '@beginwrite/graphql-codegen';
 import { Injectable } from '@nestjs/common';
 import { Post } from 'src/domains/posts/entities/posts.entity';
 import { PostsRepository } from 'src/domains/posts/repositories/posts.repository';

@@ -11,7 +11,7 @@ import { JwtAuthGuard } from '../../applications/guards/jwt-auth.guard';
 import type {
   IMutationCreateUserArgs,
   IMutationUpdateUserProfileArgs,
-} from '@beginwrite/app-graphql-codegen';
+} from '@beginwrite/graphql-codegen';
 
 @Resolver((of) => User)
 export class UsersMutationResolver {

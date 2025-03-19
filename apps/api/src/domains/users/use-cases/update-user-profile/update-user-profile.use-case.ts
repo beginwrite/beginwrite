@@ -1,4 +1,4 @@
-import { IMutationUpdateUserProfileArgs } from '@beginwrite/app-graphql-codegen';
+import { IMutationUpdateUserProfileArgs } from '@beginwrite/graphql-codegen';
 import { Injectable } from '@nestjs/common';
 import { User } from 'src/domains/users/entities/users.entity';
 import { UsersRepository } from 'src/domains/users/repositories/users.repository';

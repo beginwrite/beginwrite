@@ -1,4 +1,4 @@
-import { IMutationCreateUserArgs } from '@beginwrite/app-graphql-codegen';
+import { IMutationCreateUserArgs } from '@beginwrite/graphql-codegen';
 import { Injectable } from '@nestjs/common';
 import { Args } from '@nestjs/graphql';
 import * as bcrypt from 'bcryptjs';

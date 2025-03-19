@@ -1,5 +1,5 @@
 {
-  "name": "@beginwrite/app-graphql-codegen",
+  "name": "@beginwrite/graphql-codegen",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "typings": "dist/types/index.d.ts",

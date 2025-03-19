@@ -1,5 +1,5 @@
 import { gql, useQuery } from '@apollo/client';
-import { IUser } from '@beginwrite/app-graphql-codegen';
+import { IUser } from '@beginwrite/graphql-codegen';
 import { useAtom, useAtomValue } from 'jotai';
 
 import { authAtom } from '../store/auth';

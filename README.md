@@ -10,7 +10,7 @@
 - NestJS
 
 ### DB
-- Prisma
+- Drizzle ORM
 - MySQL
 - Redis
 
@@ -36,31 +36,32 @@ $ brew install docker
 以下コマンドでセットアップします。
 
 ```bash
-$ cd apps/server
+$ cd apps/api
 $ docker network create common_link
 $ docker compose up --build -d
 ```
 
 ### 環境変数の設定
-`apps/server` の環境変数を設定します。
+`apps/api` の環境変数を設定します。
 
 ```bash
-$ cd apps/server
+$ cd apps/api
 $ cp .env.sample .env
 ```
 
 ### マイグレーション実行
-apps/server の環境変数定義した後、以下コマンドを実行します。
+apps/api の環境変数定義した後、以下コマンドを実行します。
 
 ```bash
-$ pnpm prisma migrate dev
+$ pnpm migration:generate
+$ pnpm migration:run
 ```
 
 ### アプリ起動
 ルートディレクトリで以下コマンドを実行すると、アプリが起動します。
 
 ```bash
-$ cd ../..   # apps/server 内にいる場合に実行
+$ cd ../..   # apps/api 内にいる場合に実行
 $ pnpm start:dev
 ```
 

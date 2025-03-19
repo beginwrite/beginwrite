@@ -1,6 +1,7 @@
 {
   "name": "@beginwrite/eslint-config",
   "private": true,
+  "type": "module",
   "exports": {
     "./frontend": "./frontend.mjs",
     "./backend": "./backend.mjs"
@@ -13,6 +14,7 @@
     "@types/eslint": "^9.6.1",
     "@vitest/eslint-plugin": "^1.1.37",
     "eslint-config-prettier": "^10.1.1",
+    "eslint-import-resolver-typescript": "^4.2.2",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.2.0",

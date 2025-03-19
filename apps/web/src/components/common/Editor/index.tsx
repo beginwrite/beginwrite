@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
 import React, { FC, useCallback } from 'react';
-import { ChangeHandler, UseFormRegister } from 'react-hook-form';
 import { richmd } from 'richmd';
+
+import type { UseFormRegister } from 'react-hook-form';
 import 'richmd/richmd.css';
 
 const Wrapper = styled.div`
@@ -53,7 +54,7 @@ const Editor: FC<EditorProps> = ({
       const { value } = e.target;
       setValue?.(value);
     },
-    [],
+    [setValue],
   );
 
   return (

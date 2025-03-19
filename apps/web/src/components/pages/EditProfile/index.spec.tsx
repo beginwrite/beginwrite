@@ -38,12 +38,12 @@ describe('EditProfile', () => {
   test('プロフィール編集画面が表示される', async () => {
     testRenderer(<Primary />);
 
-    expect(await screen.findAllByText('Edit Profile')).toBeTruthy();
-    expect(await screen.findAllByText('Name 1')).toBeTruthy();
-    expect(await screen.findAllByText('Bio Profile')).toBeTruthy();
+    await expect(screen.findAllByText('Edit Profile')).resolves.toBeTruthy();
+    await expect(screen.findAllByText('Name 1')).resolves.toBeTruthy();
+    await expect(screen.findAllByText('Bio Profile')).resolves.toBeTruthy();
   });
 
-  test('フォーム入力後、更新ボタンを押すとプロフィール更新APIが呼ばれる', async () => {
+  test('フォーム入力後、更新ボタンを押すとプロフィール更新APIが呼ばれる', () => {
     testRenderer(<Primary />);
 
     const displayNameInput = screen.getByDisplayValue('Name 1');
@@ -60,7 +60,7 @@ describe('EditProfile', () => {
     expect(handleSubmit).toHaveBeenCalledTimes(1);
   });
 
-  test.skip('アバター画像をアップロードするとアバター更新APIが呼ばれる', async () => {
+  test.skip('アバター画像をアップロードするとアバター更新APIが呼ばれる', () => {
     testRenderer(<Primary />);
 
     const fileInput = screen.getByRole('region', { name: 'ファイルを選択' });

@@ -24,7 +24,7 @@ export const useCreatePost = (userId: string) => {
     {
       onCompleted: (data) => {
         // 投稿詳細ページに遷移
-        router.push(`/posts/${data.createPost.id}`);
+        void router.push(`/posts/${data.createPost.id}`);
       },
       onError: (error) => {
         console.error('Error creating post:', error);

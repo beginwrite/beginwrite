@@ -1,5 +1,5 @@
-import { useQuery } from '@apollo/client';
-import { useMutation } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
+import { IUser } from '@beginwrite/graphql-codegen';
 import { ChangeEventHandler, useCallback } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 
@@ -26,7 +26,10 @@ export const useFetchData = (id: string) => {
 };
 
 export const useUpdateProfile = (id: string) => {
-  const { handleSubmit, register } = useForm();
+  const { handleSubmit, register } = useForm<{
+    displayName: string;
+    bio: string;
+  }>();
   const [fetchPost] = useMutation<UpdateUserProfileMutation>(
     updateUserProfileMutation,
     {
@@ -40,23 +43,20 @@ export const useUpdateProfile = (id: string) => {
     },
   );
 
-  const submit: SubmitHandler<FieldValues> = useCallback(
-    async (data) => {
-      await fetchPost({
-        variables: {
-          data: {
-            id,
-            displayName: data.displayName,
-            bio: data.bio,
-          },
+  const submit = handleSubmit(async (data) => {
+    await fetchPost({
+      variables: {
+        data: {
+          id,
+          displayName: data.displayName,
+          bio: data.bio,
         },
-      });
-    },
-    [fetchPost, id],
-  );
+      },
+    });
+  });
 
   return {
-    handleSubmit: handleSubmit(submit),
+    handleSubmit: submit,
     register,
   };
 };
@@ -76,7 +76,7 @@ export const useUpdateProfileAvatar = (id: string) => {
   );
 
   const handleAvatarUpload: ChangeEventHandler<HTMLInputElement> = useCallback(
-    async (e) => {
+    (e) => {
       // @ts-expect-error - TS doesn't know about files
       const file = e.target.files[0];
       if (file === null || typeof file === 'undefined') return;

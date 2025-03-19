@@ -16,9 +16,9 @@ export default function Auth({ children }: AuthProps) {
   useEffect(() => {
     if (!loading) {
       if (router.isReady && !authUser && router.pathname !== '/login') {
-        router.replace('/login');
+        void router.replace('/login');
       } else if (router.isReady && authUser && router.pathname === '/login') {
-        router.replace('/home');
+        void router.replace('/home');
       } else {
         setIsRedirect(false);
       }

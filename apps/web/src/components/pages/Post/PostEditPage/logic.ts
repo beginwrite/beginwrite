@@ -35,7 +35,7 @@ export const useUpdatePost = (id: string, userId: string) => {
     {
       onCompleted: () => {
         // 投稿詳細ページに遷移
-        router.push(`/posts/${id}`);
+        void router.push(`/posts/${id}`);
       },
       onError: (error) => {
         console.error('Error updating post:', error);

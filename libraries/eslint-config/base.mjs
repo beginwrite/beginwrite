@@ -5,15 +5,12 @@ import importPlugin from "eslint-plugin-import";
 import vitest from "@vitest/eslint-plugin";
 
 export default [
-  ...eslint.configs.recommended,
+  eslint.configs.recommended,
   ...tsEslint.configs.recommendedTypeChecked,
-  eslintConfigPrettier,
+  importPlugin.flatConfigs.recommended,
+  importPlugin.flatConfigs.typescript,
   {
     files: ["**/*.{ts,tsx}"],
-    extends: [
-      ...importPlugin.flatConfigs.recommended,
-      ...importPlugin.flatConfigs.typescript,
-    ],
     plugins: {
       tsEslint,
     },
@@ -25,13 +22,33 @@ export default [
         tsconfigRootDir: import.meta.dirname,
       },
     },
+    rules: {
+      "import/order": ["warn", {
+        groups: [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+          "type",
+        ],
+
+        "newlines-between": "always",
+        pathGroupsExcludedImportTypes: ["builtin"],
+
+        alphabetize: {
+          order: "asc",
+          caseInsensitive: true,
+        },
+      }],
+    }
   },
+  importPlugin.flatConfigs.recommended,
   {
     files: ["**/*.{js,cjs,mjs,jsx}"],
     ...tsEslint.configs.disableTypeChecked,
-    extends: [
-      ...importPlugin.flatConfigs.recommended,
-    ],
   },
   {
     files: ["**/*.spec.{ts,tsx}"],
@@ -44,4 +61,5 @@ export default [
       "vitest/padding-around-all": "error",
     },
   },
+  eslintConfigPrettier,
 ]

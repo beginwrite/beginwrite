@@ -11,7 +11,9 @@ describe('Input', () => {
   test('Text Input', async () => {
     const { container } = render(<TextInput />);
 
-    expect(await screen.findByRole('textbox')).toBeTruthy();
-    expect(await TextInput.play!({ canvasElement: container })).toBeUndefined();
+    await expect(screen.findByRole('textbox')).resolves.toBeTruthy();
+    await expect(
+      TextInput.play!({ canvasElement: container }),
+    ).resolves.toBeUndefined();
   });
 });

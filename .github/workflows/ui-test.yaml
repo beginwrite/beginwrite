@@ -27,6 +27,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Build GraphQL Codegen
+        working-directory: libraries/graphql-codegen
+        run: pnpm build
+      
       - name: Running Format tests
         working-directory: apps/web
         run: pnpm lint

@@ -10,7 +10,7 @@
     "start:dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "eslint": "eslint src --ext .ts,.tsx",
+    "eslint": "eslint src --ext .ts,.tsx --config eslint.config.mjs",
     "e2e": "pnpm playwright test",
     "format": "prettier --write ./src/**/*",
     "lint": "pnpm eslint && pnpm format",

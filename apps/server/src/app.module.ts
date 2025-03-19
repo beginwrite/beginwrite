@@ -10,8 +10,8 @@ import { graphqlUploadExpress } from 'graphql-upload-minimal';
 import { DataSource } from 'typeorm';
 
 import { AuthModule } from './modules/auth.module';
-import { PostModule } from './modules/post.module';
 import { UsersModule } from './modules/users.module';
+import { PostModule } from './resolvers/posts/post.module';
 
 const modules = [AuthModule, UsersModule, PostModule];
 

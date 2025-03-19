@@ -1,4 +1,4 @@
-import typescriptEslint from "@typescript-eslint/eslint-plugin";
+import typescriptEslint from "typescript-eslint";
 import vitest from "@vitest/eslint-plugin";
 import importPlugin from 'eslint-plugin-import';
 import prettier from "eslint-plugin-prettier";
@@ -8,6 +8,8 @@ import { fileURLToPath } from "node:url";
 import js from "@eslint/js";
 import { FlatCompat } from "@eslint/eslintrc";
 
+
+// TODO: FlatCompat は暫定処理なので、将来的には削除する
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const compat = new FlatCompat({
@@ -24,7 +26,7 @@ export default [
     "plugin:prettier/recommended",
   ), {
   plugins: {
-    "@typescript-eslint": typescriptEslint,
+    "typescript-eslint": typescriptEslint,
     vitest,
     prettier,
   },
@@ -56,5 +58,4 @@ export default [
     ...vitest.configs.recommended.rules,
     "vitest/padding-around-all": "error",
   },
-    ignores: ['jest.polyfills.js'],
 }];

@@ -26,6 +26,7 @@
     "@apollo/server": "^4.11.3",
     "@as-integrations/next": "^3.2.0",
     "@beginwrite/graphql-codegen": "workspace:*",
+    "@beginwrite/eslint-config": "workspace:*",
     "@emotion/styled": "^11.14.0",
     "@types/node": "22.13.5",
     "@types/react": "19.0.10",
@@ -33,7 +34,6 @@
     "apollo-upload-client": "^18.0.1",
     "axios": "^1.8.2",
     "eslint": "9.21.0",
-    "eslint-config-next": "15.1.7",
     "graphql": "^16.10.0",
     "ioredis": "^5.5.0",
     "jotai": "^2.12.2",
@@ -47,7 +47,6 @@
     "undici": "^7.3.0"
   },
   "devDependencies": {
-    "@eslint/compat": "^1.2.7",
     "@golevelup/ts-vitest": "^0.5.2",
     "@mswjs/data": "^0.16.2",
     "@playwright/test": "^1.50.1",
@@ -69,11 +68,8 @@
     "@testing-library/user-event": "^14.6.1",
     "@types/apollo-upload-client": "^18.0.0",
     "@vitejs/plugin-react": "^4.3.4",
-    "@vitest/eslint-plugin": "^1.1.37",
     "chromatic": "^11.25.2",
     "cross-fetch": "^4.1.0",
-    "eslint-config-prettier": "^10.0.1",
-    "eslint-plugin-import": "^2.31.0",
     "extend-expect": "link:@testing-library/jest-dom/extend-expect",
     "http-server": "14.1.1",
     "isomorphic-unfetch": "4.0.2",
@@ -84,7 +80,6 @@
     "storybook-addon-apollo-client": "8.1.2",
     "ts-jest": "29.2.6",
     "ts-node": "10.9.2",
-    "typescript-eslint": "^8.26.1",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.0.8",
     "wait-on": "8.0.2"

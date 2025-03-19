@@ -1,7 +1,6 @@
-import typescriptEslintEslintPlugin from "@typescript-eslint/eslint-plugin";
+import typescriptEslint from "typescript-eslint";
 import _import from "eslint-plugin-import";
 import { fixupPluginRules } from "@eslint/compat";
-import tsParser from "@typescript-eslint/parser";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import js from "@eslint/js";
@@ -23,12 +22,12 @@ export default [{
   "prettier",
 ), {
   plugins: {
-    "@typescript-eslint": typescriptEslintEslintPlugin,
+    "typescript-eslint": typescriptEslint,
     import: fixupPluginRules(_import),
   },
 
   languageOptions: {
-    parser: tsParser,
+    parser: typescriptEslint.parser,
     ecmaVersion: 5,
     sourceType: "module",
 

@@ -1,35 +1,37 @@
 import { createMock } from '@golevelup/ts-vitest';
 import { Test, TestingModule } from '@nestjs/testing';
+import { find } from 'rxjs';
 import { FindPostByIdUseCase } from 'src/domains/posts/use-cases/find-post-by-id/find-post-by-id.use-case';
+import { FindPostsByUserIdUseCase } from 'src/domains/posts/use-cases/find-posts-by-user-id/find-posts-by-user-id.use-case';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-
-import { PostsRepository } from '../../domains/posts/repositories/posts.repository';
 
 import { PostsQueryResolver } from './posts-query.resolver';
 
 describe('PostsQueryResolver', () => {
   let resolver: PostsQueryResolver;
   let findPostByIdUseCase: FindPostByIdUseCase;
-  let postsRepository: PostsRepository;
+  let findPostsByUserIdUseCase: FindPostsByUserIdUseCase;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         PostsQueryResolver,
         {
-          provide: PostsRepository,
-          useValue: createMock<PostsRepository>(),
-        },
-        {
           provide: FindPostByIdUseCase,
           useValue: createMock<FindPostByIdUseCase>(),
+        },
+        {
+          provide: FindPostsByUserIdUseCase,
+          useValue: createMock<FindPostsByUserIdUseCase>(),
         },
       ],
     }).compile();
 
     resolver = module.get<PostsQueryResolver>(PostsQueryResolver);
     findPostByIdUseCase = module.get<FindPostByIdUseCase>(FindPostByIdUseCase);
-    postsRepository = module.get<PostsRepository>(PostsRepository);
+    findPostsByUserIdUseCase = module.get<FindPostsByUserIdUseCase>(
+      FindPostsByUserIdUseCase,
+    );
   });
 
   it('resolver が定義されている', () => {
@@ -38,8 +40,9 @@ describe('PostsQueryResolver', () => {
 
   describe('posts', () => {
     it('正常に実行される', async () => {
-      await resolver.posts();
-      expect(postsRepository.findAll).toHaveBeenCalledTimes(1);
+      await resolver.posts('1');
+      expect(findPostsByUserIdUseCase.execute).toHaveBeenCalledTimes(1);
+      expect(findPostsByUserIdUseCase.execute).toHaveBeenCalledWith('1');
     });
   });
 

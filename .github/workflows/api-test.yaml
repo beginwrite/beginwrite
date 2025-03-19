@@ -1,4 +1,4 @@
-name: 'UI Tests'
+name: 'API Tests'
 on: push
 
 jobs:

@@ -111,4 +111,4 @@ Access: readonly
 node -e "console.log(require('crypto').randomBytes(256).toString('base64'));"
 ```
 
-出力されたデータを `apps/server/.env` にある `JWT_SECRET` に設定します。
+出力されたデータを `apps/api/.env` にある `JWT_SECRET` に設定します。

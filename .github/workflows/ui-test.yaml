@@ -1,5 +1,7 @@
 name: 'UI Tests'
-on: push
+
+on:
+  push:
 
 jobs:
   test:
@@ -14,7 +16,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 9.0.6
+          version: 10.6.4
 
       - name: Setup Node.js
         uses: actions/setup-node@1a4442cacd436585916779262731d5b162bc6ec7 # v3
@@ -25,14 +27,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Install Playwright
+      # TODO: CI 上で Lint テストが動かなくなってしまったので、早急に config file を修正する
+      # - name: Running Format tests
+      #   working-directory: apps/web
+      #   run: pnpm lint
+
+      - name: Running Unit tests
         working-directory: apps/web
-        run: npx playwright install --with-deps
-
-      # - name: Build Storybook
-      #   working-directory: apps/web
-      #   run: pnpm build-storybook --quiet
-
-      # - name: Serve Storybook and run tests
-      #   working-directory: apps/web
-      #   run: pnpm test
+        run: pnpm test

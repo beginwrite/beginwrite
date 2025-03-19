@@ -1,11 +1,11 @@
-name: 'Build Test'
+name: 'API Tests'
 
 on:
   push:
 
 jobs:
-  build-test:
-    name: Build test
+  test:
+    timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
@@ -27,5 +27,15 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build Test
-        run: pnpm run build
+      - name: Build GraphQL Codegen
+        working-directory: libraries/app-graphql-codegen
+        run: pnpm build
+
+      # TODO: CI 上で Lint テストが動かなくなってしまったので、早急に config file を修正する
+      # - name: Running Format tests
+      #   working-directory: apps/api
+      #   run: pnpm lint
+
+      - name: Running Unit tests
+        working-directory: apps/api
+        run: pnpm test

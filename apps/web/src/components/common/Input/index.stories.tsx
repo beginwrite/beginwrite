@@ -1,4 +1,5 @@
 import { within, userEvent } from '@storybook/test';
+import { expect } from 'vitest';
 
 import Input from './index';
 

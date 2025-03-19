@@ -28,6 +28,7 @@ const httpUploadLink = createUploadLink({
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('access_token');
   return {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     headers: {
       ...headers,
       authorization: token ? `Bearer ${token}` : '',
@@ -39,7 +40,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
     graphQLErrors.forEach(({ message, locations, path }) => {
       console.error(
-        `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
+        `[GraphQL error]: Message: ${message}, Location: ${JSON.stringify(locations)}, Path: ${JSON.stringify(path)}`,
       );
     });
 

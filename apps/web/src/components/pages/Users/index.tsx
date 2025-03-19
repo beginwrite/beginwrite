@@ -4,7 +4,7 @@ import React from 'react';
 import { getUsersQuery } from './gql';
 
 import type { GetUsersQuery } from './gql';
-import type { IUser } from '@beginwrite/app-graphql-codegen';
+import type { IUser } from '@beginwrite/graphql-codegen';
 
 const Users: React.FC = () => {
   const { error, data } = useQuery<GetUsersQuery>(getUsersQuery);

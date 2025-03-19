@@ -48,9 +48,8 @@ const SubmitButton = styled(Button)`
 
 const PostCreatePage: React.FC = () => {
   const userId = useAtomValue(authAtom);
-  const { form, submit, handleSetContentValue, loading } = useCreatePost(
-    userId!,
-  );
+  const { form, submit, handleSetContentValue, loading } =
+    useCreatePost(userId);
 
   return (
     <PageWrapper>

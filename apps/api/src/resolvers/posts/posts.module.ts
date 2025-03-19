@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+
 import { CreatePostUseCaseModule } from 'src/domains/posts/use-cases/create-post/create-post.module';
 import { DeletePostUseCaseModule } from 'src/domains/posts/use-cases/delete-post/delete-post.module';
 import { DestroyPostUseCaseModule } from 'src/domains/posts/use-cases/destroy-post/destory-post.module';

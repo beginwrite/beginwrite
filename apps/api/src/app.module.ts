@@ -25,9 +25,7 @@ const modules = [AuthModule, UsersModule, PostsModule];
       typeDefs: [
         fs
           .readFileSync(
-            require.resolve(
-              '@beginwrite/app-graphql-codegen/dist/schema.graphql',
-            ),
+            require.resolve('@beginwrite/graphql-codegen/dist/schema.graphql'),
           )
           .toString(),
       ],

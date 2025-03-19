@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
-import React, { useId } from 'react';
+import React, { use, useCallback, useId } from 'react';
 
 import Button from '@/components/common/Button';
 import Input from '@/components/common/Input';

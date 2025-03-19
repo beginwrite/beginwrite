@@ -15,8 +15,8 @@ export class FindPostByIdUseCase {
       .then((post) => {
         return post;
       })
-      .catch((err) => {
-        throw new Error(err.message);
+      .catch(({ message }) => {
+        throw new Error(message as string);
       });
   }
 }

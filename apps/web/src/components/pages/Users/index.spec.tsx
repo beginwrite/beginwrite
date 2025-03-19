@@ -12,6 +12,6 @@ describe('Primary', () => {
   test('renders correctly', async () => {
     testRenderer(<Primary />);
 
-    expect(await screen.findByText('Name 1')).toBeTruthy();
+    await expect(screen.findByText('Name 1')).resolves.toBeTruthy();
   });
 });

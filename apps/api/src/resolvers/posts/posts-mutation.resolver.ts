@@ -3,7 +3,7 @@ import {
   IMutationDeletePostArgs,
   IMutationPublishPostArgs,
   IMutationUpdatePostArgs,
-} from '@beginwrite/app-graphql-codegen';
+} from '@beginwrite/graphql-codegen';
 import { UseGuards } from '@nestjs/common';
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 

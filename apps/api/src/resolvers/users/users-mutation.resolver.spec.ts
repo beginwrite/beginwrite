@@ -1,10 +1,11 @@
 import { createMock } from '@golevelup/ts-vitest';
 import { Test, TestingModule } from '@nestjs/testing';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+
 import { S3Service } from 'src/applications/services/s3.service';
 import { CreateUserUseCase } from 'src/domains/users/use-cases/create-user/create-user.use-case';
 import { UpdateUserProfileUseCase } from 'src/domains/users/use-cases/update-user-profile/update-user-profile.use-case';
 import { UpdateUserProfileAvatarUseCase } from 'src/domains/users/use-cases/update-user-profile-avatar/update-user-profile-avatar.use-case';
-import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 import { UsersRepository } from '../../domains/users/repositories/users.repository';
 
@@ -67,6 +68,7 @@ describe('UsersMutationResolver', () => {
         },
       };
       await resolver.createUser(args);
+
       expect(createUserUseCase.execute).toHaveBeenCalledTimes(1);
       expect(createUserUseCase.execute).toHaveBeenCalledWith(args);
     });
@@ -82,6 +84,7 @@ describe('UsersMutationResolver', () => {
         },
       };
       await resolver.updateUserProfile(args);
+
       expect(updateUserProfileUseCase.execute).toHaveBeenCalledTimes(1);
       expect(updateUserProfileUseCase.execute).toHaveBeenCalledWith(args);
     });
@@ -96,20 +99,25 @@ describe('UsersMutationResolver', () => {
           mimetype: 'image/jpeg',
           encoding: '7bit',
           fieldName: 'file',
+          // TODO: モック定義を見直す
           createReadStream: vi.fn().mockReturnValue({
             on: vi.fn().mockImplementation(function (event, callback) {
               if (event === 'data') {
-                callback(Buffer.from('test'));
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+                void callback(Buffer.from('test'));
               }
               if (event === 'end') {
-                callback();
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+                void callback();
               }
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-return
               return this;
             }),
           }),
         },
       };
       await resolver.uploadProfileAvatar(userId, file);
+
       expect(updateProfileAvatarUseCase.execute).toHaveBeenCalledTimes(1);
       expect(updateProfileAvatarUseCase.execute).toHaveBeenCalledWith(
         userId,

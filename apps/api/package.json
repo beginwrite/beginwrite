@@ -1,10 +1,6 @@
 {
   "name": "api",
-  "version": "0.0.1",
-  "description": "",
-  "author": "",
   "private": true,
-  "license": "UNLICENSED",
   "volta": {
     "node": "23.7.0",
     "pnpm": "10.6.4"
@@ -16,7 +12,7 @@
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
-    "lint:eslint": "eslint \"{src,apps,libs,test}/**/*.ts\"",
+    "lint:eslint": "eslint \"{src,apps,libs,test}/**/*.ts\" --config eslint.config.mjs",
     "lint:prettier": "prettier --check \"src/**/*.ts\"",
     "lint:fix": "pnpm lint:eslint --fix && pnpm lint:prettier --write",
     "lint": "pnpm lint:eslint && pnpm lint:prettier",
@@ -29,7 +25,6 @@
   },
   "dependencies": {
     "@apollo/server": "^4.11.3",
-    "@beginwrite/app-graphql-codegen": "workspace:*",
     "@nestjs/apollo": "^13.0.3",
     "@nestjs/common": "^11.0.10",
     "@nestjs/config": "^4.0.0",
@@ -59,7 +54,8 @@
   },
   "devDependencies": {
     "@aws-sdk/client-s3": "^3.750.0",
-    "@eslint/compat": "^1.2.7",
+    "@beginwrite/eslint-config": "workspace:*",
+    "@beginwrite/graphql-codegen": "workspace:*",
     "@golevelup/ts-vitest": "^0.5.2",
     "@nestjs/cli": "^11.0.4",
     "@nestjs/schematics": "^11.0.1",
@@ -78,9 +74,6 @@
     "dotenv": "^16.4.7",
     "drizzle-kit": "^0.30.5",
     "eslint": "9.21.0",
-    "eslint-config-prettier": "10.0.1",
-    "eslint-plugin-import": "2.31.0",
-    "eslint-plugin-prettier": "5.2.3",
     "graphql-upload-minimal": "1.6.1",
     "lint-staged": "15.4.3",
     "prettier": "3.5.2",
@@ -90,7 +83,6 @@
     "ts-node": "10.9.2",
     "tsconfig-paths": "4.2.0",
     "typescript": "5.7.3",
-    "typescript-eslint": "^8.26.1",
     "unplugin-swc": "^1.5.1",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.0.8"

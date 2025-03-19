@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { FileUpload } from 'graphql-upload-minimal';
+
 import { S3Service } from 'src/applications/services/s3.service';
 import { User } from 'src/domains/users/entities/users.entity';
 import { UsersRepository } from 'src/domains/users/repositories/users.repository';
@@ -37,9 +38,8 @@ export class UpdateUserProfileAvatarUseCase {
       .then(async () => {
         return await this.usersRepository.findById(id);
       })
-      .catch((err) => {
-        console.log(err);
-        throw new Error(err.message);
+      .catch(({ message }) => {
+        throw new Error(message as string);
       });
   }
 

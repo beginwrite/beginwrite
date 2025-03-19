@@ -28,13 +28,13 @@ export const useLogin = () => {
     onCompleted: (data) => {
       //TODO: 状態管理を jotai に完全移管したい
       localStorage.setItem('access_token', data.auth.accessToken!);
-      setUserId(data.auth.id!);
+      setUserId(data.auth.id);
       if (sessionStorage.getItem('redirect_path')) {
         const redirectPath = sessionStorage.getItem('redirect_path');
         sessionStorage.removeItem('redirect_path');
-        router.push(redirectPath!);
+        void router.push(redirectPath!);
       } else {
-        router.push('/home');
+        void router.push('/home');
       }
     },
     onError: (error) => {
@@ -42,22 +42,19 @@ export const useLogin = () => {
     },
   });
 
-  const submit = useCallback(
-    async (data: LoginForm) => {
-      await fetchPost({
-        variables: {
-          data: {
-            email: data.email,
-            password: data.password,
-          },
+  const submit = handleSubmit(async (data: LoginForm) => {
+    await fetchPost({
+      variables: {
+        data: {
+          email: data.email,
+          password: data.password,
         },
-      });
-    },
-    [fetchPost],
-  );
+      },
+    });
+  });
 
   return {
-    handleSubmit: handleSubmit(submit),
+    handleSubmit: submit,
     register,
   };
 };

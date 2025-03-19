@@ -1,4 +1,4 @@
-import { IMutationCreateUserArgs } from '@beginwrite/app-graphql-codegen';
+import { IMutationCreateUserArgs } from '@beginwrite/graphql-codegen';
 import { Injectable } from '@nestjs/common';
 import { Args } from '@nestjs/graphql';
 import * as bcrypt from 'bcryptjs';
@@ -26,8 +26,8 @@ export class CreateUserUseCase {
       .then((user) => {
         return user;
       })
-      .catch((err) => {
-        throw new Error(err.message);
+      .catch(({ message }) => {
+        throw new Error(message as string);
       });
   }
 }

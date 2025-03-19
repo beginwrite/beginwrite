@@ -1,5 +1,6 @@
 import { UseGuards } from '@nestjs/common';
 import { Args, Query, Resolver } from '@nestjs/graphql';
+
 import { FindPostsByUserIdUseCase } from 'src/domains/posts/use-cases/find-posts-by-user-id/find-posts-by-user-id.use-case';
 
 import { JwtAuthGuard } from '../../applications/guards/jwt-auth.guard';

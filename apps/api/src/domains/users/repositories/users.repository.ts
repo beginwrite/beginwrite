@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { User } from 'src/domains/users/entities/users.entity';
 import { UpdateResult, Repository, DataSource } from 'typeorm';
+
+import { User } from 'src/domains/users/entities/users.entity';
 
 export type CreateUserArgs = {
   name: string;

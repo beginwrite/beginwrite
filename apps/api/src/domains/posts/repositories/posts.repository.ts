@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Post } from 'src/domains/posts/entities/posts.entity';
 import { DataSource, Repository } from 'typeorm';
+
+import { Post } from 'src/domains/posts/entities/posts.entity';
 
 export type CreatePostArgs = {
   title: string;

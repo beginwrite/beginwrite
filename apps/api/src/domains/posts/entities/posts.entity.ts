@@ -1,5 +1,4 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
-import { User } from 'src/domains/users/entities/users.entity';
 import {
   Column,
   Entity,
@@ -7,6 +6,8 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+
+import { User } from 'src/domains/users/entities/users.entity';
 
 @Entity()
 @ObjectType()

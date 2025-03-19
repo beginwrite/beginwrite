@@ -12,6 +12,6 @@ describe('PostDetailPage', () => {
   test('投稿詳細が表示されている', async () => {
     testRenderer(<Primary />);
 
-    expect(await screen.findByText('PostDetailPage')).toBeTruthy();
+    await expect(screen.findByText('PostDetailPage')).resolves.toBeTruthy();
   });
 });

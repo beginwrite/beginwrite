@@ -26,10 +26,10 @@ describe('Login', () => {
   test('ログイン画面が表示される', async () => {
     testRenderer(<Primary />);
 
-    expect(await screen.findByText('ログイン')).toBeTruthy();
+    await expect(screen.findByText('ログイン')).resolves.toBeTruthy();
   });
 
-  test('フォーム入力後、ログインボタンを押すとログインAPIが呼ばれる', async () => {
+  test('フォーム入力後、ログインボタンを押すとログインAPIが呼ばれる', () => {
     testRenderer(<Primary />);
 
     const emailInput = screen.getByPlaceholderText('emailを入力...');

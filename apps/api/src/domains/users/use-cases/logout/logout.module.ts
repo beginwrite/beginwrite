@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
+
 import { RedisService } from 'src/applications/services/redis.service';
 
 import { User } from '../../entities/users.entity';

@@ -1,6 +1,6 @@
 import { composeStories } from '@storybook/react';
 import { render, screen } from '@testing-library/react';
-import { describe, test } from 'vitest';
+import { describe, expect, test } from 'vitest';
 
 import * as stories from './index.stories';
 
@@ -10,6 +10,6 @@ describe('Primary', () => {
   test('renders correctly', async () => {
     render(<Primary />);
 
-    expect(await screen.findByRole('button')).toBeTruthy();
+    await expect(screen.findByRole('button')).resolves.toBeTruthy();
   });
 });

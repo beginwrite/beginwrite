@@ -72,6 +72,7 @@ describe('PostsMutationResolver', () => {
         },
       };
       await resolver.createPost(args);
+
       expect(createPostUseCase.execute).toHaveBeenCalledTimes(1);
       expect(createPostUseCase.execute).toHaveBeenCalledWith(args);
     });
@@ -83,6 +84,7 @@ describe('PostsMutationResolver', () => {
         id: '1',
       };
       await resolver.publishPost(args);
+
       expect(publishPostUseCase.execute).toHaveBeenCalledTimes(1);
       expect(publishPostUseCase.execute).toHaveBeenCalledWith(args);
     });
@@ -99,6 +101,7 @@ describe('PostsMutationResolver', () => {
         },
       };
       await resolver.updatePost(args);
+
       expect(updatePostUseCase.execute).toHaveBeenCalledTimes(1);
       expect(updatePostUseCase.execute).toHaveBeenCalledWith(args);
     });
@@ -110,6 +113,7 @@ describe('PostsMutationResolver', () => {
         id: '1',
       };
       await resolver.deletePost(args);
+
       expect(deletePostUseCase.execute).toHaveBeenCalledTimes(1);
       expect(deletePostUseCase.execute).toHaveBeenCalledWith(args);
     });
@@ -121,6 +125,7 @@ describe('PostsMutationResolver', () => {
         id: '1',
       };
       await resolver.destroyPost(args);
+
       expect(destroyPostUseCase.execute).toHaveBeenCalledTimes(1);
       expect(destroyPostUseCase.execute).toHaveBeenCalledWith(args);
     });

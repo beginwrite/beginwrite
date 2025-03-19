@@ -1,5 +1,6 @@
-import { IMutationCreatePostArgs } from '@beginwrite/app-graphql-codegen';
+import { IMutationCreatePostArgs } from '@beginwrite/graphql-codegen';
 import { Injectable } from '@nestjs/common';
+
 import { Post } from 'src/domains/posts/entities/posts.entity';
 import { PostsRepository } from 'src/domains/posts/repositories/posts.repository';
 
@@ -21,8 +22,8 @@ export class CreatePostUseCase {
       .then((post) => {
         return post;
       })
-      .catch((err) => {
-        throw new Error(err.message);
+      .catch(({ message }) => {
+        throw new Error(message as string);
       });
   }
 }

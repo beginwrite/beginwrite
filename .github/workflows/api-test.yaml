@@ -1,5 +1,7 @@
 name: 'API Tests'
-on: push
+
+on:
+  push:
 
 jobs:
   test:
@@ -28,6 +30,10 @@ jobs:
       - name: Build GraphQL Codegen
         working-directory: libraries/app-graphql-codegen
         run: pnpm build
+
+      - name: Running Format tests
+        working-directory: apps/api
+        run: pnpm lint
 
       - name: Running Unit tests
         working-directory: apps/api

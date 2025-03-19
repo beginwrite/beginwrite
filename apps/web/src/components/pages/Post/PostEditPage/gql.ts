@@ -3,7 +3,7 @@ import { gql } from '@apollo/client';
 import type { IPost } from '@beginwrite/app-graphql-codegen';
 
 export type GetPostQuery = {
-  post: Pick<IPost, 'id' | 'title' | 'content' | 'userId'>;
+  post: Pick<IPost, 'id' | 'title' | 'content' | 'user'>;
 };
 
 export const getPostQuery = gql`
@@ -12,7 +12,7 @@ export const getPostQuery = gql`
       id
       title
       content
-      userId
+      user
     }
   }
 `;

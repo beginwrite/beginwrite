@@ -19,6 +19,13 @@ export class PostsRepository extends Repository<Post> {
     return this.findOne({ where: { id: Number(id) }, relations: ['user'] });
   }
 
+  findByUserId(userId: string): Promise<Post[]> {
+    return this.find({
+      where: { userId: Number(userId) },
+      relations: ['user'],
+    });
+  }
+
   findAll(): Promise<Post[]> {
     return this.find({ relations: ['user'] });
   }

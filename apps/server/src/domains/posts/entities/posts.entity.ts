@@ -1,5 +1,4 @@
-import { IPost } from '@beginwrite/app-graphql-codegen';
-import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
+import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { User } from 'src/domains/users/entities/users.entity';
 import {
   Column,

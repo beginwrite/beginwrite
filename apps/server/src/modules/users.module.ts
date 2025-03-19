@@ -12,6 +12,7 @@ import { FindUserByIdUseCase } from '../domains/users/use-cases/find-user-by-id.
 import { UsersMutationResolver } from '../resolvers/users/users-mutation.resolver';
 import { UsersQueryResolver } from '../resolvers/users/users-query.resolver';
 
+// TODO: インポートするモジュールが多いので、use-cases のモジュール化を検討する
 @Module({
   imports: [TypeOrmModule.forFeature([User])],
   providers: [

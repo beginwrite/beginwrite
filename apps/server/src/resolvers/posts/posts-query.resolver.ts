@@ -1,22 +1,22 @@
 import { UseGuards } from '@nestjs/common';
 import { Args, Query, Resolver } from '@nestjs/graphql';
+import { FindPostsByUserIdUseCase } from 'src/domains/posts/use-cases/find-posts-by-user-id.use-case';
 
 import { JwtAuthGuard } from '../../applications/guards/jwt-auth.guard';
 import { Post } from '../../domains/posts/entities/posts.entity';
-import { PostsRepository } from '../../domains/posts/repositories/posts.repository';
 import { FindPostByIdUseCase } from '../../domains/posts/use-cases/find-post-by-id.use-case';
 
 @Resolver((of) => Post)
 export class PostsQueryResolver {
   constructor(
-    private postsRepository: PostsRepository,
     private findPostByIdUseCase: FindPostByIdUseCase,
+    private findPostsByUserIdUseCase: FindPostsByUserIdUseCase,
   ) {}
 
   @Query((returns) => [Post])
   @UseGuards(JwtAuthGuard)
-  async posts() {
-    return this.postsRepository.findAll();
+  async posts(@Args('userId') userId: string) {
+    return await this.findPostsByUserIdUseCase.execute(userId);
   }
 
   @Query((returns) => Post)

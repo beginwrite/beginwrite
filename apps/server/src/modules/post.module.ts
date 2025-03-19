@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { FindPostsByUserIdUseCase } from 'src/domains/posts/use-cases/find-posts-by-user-id.use-case';
 
 import { Post } from '../domains/posts/entities/posts.entity';
 import { PostsRepository } from '../domains/posts/repositories/posts.repository';
@@ -12,6 +13,7 @@ import { UpdatePostUseCase } from '../domains/posts/use-cases/update-post.use-ca
 import { PostsMutationResolver } from '../resolvers/posts/posts-mutation.resolver';
 import { PostsQueryResolver } from '../resolvers/posts/posts-query.resolver';
 
+// TODO: インポートするモジュールが多いので、use-cases のモジュール化を検討する
 @Module({
   imports: [TypeOrmModule.forFeature([Post])],
   providers: [
@@ -19,6 +21,7 @@ import { PostsQueryResolver } from '../resolvers/posts/posts-query.resolver';
     PostsQueryResolver,
     PostsMutationResolver,
     FindPostByIdUseCase,
+    FindPostsByUserIdUseCase,
     CreatePostUseCase,
     UpdatePostUseCase,
     PublishPostUseCase,

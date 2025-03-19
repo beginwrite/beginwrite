@@ -24,7 +24,10 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+      # - name: Build Storybook
+      #   working-directory: apps/web
+      #   run: pnpm build-storybook --quiet
 
       - name: Running Unit tests
-        working-directory: apps/web
+        working-directory: apps/server
         run: pnpm test

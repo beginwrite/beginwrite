@@ -27,4 +27,4 @@ import { PostsQueryResolver } from './posts-query.resolver';
   providers: [PostsQueryResolver, PostsMutationResolver],
   exports: [PostsQueryResolver, PostsMutationResolver],
 })
-export class PostModule {}
+export class PostsModule {}

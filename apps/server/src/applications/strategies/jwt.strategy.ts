@@ -3,13 +3,13 @@ import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 
 import { User } from '../../domains/users/entities/users.entity';
-import { UsersRepository } from '../../domains/users/repositories/users.repository';
+import { AuthRepository } from '../../domains/users/repositories/auth.repository';
 import { RedisService } from '../services/redis.service';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(
-    private readonly usersRepository: UsersRepository,
+    private readonly authRepository: AuthRepository,
     private readonly redis: RedisService,
   ) {
     super({
@@ -23,7 +23,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     email: string;
     sub: string;
   }): Promise<User | null> {
-    const user = await this.usersRepository.findById(payload.sub);
+    const user = await this.authRepository.findByEmail(payload.email);
     const accessToken = await this.redis.store.get(user.uuid);
     if (!accessToken) return null;
     return user;

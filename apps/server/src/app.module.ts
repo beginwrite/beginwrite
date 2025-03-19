@@ -9,11 +9,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { graphqlUploadExpress } from 'graphql-upload-minimal';
 import { DataSource } from 'typeorm';
 
-import { AuthModule } from './modules/auth.module';
-import { UsersModule } from './modules/users.module';
-import { PostModule } from './resolvers/posts/post.module';
+import { AuthModule } from './resolvers/auth/auth.module';
+import { PostsModule } from './resolvers/posts/posts.module';
+import { UsersModule } from './resolvers/users/users.module';
 
-const modules = [AuthModule, UsersModule, PostModule];
+const modules = [AuthModule, UsersModule, PostsModule];
 
 @Module({
   imports: [

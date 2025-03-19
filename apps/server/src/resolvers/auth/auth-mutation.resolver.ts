@@ -4,7 +4,7 @@ import { Context } from '@nestjs/graphql';
 
 import { GqlAuthGuard } from '../../applications/guards/gql-auth.guard';
 import { User } from '../../domains/users/entities/users.entity';
-import { LoginUseCase } from '../../domains/users/use-cases/login.use-case';
+import { LoginUseCase } from '../../domains/users/use-cases/login/login.use-case';
 
 import type { IMutationAuthArgs } from '@beginwrite/app-graphql-codegen';
 

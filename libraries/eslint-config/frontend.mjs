@@ -20,9 +20,6 @@ export default [
       'react-hooks': reactHooks,
     },
     settings: {
-      'import/resolver': {
-        typescript: { project: './' }
-      },
       react: {
         version: 'detect',
       },
@@ -35,6 +32,26 @@ export default [
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
       'import/named': 'off',
+      'import/order': ['warn', {
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+          'object',
+          'type',
+        ],
+
+        'newlines-between': 'always',
+        pathGroupsExcludedImportTypes: ['builtin'],
+
+        alphabetize: {
+          order: "asc",
+          caseInsensitive: true,
+        },
+      }],
     },
   },
   {

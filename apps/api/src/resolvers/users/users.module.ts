@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+
 import { S3Service } from 'src/applications/services/s3.service';
 import { CreateUserUseCaseModule } from 'src/domains/users/use-cases/create-user/create-user.module';
 import { FindUserByIdUseCaseModule } from 'src/domains/users/use-cases/find-user-by-id/find-user-by-id.module';

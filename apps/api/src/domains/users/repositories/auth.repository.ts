@@ -1,11 +1,11 @@
 import { IUserAuthInput } from '@beginwrite/graphql-codegen';
-import { UnauthorizedException } from '@nestjs/common';
-import { Injectable } from '@nestjs/common';
+import { UnauthorizedException, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcryptjs';
+import { DataSource, Repository, UpdateResult } from 'typeorm';
+
 import { RedisService } from 'src/applications/services/redis.service';
 import { User } from 'src/domains/users/entities/users.entity';
-import { DataSource, Repository, UpdateResult } from 'typeorm';
 
 export type AuthUserArgs = {
   email: string;
@@ -30,7 +30,7 @@ export class AuthRepository extends Repository<User> {
     return await this.update(
       { id: Number(id) },
       {
-        accessToken: token,
+        accessToken: token as string,
       },
     );
   }
@@ -61,6 +61,7 @@ export class AuthRepository extends Repository<User> {
       });
       user.accessToken = token;
       // トークンとユーザーIDをRedisに保存。有効期限は1時間
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       this.redis.store.set(`${user.uuid}`, token, 'EX', 60 * 60);
     }
 

@@ -22,28 +22,11 @@ export default [
         tsconfigRootDir: import.meta.dirname,
       },
     },
-    rules: {
-      "import/order": ["warn", {
-        groups: [
-          "builtin",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index",
-          "object",
-          "type",
-        ],
-
-        "newlines-between": "always",
-        pathGroupsExcludedImportTypes: ["builtin"],
-
-        alphabetize: {
-          order: "asc",
-          caseInsensitive: true,
-        },
-      }],
-    }
+    settings: {
+      'import/resolver': {
+        typescript: { project: './' }
+      },
+    },
   },
   importPlugin.flatConfigs.recommended,
   {

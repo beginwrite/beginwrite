@@ -26,8 +26,8 @@ export class CreateUserUseCase {
       .then((user) => {
         return user;
       })
-      .catch((err) => {
-        throw new Error(err.message);
+      .catch(({ message }) => {
+        throw new Error(message as string);
       });
   }
 }

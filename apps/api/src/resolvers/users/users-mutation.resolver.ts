@@ -1,6 +1,7 @@
 import { UseGuards } from '@nestjs/common';
 import { Resolver, Mutation, Args } from '@nestjs/graphql';
 import { FileUpload, GraphQLUpload } from 'graphql-upload-minimal';
+
 import { User } from 'src/domains/users/entities/users.entity';
 import { CreateUserUseCase } from 'src/domains/users/use-cases/create-user/create-user.use-case';
 import { UpdateUserProfileUseCase } from 'src/domains/users/use-cases/update-user-profile/update-user-profile.use-case';

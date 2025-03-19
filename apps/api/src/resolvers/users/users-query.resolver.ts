@@ -1,7 +1,7 @@
 import { IQueryUserArgs } from '@beginwrite/graphql-codegen';
 import { UseGuards } from '@nestjs/common';
-import { Query, Resolver } from '@nestjs/graphql';
-import { Args } from '@nestjs/graphql';
+import { Query, Resolver, Args } from '@nestjs/graphql';
+
 import { User } from 'src/domains/users/entities/users.entity';
 import { FindUserByIdUseCase } from 'src/domains/users/use-cases/find-user-by-id/find-user-by-id.use-case';
 

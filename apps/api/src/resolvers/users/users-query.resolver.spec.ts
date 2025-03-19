@@ -1,7 +1,8 @@
 import { createMock } from '@golevelup/ts-vitest';
 import { Test, TestingModule } from '@nestjs/testing';
-import { FindUserByIdUseCase } from 'src/domains/users/use-cases/find-user-by-id/find-user-by-id.use-case';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+
+import { FindUserByIdUseCase } from 'src/domains/users/use-cases/find-user-by-id/find-user-by-id.use-case';
 
 import { UsersRepository } from '../../domains/users/repositories/users.repository';
 
@@ -38,6 +39,7 @@ describe('UsersQueryResolver', () => {
     it('正常に実行される', async () => {
       const userId = '1';
       await resolver.user(userId);
+
       expect(findUserByIdUseCase.execute).toHaveBeenCalledTimes(1);
       expect(findUserByIdUseCase.execute).toHaveBeenCalledWith(userId);
     });
@@ -46,6 +48,7 @@ describe('UsersQueryResolver', () => {
       const userId = '999';
 
       await resolver.user(userId);
+
       expect(findUserByIdUseCase.execute).toHaveBeenCalledTimes(1);
       expect(findUserByIdUseCase.execute).toHaveBeenCalledWith(userId);
     });

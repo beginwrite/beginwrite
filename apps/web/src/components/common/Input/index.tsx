@@ -1,5 +1,7 @@
 import React, { ComponentPropsWithoutRef } from 'react';
 
+import { input } from './styles';
+
 export type InputProps = ComponentPropsWithoutRef<'input'> & {
   id?: string;
   type: string;
@@ -51,7 +53,7 @@ const Input = ({
       disabled={disabled}
       autoFocus={autoFocus}
       autoComplete={autoComplete}
-      className={`w-full p-2 border border-gray-300 rounded-md text-base ${className}`}
+      className={input({ class: className })}
     />
   );
 };

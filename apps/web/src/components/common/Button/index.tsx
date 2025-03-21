@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { button } from './styles';
 export type ButtonProps = {
   type?: 'button' | 'submit' | 'reset';
   children: React.ReactNode;
@@ -7,7 +8,7 @@ export type ButtonProps = {
 
 const Button: React.FC<ButtonProps> = ({ type, children }) => {
   return (
-    <button type={type} className="bg-blue-600 text-white p-2 rounded-md">
+    <button type={type} className={button({ colors: 'primary' })}>
       {children}
     </button>
   );

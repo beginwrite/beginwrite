@@ -1,13 +1,4 @@
-import styled from '@emotion/styled';
 import React, { ComponentPropsWithoutRef } from 'react';
-
-const StyledInput = styled.input`
-  width: 100%;
-  padding: 0.5rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 0.25rem;
-`;
 
 export type InputProps = ComponentPropsWithoutRef<'input'> & {
   id?: string;
@@ -45,7 +36,7 @@ const Input = ({
   ref,
 }: InputProps) => {
   return (
-    <StyledInput
+    <input
       id={id}
       ref={ref}
       name={name}
@@ -60,7 +51,7 @@ const Input = ({
       disabled={disabled}
       autoFocus={autoFocus}
       autoComplete={autoComplete}
-      className={className}
+      className={`w-full p-2 border border-gray-300 rounded-md text-base ${className}`}
     />
   );
 };

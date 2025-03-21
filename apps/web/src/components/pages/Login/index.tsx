@@ -1,21 +1,16 @@
-import styled from '@emotion/styled';
-import React, { useCallback } from 'react';
+import React from 'react';
 
 import Button from '../../common/Button';
 import Input from '../../common/Input';
 
 import { useLogin } from './logic';
 
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
-
 const Login: React.FC = () => {
   const { handleSubmit, register } = useLogin();
 
+  // TODO: Form コンポーネントを作成する
   return (
-    <Form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="flex flex-col">
       <h1>Login</h1>
       <Input type="email" placeholder="emailを入力..." {...register('email')} />
       <Input
@@ -24,7 +19,7 @@ const Login: React.FC = () => {
         {...register('password')}
       />
       <Button type="submit">ログイン</Button>
-    </Form>
+    </form>
   );
 };
 

@@ -1,6 +1,6 @@
 import { composeStories } from '@storybook/react';
 import { screen } from '@testing-library/dom';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { describe, test, expect } from 'vitest';
 
 import * as stories from './index.stories';
@@ -8,12 +8,15 @@ import * as stories from './index.stories';
 const { TextInput } = composeStories(stories);
 
 describe('Input', () => {
-  test('Text Input', async () => {
-    const { container } = render(<TextInput />);
+  test('Text Input', () => {
+    render(<TextInput />);
 
-    await expect(screen.findByRole('textbox')).resolves.toBeTruthy();
-    await expect(
-      TextInput.play!({ canvasElement: container }),
-    ).resolves.toBeUndefined();
+    const textbox: HTMLTextAreaElement = screen.getByRole('textbox');
+
+    expect(textbox).toBeTruthy();
+
+    fireEvent.change(textbox, { target: { value: 'Updated Bio' } });
+
+    expect(textbox.value).toEqual('Updated Bio');
   });
 });

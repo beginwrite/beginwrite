@@ -69,7 +69,6 @@
     "chromatic": "^11.25.2",
     "cross-fetch": "^4.1.0",
     "eslint": "9.21.0",
-    "extend-expect": "link:@testing-library/jest-dom/extend-expect",
     "http-server": "14.1.1",
     "isomorphic-unfetch": "4.0.2",
     "jsdom": "26.0.0",

@@ -343,9 +343,6 @@ importers:
       eslint:
         specifier: 9.21.0
         version: 9.21.0(jiti@2.4.2)
-      extend-expect:
-        specifier: link:@testing-library/jest-dom/extend-expect
-        version: link:@testing-library/jest-dom/extend-expect
       http-server:
         specifier: 14.1.1
         version: 14.1.1

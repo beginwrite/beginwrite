@@ -22,7 +22,7 @@ import { LoginUseCase } from './login.use-case';
       signOptions: { expiresIn: '1h' },
     }),
   ],
-  providers: [LoginUseCase, AuthRepository, JwtService, RedisService],
-  exports: [LoginUseCase, AuthRepository, JwtService, RedisService],
+  providers: [LoginUseCase, AuthRepository, RedisService],
+  exports: [LoginUseCase, AuthRepository, RedisService],
 })
 export class LoginUseCaseModule {}

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Button from '../../common/Button';
+import Form from '../../common/Form';
 import Input from '../../common/Input';
 
 import { useLogin } from './logic';
@@ -10,7 +11,7 @@ const Login: React.FC = () => {
 
   // TODO: Form コンポーネントを作成する
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col">
+    <Form onSubmit={handleSubmit}>
       <h1>Login</h1>
       <Input type="email" placeholder="emailを入力..." {...register('email')} />
       <Input
@@ -19,7 +20,7 @@ const Login: React.FC = () => {
         {...register('password')}
       />
       <Button type="submit">ログイン</Button>
-    </form>
+    </Form>
   );
 };
 

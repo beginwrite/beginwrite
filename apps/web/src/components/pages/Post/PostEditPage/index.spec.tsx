@@ -1,3 +1,3 @@
-import { describe, it } from 'vitest';
+import { describe } from 'vitest';
 
 describe.skip('PostEditPage', () => {});

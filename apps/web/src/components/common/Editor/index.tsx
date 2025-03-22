@@ -3,7 +3,8 @@ import React, { FC, useCallback } from 'react';
 import { richmd } from 'richmd';
 
 import type { UseFormRegister } from 'react-hook-form';
-import 'richmd/richmd.css';
+// TODO: richmd の CSS 構成を見直すため、一時的にコメントアウトする
+// import 'richmd/richmd.css';
 
 const Wrapper = styled.div`
   display: flex;

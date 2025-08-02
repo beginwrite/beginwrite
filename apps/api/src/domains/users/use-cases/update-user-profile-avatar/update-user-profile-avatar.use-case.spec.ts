@@ -71,10 +71,16 @@ describe('UpdateUserProfileAvatarUseCase', () => {
     it('正常に実行される', async () => {
       await usecase.execute(String(mockUser.id), file);
 
-      // TODO: s3Service.deleteFile で引数にデータが渡されているか検証する
       expect(s3Service.deleteFile).toHaveBeenCalledTimes(1);
-      // TODO: s3Service.uploadFile で引数にデータが渡されているか検証する
+      expect(s3Service.deleteFile).toHaveBeenCalledWith(
+        expect.stringContaining(mockUser.avatar.split('/').pop()),
+      );
       expect(s3Service.uploadFile).toHaveBeenCalledTimes(1);
+      expect(s3Service.uploadFile).toHaveBeenCalledWith(
+        expect.objectContaining({
+          file: file.file,
+        }),
+      );
 
       expect(usersRepository.updateProfileAvatarUrl).toHaveBeenCalledTimes(1);
       expect(usersRepository.updateProfileAvatarUrl).toHaveBeenCalledWith(

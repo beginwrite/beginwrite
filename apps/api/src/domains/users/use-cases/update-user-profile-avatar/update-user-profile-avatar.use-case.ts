@@ -19,12 +19,8 @@ export class UpdateUserProfileAvatarUseCase {
     if (!file) throw new Error('File is required');
     const user = await this.usersRepository.findById(id);
 
-    // TODO: 以下の処理は s3Service.uploadFile の方に移行する
-    const { createReadStream } = file.file;
-    // MEMO: 拡張子は png に固定
     const uuid = crypto.randomUUID();
     const filename = `${uuid}.png`;
-    const stream = await this.loadStream(createReadStream());
 
     // 前の画像を削除
     if (user.avatar) {
@@ -32,7 +28,10 @@ export class UpdateUserProfileAvatarUseCase {
       await this.s3Service.deleteFile(oldFilename);
     }
 
-    await this.s3Service.uploadFile(filename, stream);
+    await this.s3Service.uploadFile({
+      file: file.file,
+      filename,
+    });
 
     return await this.usersRepository
       .updateProfileAvatarUrl({ filename, id })
@@ -42,14 +41,5 @@ export class UpdateUserProfileAvatarUseCase {
       .catch(({ message }) => {
         throw new Error(message as string);
       });
-  }
-
-  private loadStream(stream: ReadStream): Promise<Buffer> {
-    return new Promise((resolve, reject) => {
-      const chunks = [];
-      stream.on('data', (chunk) => chunks.push(chunk));
-      stream.on('error', reject);
-      stream.on('end', () => resolve(Buffer.concat(chunks)));
-    });
   }
 }

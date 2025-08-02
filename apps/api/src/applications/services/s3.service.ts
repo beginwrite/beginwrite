@@ -5,6 +5,9 @@ import {
   DeleteObjectCommand,
 } from '@aws-sdk/client-s3';
 import { Injectable } from '@nestjs/common';
+import { FileUpload } from 'graphql-upload-minimal';
+
+import type { ReadStream } from 'fs';
 
 @Injectable()
 export class S3Service {
@@ -18,12 +21,22 @@ export class S3Service {
     forcePathStyle: true,
   });
 
-  public async uploadFile(key: string, file: Buffer) {
+  public async uploadFile({
+    file,
+    filename,
+  }: {
+    file: FileUpload;
+    filename: string;
+  }) {
+    const { createReadStream } = file;
+    // MEMO: 拡張子は png に固定
+    const stream = await this.loadStream(createReadStream());
+
     return await this.s3.send(
       new PutObjectCommand({
         Bucket: `${process.env.AWS_BUCKET}`,
-        Key: key,
-        Body: file,
+        Key: filename,
+        Body: stream,
       }),
     );
   }
@@ -44,5 +57,14 @@ export class S3Service {
         Key: key,
       }),
     );
+  }
+
+  private loadStream(stream: ReadStream): Promise<Buffer> {
+    return new Promise((resolve, reject) => {
+      const chunks = [];
+      stream.on('data', (chunk) => chunks.push(chunk));
+      stream.on('error', reject);
+      stream.on('end', () => resolve(Buffer.concat(chunks)));
+    });
   }
 }

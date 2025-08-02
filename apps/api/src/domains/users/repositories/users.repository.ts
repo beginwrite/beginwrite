@@ -20,6 +20,11 @@ export type UpdateUserProfileArgs = {
   bio?: string;
 };
 
+export type UpdateUserProfileAvatarArgs = {
+  filename: string;
+  id: string;
+};
+
 @Injectable()
 export class UsersRepository extends Repository<User> {
   constructor(private dataSource: DataSource) {
@@ -58,9 +63,10 @@ export class UsersRepository extends Repository<User> {
   }
 
   async updateProfileAvatarUrl(
-    filename: string,
-    id: string,
+    data: UpdateUserProfileAvatarArgs,
   ): Promise<UpdateResult> {
+    const { filename, id } = data;
+
     return await this.update(
       { id: Number(id) },
       {

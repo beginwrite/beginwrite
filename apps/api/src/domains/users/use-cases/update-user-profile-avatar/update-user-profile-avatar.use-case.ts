@@ -21,6 +21,7 @@ export class UpdateUserProfileAvatarUseCase {
 
     const { createReadStream } = file.file;
     // MEMO: 拡張子は png に固定
+    // TODO: 以下の処理は s3Service.uploadFile の方に移行する
     const uuid = crypto.randomUUID();
     const filename = `${uuid}.png`;
     const stream = await this.loadStream(createReadStream());
@@ -34,7 +35,7 @@ export class UpdateUserProfileAvatarUseCase {
     await this.s3Service.uploadFile(filename, stream);
 
     return await this.usersRepository
-      .updateProfileAvatarUrl(filename, id)
+      .updateProfileAvatarUrl({ filename, id })
       .then(async () => {
         return await this.usersRepository.findById(id);
       })

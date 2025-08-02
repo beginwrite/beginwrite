@@ -51,8 +51,8 @@ export class UsersRepository extends Repository<User> {
     return await this.save(user);
   }
 
-  async updateUserProfile(data: UpdateUserProfileArgs): Promise<UpdateResult> {
-    return await this.update(
+  async updateUserProfile(data: UpdateUserProfileArgs): Promise<User> {
+    await this.update(
       { id: Number(data.id) },
       {
         displayName: data.displayName,
@@ -60,6 +60,8 @@ export class UsersRepository extends Repository<User> {
         updatedAt: Date.now().toString(),
       },
     );
+
+    return await this.findById(data.id);
   }
 
   async updateProfileAvatarUrl(

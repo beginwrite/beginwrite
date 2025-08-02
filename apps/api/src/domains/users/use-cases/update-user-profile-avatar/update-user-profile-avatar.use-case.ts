@@ -19,9 +19,9 @@ export class UpdateUserProfileAvatarUseCase {
     if (!file) throw new Error('File is required');
     const user = await this.usersRepository.findById(id);
 
+    // TODO: 以下の処理は s3Service.uploadFile の方に移行する
     const { createReadStream } = file.file;
     // MEMO: 拡張子は png に固定
-    // TODO: 以下の処理は s3Service.uploadFile の方に移行する
     const uuid = crypto.randomUUID();
     const filename = `${uuid}.png`;
     const stream = await this.loadStream(createReadStream());

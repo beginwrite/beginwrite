@@ -18,8 +18,8 @@ export class UpdateUserProfileUseCase {
         displayName: args.data.displayName,
         bio: args.data.bio,
       })
-      .then(async () => {
-        return await this.usersRepository.findById(args.data.id);
+      .then((data) => {
+        return data;
       })
       .catch(({ message }) => {
         throw new Error(message as string);

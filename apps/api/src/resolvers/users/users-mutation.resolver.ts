@@ -2,12 +2,11 @@ import { UseGuards } from '@nestjs/common';
 import { Resolver, Mutation, Args } from '@nestjs/graphql';
 import { FileUpload, GraphQLUpload } from 'graphql-upload-minimal';
 
-import { User } from 'src/domains/users/entities/users.entity';
-import { CreateUserUseCase } from 'src/domains/users/use-cases/create-user/create-user.use-case';
-import { UpdateUserProfileUseCase } from 'src/domains/users/use-cases/update-user-profile/update-user-profile.use-case';
-import { UpdateUserProfileAvatarUseCase } from 'src/domains/users/use-cases/update-user-profile-avatar/update-user-profile-avatar.use-case';
-
 import { JwtAuthGuard } from '../../applications/guards/jwt-auth.guard';
+import { User } from '../../domains/users/entities/users.entity';
+import { CreateUserUseCase } from '../../use-cases/users/create-user/create-user.use-case';
+import { UpdateUserProfileUseCase } from '../../use-cases/users/update-user-profile/update-user-profile.use-case';
+import { UpdateUserProfileAvatarUseCase } from '../../use-cases/users/update-user-profile-avatar/update-user-profile-avatar.use-case';
 
 import type {
   IMutationCreateUserArgs,

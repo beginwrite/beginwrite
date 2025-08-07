@@ -1,13 +1,12 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { S3Service } from 'src/applications/services/s3.service';
-import { CreateUserUseCaseModule } from 'src/domains/users/use-cases/create-user/create-user.module';
-import { FindUserByIdUseCaseModule } from 'src/domains/users/use-cases/find-user-by-id/find-user-by-id.module';
-import { UpdateUserProfileUseCaseModule } from 'src/domains/users/use-cases/update-user-profile/update-user-profile.module';
-import { UpdateUserProfileAvatarUseCaseModule } from 'src/domains/users/use-cases/update-user-profile-avatar/update-user-profile-avatar.module';
-
+import { S3Service } from '../../applications/services/s3.service';
 import { User } from '../../domains/users/entities/users.entity';
+import { CreateUserUseCaseModule } from '../../use-cases/users/create-user/create-user.module';
+import { FindUserByIdUseCaseModule } from '../../use-cases/users/find-user-by-id/find-user-by-id.module';
+import { UpdateUserProfileUseCaseModule } from '../../use-cases/users/update-user-profile/update-user-profile.module';
+import { UpdateUserProfileAvatarUseCaseModule } from '../../use-cases/users/update-user-profile-avatar/update-user-profile-avatar.module';
 
 import { UsersMutationResolver } from './users-mutation.resolver';
 import { UsersQueryResolver } from './users-query.resolver';

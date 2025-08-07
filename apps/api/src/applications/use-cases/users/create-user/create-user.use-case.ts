@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { Args } from '@nestjs/graphql';
 import * as bcrypt from 'bcryptjs';
 
-import { User } from '../../../../domains/users/entities/users.entity';
+import { User } from '../../../../domains/entities/users.entity';
 import { UsersRepository } from '../../../../infrastructure/repositories/users.repository';
 
 @Injectable()

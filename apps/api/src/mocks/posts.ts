@@ -1,4 +1,4 @@
-import { Post } from '../domains/posts/entities/posts.entity';
+import { Post } from '../domains/entities/posts.entity';
 
 import { mockUsers } from './users';
 

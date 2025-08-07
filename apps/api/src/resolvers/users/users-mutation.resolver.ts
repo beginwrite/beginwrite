@@ -5,7 +5,7 @@ import { FileUpload, GraphQLUpload } from 'graphql-upload-minimal';
 import { CreateUserUseCase } from '../../applications/use-cases/users/create-user/create-user.use-case';
 import { UpdateUserProfileUseCase } from '../../applications/use-cases/users/update-user-profile/update-user-profile.use-case';
 import { UpdateUserProfileAvatarUseCase } from '../../applications/use-cases/users/update-user-profile-avatar/update-user-profile-avatar.use-case';
-import { User } from '../../domains/users/entities/users.entity';
+import { User } from '../../domains/entities/users.entity';
 import { JwtAuthGuard } from '../../infrastructure/guards/jwt-auth.guard';
 
 import type {

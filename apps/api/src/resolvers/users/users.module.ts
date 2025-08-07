@@ -5,7 +5,7 @@ import { CreateUserUseCaseModule } from '../../applications/use-cases/users/crea
 import { FindUserByIdUseCaseModule } from '../../applications/use-cases/users/find-user-by-id/find-user-by-id.module';
 import { UpdateUserProfileUseCaseModule } from '../../applications/use-cases/users/update-user-profile/update-user-profile.module';
 import { UpdateUserProfileAvatarUseCaseModule } from '../../applications/use-cases/users/update-user-profile-avatar/update-user-profile-avatar.module';
-import { User } from '../../domains/users/entities/users.entity';
+import { User } from '../../domains/entities/users.entity';
 import { S3Service } from '../../infrastructure/services/s3.service';
 
 import { UsersMutationResolver } from './users-mutation.resolver';

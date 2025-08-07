@@ -8,7 +8,7 @@ import { FindPostByIdUseCaseModule } from '../../applications/use-cases/posts/fi
 import { FindPostsByUserIdUseCaseModule } from '../../applications/use-cases/posts/find-posts-by-user-id/find-posts-by-user-id.module';
 import { PublishPostUseCaseModule } from '../../applications/use-cases/posts/publish-post/publish-post.module';
 import { UpdatePostUseCaseModule } from '../../applications/use-cases/posts/update-post/update-post.module';
-import { Post } from '../../domains/posts/entities/posts.entity';
+import { Post } from '../../domains/entities/posts.entity';
 
 import { PostsMutationResolver } from './posts-mutation.resolver';
 import { PostsQueryResolver } from './posts-query.resolver';

@@ -12,7 +12,7 @@ import { DeletePostUseCase } from '../../applications/use-cases/posts/delete-pos
 import { DestroyPostUseCase } from '../../applications/use-cases/posts/destroy-post/destroy-post.use-case';
 import { PublishPostUseCase } from '../../applications/use-cases/posts/publish-post/publish-post.use-case';
 import { UpdatePostUseCase } from '../../applications/use-cases/posts/update-post/update-post.use-case';
-import { Post } from '../../domains/posts/entities/posts.entity';
+import { Post } from '../../domains/entities/posts.entity';
 import { JwtAuthGuard } from '../../infrastructure/guards/jwt-auth.guard';
 
 @Resolver((of) => Post)

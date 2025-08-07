@@ -4,7 +4,7 @@ import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcryptjs';
 import { DataSource, Repository, UpdateResult } from 'typeorm';
 
-import { User } from 'src/domains/users/entities/users.entity';
+import { User } from 'src/domains/entities/users.entity';
 import { RedisService } from 'src/infrastructure/services/redis.service';
 
 export type AuthUserArgs = {

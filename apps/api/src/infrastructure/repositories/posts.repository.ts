@@ -2,7 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DataSource, Repository } from 'typeorm';
 
-import { Post } from 'src/domains/posts/entities/posts.entity';
+import { Post } from 'src/domains/entities/posts.entity';
+import { UuidValueObject } from 'src/domains/value-objects/posts/uuid.value-object';
 
 export type CreatePostArgs = {
   title: string;
@@ -37,7 +38,7 @@ export class PostsRepository extends Repository<Post> {
     post.title = data.title;
     post.content = data.content;
     post.userId = Number(data.userId);
-    post.uuid = crypto.randomUUID();
+    post.uuid = new UuidValueObject(crypto.randomUUID());
     post.createdAt = Date.now().toString();
 
     return await this.save(post);

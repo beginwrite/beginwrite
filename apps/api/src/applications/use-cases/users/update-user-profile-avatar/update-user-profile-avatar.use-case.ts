@@ -3,7 +3,7 @@ import { FileUpload } from 'graphql-upload-minimal';
 
 import { S3Service } from 'src/infrastructure/services/s3.service';
 
-import { User } from '../../../../domains/users/entities/users.entity';
+import { User } from '../../../../domains/entities/users.entity';
 import { UsersRepository } from '../../../../infrastructure/repositories/users.repository';
 
 @Injectable()

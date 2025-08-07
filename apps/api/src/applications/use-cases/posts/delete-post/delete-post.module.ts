@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { Post } from '../../../../domains/posts/entities/posts.entity';
+import { Post } from '../../../../domains/entities/posts.entity';
 import { PostsRepository } from '../../../../infrastructure/repositories/posts.repository';
 
 import { DeletePostUseCase } from './delete-post.use-case';

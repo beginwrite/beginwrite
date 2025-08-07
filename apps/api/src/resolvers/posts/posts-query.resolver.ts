@@ -3,7 +3,7 @@ import { Args, Query, Resolver } from '@nestjs/graphql';
 
 import { FindPostByIdUseCase } from '../../applications/use-cases/posts/find-post-by-id/find-post-by-id.use-case';
 import { FindPostsByUserIdUseCase } from '../../applications/use-cases/posts/find-posts-by-user-id/find-posts-by-user-id.use-case';
-import { Post } from '../../domains/posts/entities/posts.entity';
+import { Post } from '../../domains/entities/posts.entity';
 import { JwtAuthGuard } from '../../infrastructure/guards/jwt-auth.guard';
 
 @Resolver((of) => Post)

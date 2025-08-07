@@ -7,7 +7,10 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-import { User } from 'src/domains/users/entities/users.entity';
+import { User } from 'src/domains/entities/users.entity';
+
+import { ValueObjectTransformer } from '../value-objects/core/value-object-transformer';
+import { UuidValueObject } from '../value-objects/posts/uuid.value-object';
 
 @Entity()
 @ObjectType()
@@ -16,38 +19,40 @@ export class Post {
   @Field((type) => Int)
   id: number;
 
-  @Column()
-  @Field((type) => String)
-  uuid: string;
+  @Column({
+    type: 'uuid',
+    transformer: ValueObjectTransformer(UuidValueObject),
+  })
+  uuid: UuidValueObject;
 
   @Column()
-  @Field((type) => String)
+  @Field(() => String)
   title: string;
 
   @Column()
-  @Field((type) => String)
+  @Field(() => String)
   content: string;
 
   @Column({ name: 'user_id' })
   userId: number;
 
-  @ManyToOne((type) => User)
+  @ManyToOne(() => User)
   @JoinColumn({ name: 'user_id' })
   user: User;
 
   @Column({ name: 'published_at' })
-  @Field((type) => String)
+  @Field(() => String)
   publishedAt: string;
 
   @Column({ name: 'created_at' })
-  @Field((type) => String)
+  @Field(() => String)
   createdAt: string;
 
   @Column({ name: 'updated_at' })
-  @Field((type) => String)
+  @Field(() => String)
   updatedAt: string;
 
   @Column({ name: 'deleted_at' })
-  @Field((type) => String)
+  @Field(() => String)
   deletedAt: string;
 }

@@ -4,7 +4,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { User } from '../../../../domains/users/entities/users.entity';
+import { User } from '../../../../domains/entities/users.entity';
 import { AuthRepository } from '../../../../infrastructure/repositories/auth.repository';
 import { RedisService } from '../../../../infrastructure/services/redis.service';
 

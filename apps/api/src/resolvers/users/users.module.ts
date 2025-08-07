@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { S3Service } from '../../applications/services/s3.service';
-import { User } from '../../domains/users/entities/users.entity';
-import { CreateUserUseCaseModule } from '../../use-cases/users/create-user/create-user.module';
-import { FindUserByIdUseCaseModule } from '../../use-cases/users/find-user-by-id/find-user-by-id.module';
-import { UpdateUserProfileUseCaseModule } from '../../use-cases/users/update-user-profile/update-user-profile.module';
-import { UpdateUserProfileAvatarUseCaseModule } from '../../use-cases/users/update-user-profile-avatar/update-user-profile-avatar.module';
+import { CreateUserUseCaseModule } from '../../applications/use-cases/users/create-user/create-user.module';
+import { FindUserByIdUseCaseModule } from '../../applications/use-cases/users/find-user-by-id/find-user-by-id.module';
+import { UpdateUserProfileUseCaseModule } from '../../applications/use-cases/users/update-user-profile/update-user-profile.module';
+import { UpdateUserProfileAvatarUseCaseModule } from '../../applications/use-cases/users/update-user-profile-avatar/update-user-profile-avatar.module';
+import { User } from '../../domains/entities/users.entity';
+import { S3Service } from '../../infrastructure/services/s3.service';
 
 import { UsersMutationResolver } from './users-mutation.resolver';
 import { UsersQueryResolver } from './users-query.resolver';

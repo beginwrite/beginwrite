@@ -1,5 +1,6 @@
 type Post {
   id: ID!
+  uuid: String!
   user: User!
   title: String!
   content: String!

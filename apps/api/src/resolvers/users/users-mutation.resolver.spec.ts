@@ -2,11 +2,11 @@ import { createMock } from '@golevelup/ts-vitest';
 import { Test, TestingModule } from '@nestjs/testing';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
-import { S3Service } from '../../applications/services/s3.service';
-import { UsersRepository } from '../../domains/users/repositories/users.repository';
-import { CreateUserUseCase } from '../../use-cases/users/create-user/create-user.use-case';
-import { UpdateUserProfileUseCase } from '../../use-cases/users/update-user-profile/update-user-profile.use-case';
-import { UpdateUserProfileAvatarUseCase } from '../../use-cases/users/update-user-profile-avatar/update-user-profile-avatar.use-case';
+import { CreateUserUseCase } from '../../applications/use-cases/users/create-user/create-user.use-case';
+import { UpdateUserProfileUseCase } from '../../applications/use-cases/users/update-user-profile/update-user-profile.use-case';
+import { UpdateUserProfileAvatarUseCase } from '../../applications/use-cases/users/update-user-profile-avatar/update-user-profile-avatar.use-case';
+import { UsersRepository } from '../../infrastructure/repositories/users.repository';
+import { S3Service } from '../../infrastructure/services/s3.service';
 
 import { UsersMutationResolver } from './users-mutation.resolver';
 

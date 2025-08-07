@@ -3,11 +3,11 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { describe, it, expect, beforeEach } from 'vitest';
 
 import { PostsRepository } from '../../domains/posts/repositories/posts.repository';
-import { CreatePostUseCase } from '../../domains/posts/use-cases/create-post/create-post.use-case';
-import { DeletePostUseCase } from '../../domains/posts/use-cases/delete-post/delete-post.use-case';
-import { DestroyPostUseCase } from '../../domains/posts/use-cases/destroy-post/destroy-post.use-case';
-import { PublishPostUseCase } from '../../domains/posts/use-cases/publish-post/publish-post.use-case';
-import { UpdatePostUseCase } from '../../domains/posts/use-cases/update-post/update-post.use-case';
+import { CreatePostUseCase } from '../../use-cases/posts/create-post/create-post.use-case';
+import { DeletePostUseCase } from '../../use-cases/posts/delete-post/delete-post.use-case';
+import { DestroyPostUseCase } from '../../use-cases/posts/destroy-post/destroy-post.use-case';
+import { PublishPostUseCase } from '../../use-cases/posts/publish-post/publish-post.use-case';
+import { UpdatePostUseCase } from '../../use-cases/posts/update-post/update-post.use-case';
 
 import { PostsMutationResolver } from './posts-mutation.resolver';
 

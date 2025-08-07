@@ -4,7 +4,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 
 import { mockUsers } from 'src/mocks/users';
 
-import { AuthRepository } from '../../../../domains/users/repositories/auth.repository';
+import { AuthRepository } from '../../../../infrastructure/repositories/auth.repository';
 
 import { LogoutUseCase } from './logout.use-case';
 

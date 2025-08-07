@@ -2,7 +2,7 @@ import { createMock } from '@golevelup/ts-vitest';
 import { Test, TestingModule } from '@nestjs/testing';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
-import { UsersRepository } from '../../../../domains/users/repositories/users.repository';
+import { UsersRepository } from '../../../../infrastructure/repositories/users.repository';
 
 import { FindUserByIdUseCase } from './find-user-by-id.use-case';
 

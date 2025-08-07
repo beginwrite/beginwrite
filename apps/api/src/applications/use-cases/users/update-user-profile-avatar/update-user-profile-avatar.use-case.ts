@@ -4,7 +4,7 @@ import { FileUpload } from 'graphql-upload-minimal';
 import { S3Service } from 'src/infrastructure/services/s3.service';
 
 import { User } from '../../../../domains/users/entities/users.entity';
-import { UsersRepository } from '../../../../domains/users/repositories/users.repository';
+import { UsersRepository } from '../../../../infrastructure/repositories/users.repository';
 
 @Injectable()
 export class UpdateUserProfileAvatarUseCase {

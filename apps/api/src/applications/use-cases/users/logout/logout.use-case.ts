@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 
 import { User } from '../../../../domains/users/entities/users.entity';
-import { AuthRepository } from '../../../../domains/users/repositories/auth.repository';
+import { AuthRepository } from '../../../../infrastructure/repositories/auth.repository';
 
 @Injectable()
 export class LogoutUseCase {

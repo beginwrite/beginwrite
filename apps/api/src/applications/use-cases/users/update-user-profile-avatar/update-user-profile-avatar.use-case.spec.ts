@@ -5,7 +5,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { S3Service } from 'src/infrastructure/services/s3.service';
 import { mockUsers } from 'src/mocks/users';
 
-import { UsersRepository } from '../../../../domains/users/repositories/users.repository';
+import { UsersRepository } from '../../../../infrastructure/repositories/users.repository';
 
 import { UpdateUserProfileAvatarUseCase } from './update-user-profile-avatar.use-case';
 

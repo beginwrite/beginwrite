@@ -4,8 +4,8 @@ import { Query, Resolver, Args } from '@nestjs/graphql';
 
 import { FindUserByIdUseCase } from '../../applications/use-cases/users/find-user-by-id/find-user-by-id.use-case';
 import { User } from '../../domains/users/entities/users.entity';
-import { UsersRepository } from '../../domains/users/repositories/users.repository';
 import { JwtAuthGuard } from '../../infrastructure/guards/jwt-auth.guard';
+import { UsersRepository } from '../../infrastructure/repositories/users.repository';
 
 @Resolver((of) => User)
 export class UsersQueryResolver {

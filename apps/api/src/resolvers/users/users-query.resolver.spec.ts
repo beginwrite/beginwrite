@@ -3,7 +3,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { describe, it, expect, beforeEach } from 'vitest';
 
 import { FindUserByIdUseCase } from '../../applications/use-cases/users/find-user-by-id/find-user-by-id.use-case';
-import { UsersRepository } from '../../domains/users/repositories/users.repository';
+import { UsersRepository } from '../../infrastructure/repositories/users.repository';
 
 import { UsersQueryResolver } from './users-query.resolver';
 

@@ -5,7 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { RedisService } from 'src/infrastructure/services/redis.service';
 
 import { User } from '../../../../domains/users/entities/users.entity';
-import { AuthRepository } from '../../../../domains/users/repositories/auth.repository';
+import { AuthRepository } from '../../../../infrastructure/repositories/auth.repository';
 
 import { LogoutUseCase } from './logout.use-case';
 

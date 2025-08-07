@@ -2,7 +2,7 @@ import { IMutationPublishPostArgs } from '@beginwrite/graphql-codegen';
 import { Injectable } from '@nestjs/common';
 
 import { Post } from '../../../../domains/posts/entities/posts.entity';
-import { PostsRepository } from '../../../../domains/posts/repositories/posts.repository';
+import { PostsRepository } from '../../../../infrastructure/repositories/posts.repository';
 
 @Injectable()
 export class PublishPostUseCase {

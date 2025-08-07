@@ -6,7 +6,7 @@ import { describe, it, expect, beforeEach, vi } from 'vitest';
 
 import { mockUsers } from 'src/mocks/users';
 
-import { UsersRepository } from '../../../../domains/users/repositories/users.repository';
+import { UsersRepository } from '../../../../infrastructure/repositories/users.repository';
 
 import { CreateUserUseCase } from './create-user.use-case';
 

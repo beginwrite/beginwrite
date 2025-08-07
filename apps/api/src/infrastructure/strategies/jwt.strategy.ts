@@ -3,7 +3,7 @@ import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 
 import { User } from '../../domains/users/entities/users.entity';
-import { AuthRepository } from '../../domains/users/repositories/auth.repository';
+import { AuthRepository } from '../repositories/auth.repository';
 import { RedisService } from '../services/redis.service';
 
 @Injectable()

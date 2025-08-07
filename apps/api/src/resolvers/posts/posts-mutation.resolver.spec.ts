@@ -7,7 +7,7 @@ import { DeletePostUseCase } from '../../applications/use-cases/posts/delete-pos
 import { DestroyPostUseCase } from '../../applications/use-cases/posts/destroy-post/destroy-post.use-case';
 import { PublishPostUseCase } from '../../applications/use-cases/posts/publish-post/publish-post.use-case';
 import { UpdatePostUseCase } from '../../applications/use-cases/posts/update-post/update-post.use-case';
-import { PostsRepository } from '../../domains/posts/repositories/posts.repository';
+import { PostsRepository } from '../../infrastructure/repositories/posts.repository';
 
 import { PostsMutationResolver } from './posts-mutation.resolver';
 

@@ -1,10 +1,10 @@
 import { UseGuards } from '@nestjs/common';
 import { Args, Query, Resolver } from '@nestjs/graphql';
 
-import { JwtAuthGuard } from '../../applications/guards/jwt-auth.guard';
+import { FindPostByIdUseCase } from '../../applications/use-cases/posts/find-post-by-id/find-post-by-id.use-case';
+import { FindPostsByUserIdUseCase } from '../../applications/use-cases/posts/find-posts-by-user-id/find-posts-by-user-id.use-case';
 import { Post } from '../../domains/posts/entities/posts.entity';
-import { FindPostByIdUseCase } from '../../use-cases/posts/find-post-by-id/find-post-by-id.use-case';
-import { FindPostsByUserIdUseCase } from '../../use-cases/posts/find-posts-by-user-id/find-posts-by-user-id.use-case';
+import { JwtAuthGuard } from '../../infrastructure/guards/jwt-auth.guard';
 
 @Resolver((of) => Post)
 export class PostsQueryResolver {

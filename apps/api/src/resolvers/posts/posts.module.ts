@@ -1,14 +1,13 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { CreatePostUseCaseModule } from 'src/domains/posts/use-cases/create-post/create-post.module';
-import { DeletePostUseCaseModule } from 'src/domains/posts/use-cases/delete-post/delete-post.module';
-import { DestroyPostUseCaseModule } from 'src/domains/posts/use-cases/destroy-post/destory-post.module';
-import { FindPostByIdUseCaseModule } from 'src/domains/posts/use-cases/find-post-by-id/find-post-by-id.module';
-import { FindPostsByUserIdUseCaseModule } from 'src/domains/posts/use-cases/find-posts-by-user-id/find-posts-by-user-id.module';
-import { PublishPostUseCaseModule } from 'src/domains/posts/use-cases/publish-post/publish-post.module';
-import { UpdatePostUseCaseModule } from 'src/domains/posts/use-cases/update-post/update-post.module';
-
+import { CreatePostUseCaseModule } from '../../applications/use-cases/posts/create-post/create-post.module';
+import { DeletePostUseCaseModule } from '../../applications/use-cases/posts/delete-post/delete-post.module';
+import { DestroyPostUseCaseModule } from '../../applications/use-cases/posts/destroy-post/destory-post.module';
+import { FindPostByIdUseCaseModule } from '../../applications/use-cases/posts/find-post-by-id/find-post-by-id.module';
+import { FindPostsByUserIdUseCaseModule } from '../../applications/use-cases/posts/find-posts-by-user-id/find-posts-by-user-id.module';
+import { PublishPostUseCaseModule } from '../../applications/use-cases/posts/publish-post/publish-post.module';
+import { UpdatePostUseCaseModule } from '../../applications/use-cases/posts/update-post/update-post.module';
 import { Post } from '../../domains/posts/entities/posts.entity';
 
 import { PostsMutationResolver } from './posts-mutation.resolver';

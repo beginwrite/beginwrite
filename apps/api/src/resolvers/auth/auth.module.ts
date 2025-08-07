@@ -1,12 +1,11 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { User } from 'src/domains/users/entities/users.entity';
-import { LoginUseCaseModule } from 'src/domains/users/use-cases/login/login.module';
-import { LogoutUseCaseModule } from 'src/domains/users/use-cases/logout/logout.module';
-
 import { JwtStrategy } from '../../applications/strategies/jwt.strategy';
 import { LocalStrategy } from '../../applications/strategies/local.strategy';
+import { LoginUseCaseModule } from '../../applications/use-cases/users/login/login.module';
+import { LogoutUseCaseModule } from '../../applications/use-cases/users/logout/logout.module';
+import { User } from '../../domains/users/entities/users.entity';
 
 import { AuthMutationResolver } from './auth-mutation.resolver';
 

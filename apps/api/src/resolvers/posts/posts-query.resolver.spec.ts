@@ -1,10 +1,9 @@
 import { createMock } from '@golevelup/ts-vitest';
 import { Test, TestingModule } from '@nestjs/testing';
-import { find } from 'rxjs';
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 
-import { FindPostByIdUseCase } from 'src/domains/posts/use-cases/find-post-by-id/find-post-by-id.use-case';
-import { FindPostsByUserIdUseCase } from 'src/domains/posts/use-cases/find-posts-by-user-id/find-posts-by-user-id.use-case';
+import { FindPostByIdUseCase } from '../../applications/use-cases/posts/find-post-by-id/find-post-by-id.use-case';
+import { FindPostsByUserIdUseCase } from '../../applications/use-cases/posts/find-posts-by-user-id/find-posts-by-user-id.use-case';
 
 import { PostsQueryResolver } from './posts-query.resolver';
 

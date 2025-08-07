@@ -8,12 +8,12 @@ import { UseGuards } from '@nestjs/common';
 import { Args, Mutation, Resolver } from '@nestjs/graphql';
 
 import { JwtAuthGuard } from '../../applications/guards/jwt-auth.guard';
-import { CreatePostUseCase } from '../../applications/use-cases/posts/create-post/create-post.use-case';
-import { DeletePostUseCase } from '../../applications/use-cases/posts/delete-post/delete-post.use-case';
-import { DestroyPostUseCase } from '../../applications/use-cases/posts/destroy-post/destroy-post.use-case';
-import { PublishPostUseCase } from '../../applications/use-cases/posts/publish-post/publish-post.use-case';
-import { UpdatePostUseCase } from '../../applications/use-cases/posts/update-post/update-post.use-case';
 import { Post } from '../../domains/posts/entities/posts.entity';
+import { CreatePostUseCase } from '../../use-cases/posts/create-post/create-post.use-case';
+import { DeletePostUseCase } from '../../use-cases/posts/delete-post/delete-post.use-case';
+import { DestroyPostUseCase } from '../../use-cases/posts/destroy-post/destroy-post.use-case';
+import { PublishPostUseCase } from '../../use-cases/posts/publish-post/publish-post.use-case';
+import { UpdatePostUseCase } from '../../use-cases/posts/update-post/update-post.use-case';
 
 @Resolver((of) => Post)
 export class PostsMutationResolver {
